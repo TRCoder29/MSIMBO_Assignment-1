@@ -1,0 +1,15 @@
+/*Padding adds space*/
+body{
+	padding-top: 70px;
+	padding-bottom: 70px;
+}
+
+li{list-style: none;}
+
+.sw-font-white{
+	color: white;
+}
+
+.sw-width{
+	width:100%
+}
