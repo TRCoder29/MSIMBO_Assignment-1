@@ -1,0 +1,84 @@
+
+student@ULEMLAB3-04 MINGW64 ~/Desktop/Taja R. MSIMBO Student/Assignment 1 (master|MERGING)
+$ git init
+Initialized empty Git repository in C:/Users/student/Desktop/Taja R. MSIMBO Student/Assignment 1/.git/
+
+student@ULEMLAB3-04 MINGW64 ~/Desktop/Taja R. MSIMBO Student/Assignment 1 (master)
+$ git add .
+
+student@ULEMLAB3-04 MINGW64 ~/Desktop/Taja R. MSIMBO Student/Assignment 1 (master)
+$ git status
+On branch master
+
+No commits yet
+
+Changes to be committed:
+  (use "git rm --cached <file>..." to unstage)
+
+        new file:   Page/Page-Edit.html
+        new file:   Page/Page-List.html
+        new file:   Page/Page-New.html
+        new file:   StyleA1.css
+        new file:   User/Login.html
+        new file:   User/Profile.html
+        new file:   User/Register.html
+        new file:   Website/Website-Edit.html
+        new file:   Website/Website-List.html
+        new file:   Website/Website-New.html
+        new file:   Widget/Widget-Chooser.html
+        new file:   Widget/Widget-Heading.html
+        new file:   Widget/Widget-Image.html
+        new file:   Widget/Widget-List.html
+        new file:   Widget/Widget-Youtube.html
+
+
+student@ULEMLAB3-04 MINGW64 ~/Desktop/Taja R. MSIMBO Student/Assignment 1 (master)
+$ git remote add origin https://github.com/TRCoder29/MSIMBO_Assignment-1.git
+
+student@ULEMLAB3-04 MINGW64 ~/Desktop/Taja R. MSIMBO Student/Assignment 1 (master)
+$ git commit -m "Assignment 1"
+[master (root-commit) da1c1ca] Assignment 1
+ Committer: TSN Student <student@ulem.org>
+Your name and email address were configured automatically based
+on your username and hostname. Please check that they are accurate.
+You can suppress this message by setting them explicitly. Run the
+following command and follow the instructions in your editor to edit
+your configuration file:
+
+    git config --global --edit
+
+After doing this, you may fix the identity used for this commit with:
+
+    git commit --amend --reset-author
+
+ 15 files changed, 307 insertions(+)
+ create mode 100644 Page/Page-Edit.html
+ create mode 100644 Page/Page-List.html
+ create mode 100644 Page/Page-New.html
+ create mode 100644 StyleA1.css
+ create mode 100644 User/Login.html
+ create mode 100644 User/Profile.html
+ create mode 100644 User/Register.html
+ create mode 100644 Website/Website-Edit.html
+ create mode 100644 Website/Website-List.html
+ create mode 100644 Website/Website-New.html
+ create mode 100644 Widget/Widget-Chooser.html
+ create mode 100644 Widget/Widget-Heading.html
+ create mode 100644 Widget/Widget-Image.html
+ create mode 100644 Widget/Widget-List.html
+ create mode 100644 Widget/Widget-Youtube.html
+
+student@ULEMLAB3-04 MINGW64 ~/Desktop/Taja R. MSIMBO Student/Assignment 1 (master)
+$ git push -u origin master
+Counting objects: 19, done.
+Delta compression using up to 8 threads.
+Compressing objects: 100% (19/19), done.
+Writing objects: 100% (19/19), 3.60 KiB | 1.20 MiB/s, done.
+Total 19 (delta 2), reused 0 (delta 0)
+remote: Resolving deltas: 100% (2/2), done.
+To https://github.com/TRCoder29/MSIMBO_Assignment-1.git
+ * [new branch]      master -> master
+Branch 'master' set up to track remote branch 'master' from 'origin'.
+
+student@ULEMLAB3-04 MINGW64 ~/Desktop/Taja R. MSIMBO Student/Assignment 1 (master)
+$
