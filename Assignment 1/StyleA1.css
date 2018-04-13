@@ -1,4 +1,3 @@
-/*Padding adds space*/
 body{
 	padding-top: 70px;
 	padding-bottom: 70px;
@@ -43,12 +42,15 @@ li{list-style: none;}
 	right: 15px;
 }
 
-/*.sw-front{
+/*Alignment: Floats widget in front of video*/
+.widget-front{
 	z-index: 2;
-}*/
-
-/*.sw-80-width{
-	width: 80%
 }
 
-.sw-*/
+.video-width{
+	width: 30%
+}
+
+.sw-font-blue{
+	color: blue;
+}

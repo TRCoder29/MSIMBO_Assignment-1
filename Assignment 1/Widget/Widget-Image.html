@@ -16,51 +16,72 @@
 	<script defer src="https://use.fontawesome.com/releases/v5.0.9/js/all.js" integrity="sha384-8iPTk2s/jMVj81dnzb/iFR2sdA7u06vHJyyLlAd4snFpCl/SnyUjRrbdJsw1pGIl" crossorigin="anonymous"></script>
 
 	<!-- Title -->
-	<title>Widget Edit</title>
+	<title>Widget Image</title>
 </head>
 <body>
 	<!-- Navigation Bar -->
 	<nav class="navbar navbar-dark fixed-top sw-gray">
-		<a href="page-list.html" class="sw-black"><i class="fas fa-chevron-left"></i></a>
+		<!-- Back (<) -->
+		<a href="widget-list.html" class="sw-black"><i class="fas fa-chevron-left"></i></a>
+		
+		<!-- Edit Widget Link -->
 		<div class="sw-80-width">
-			<a class="sw-font-white sw-no-underline float-left" href="#">Widgets</a>
+			<a class="sw-font-white sw-no-underline float-left" href="widget-image.html">Edit Widget</a>
 		</div>
-		<a href="widget-chooser.html" class="sw-black float-right"><i class="fas fa-plus"></i>
-	</nav>
-	<!-- Widgets -->
-	<div class="container-fluid"></div>
-			<form>
-			<!-- Name -->
-			<div><label>Name</label></div>
-			<div class="form-group">
-				<input type="text" name="Name" placeholder="Name" class="form-control">
-			</div>
-			<!-- Text -->
-			<div><label>Text</label></div>
-			<div class="form-group">
-				<input type="text" name="Text" placeholder="Text" class="form-control">
-			</div>
-			<!-- NURL -->
-			<div><label>URL</label></div>
-			<div class="form-group">
-				<input type="text" name="URL" placeholder="https://www.google.com" class="form-control">
-			</div>
-			<!-- Width -->
-			<div><label>Width</label></div>
-			<div class="form-group">
-				<input type="text" name="Width" placeholder="100%" class="form-control">
-			</div>
-			<!-- Upload File -->
-			<div><label>Upload</label></div>
-			<div class="form-group">
-				<input type="file" name="Width" placeholder="Width" class="form-control">
-			</div>
 
-			<div>
-				<a class="btn btn-primary btn-block" href="#">Upload</a>
-				<br>
-				<a class="btn btn-danger btn-block" href="#">Delete</a>
-			</div>
-		</form>
+		<!-- Check (/) -->
+		<a href="widget-list.html" class="sw-black float-right"><i class="fas fa-check"></i></a>
+	</nav>
+
+	<!-- Widgets -->
+	<div class="container">
+			<form>
+				<!-- Name -->
+				<div><label>Name</label></div>
+				<div class="form-group">
+					<input type="text" name="Name" placeholder="Name" class="form-control">
+				</div>
+
+				<!-- Text -->
+				<div><label>Text</label></div>
+				<div class="form-group">
+					<input type="text" name="Text" placeholder="Text" class="form-control">
+				</div>
+
+				<!-- URL -->
+				<div><label>URL</label></div>
+				<div class="form-group">
+					<input type="URL" name="URL" placeholder="https://www.google.com" class="form-control">
+				</div>
+
+				<!-- Width -->
+				<div><label>Width</label></div>
+				<div class="form-group">
+					<input type="text" name="Width" placeholder="100%" class="form-control">
+				</div>
+
+				<!-- Upload File -->
+				<div><label>Upload</label></div>
+				<div class="form-group">
+					<input type="file" name="Width" placeholder="Width" class="form-control">
+				</div>
+
+				<div>
+					<!-- Upload Button -->
+					<a class="btn btn-primary btn-block" href="#">Upload</a>
+					<br>
+					<!-- Delete Button -->
+					<a class="btn btn-danger btn-block" href="widget-list.html">Delete</a>
+				</div>
+			</form>
+	</div>
+
+	<!-- Footer -->
+	<nav class="navbar navbar-dark sw-gray fixed-bottom">
+		<!-- Profile User (Button) -->
+		<div class="sw-width">
+			<a class="sw-font-white float-right" href="../user/profile.html"><i class="fas fa-user"></i></a>
+		</div>
+	</nav>
 </body>
 </html>
