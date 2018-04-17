@@ -1,4 +1,3 @@
-/*Padding adds space*/
 body{
 	padding-top: 70px;
 	padding-bottom: 70px;
@@ -11,5 +10,47 @@ li{list-style: none;}
 }
 
 .sw-width{
-	width:100%
+	width:100%;
+}
+
+.sw-80-width{
+	width: 80%;
+}
+
+.sw-no-underline:hover{
+	text-decoration: none;
+}
+
+.sw-left-padding{
+	padding-left: 20px;
+}
+
+.sw-right-border{
+	border-right-style: solid;
+}
+
+.sw-gray{
+	background-color: gray;
+}
+
+.sw-black{
+	color: black;
+}
+
+.sw-absolute-right{
+	position: absolute;
+	right: 15px;
+}
+
+/*Alignment: Floats widget in front of video*/
+.widget-front{
+	z-index: 2;
+}
+
+.video-width{
+	width: 30%
+}
+
+.sw-font-blue{
+	color: blue;
 }
