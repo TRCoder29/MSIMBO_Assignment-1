@@ -1,13 +1,15 @@
 	<!-- Navigation Bar -->
 	<nav class="navbar navbar-dark fixed-top sw-gray">
 		<!-- Back (<) -->
-		<a routerLink="/page-list" class="sw-black"><i class="fas fa-chevron-left"></i></a>
+		<a class="sw-black" routerLink="/page-list"><i class="fas fa-chevron-left"></i></a>
+		
+		<!-- Widgets Link -->
 		<div class="sw-80-width">
-			<!-- Widgets Link -->
 			<a class="sw-font-white sw-no-underline float-left" routerLink="/widget-list">Widgets</a>
 		</div>
+
 		<!-- Widget Choose -->
-		<a routerLink="/widget-chooser" class="sw-black float-right"><i class="fas fa-plus"></i>
+		<a routerLink="/widget-chooser" class="sw-black float-right"><i class="fas fa-plus"></i></a>
 	</nav>
 
 	<!-- Media Title and Widget -->
@@ -63,7 +65,7 @@
 
 		<!-- Edit Youtube Widget -->
 		<div class="sw-absolute-right widget-front">
-			<a href="widget-youtube.html">
+			<a routerLink="/widget-youtube">
 			<i class="fas fa-cogs"></i></a>
 			<a class="sw-black" href="#">
 			<i class="fas fa-bars"></i></a>
@@ -91,9 +93,9 @@
 	<nav class="navbar navbar-dark sw-gray fixed-bottom sw-gray">
 		<!-- Preview and Eye Buttons -->
 		<div class="sw-width">
-			<a class="sw-black" href="#"><i class="fas fa-play"></i>
-			<a class="sw-black" href="#"><i class="fas fa-eye"></i>
+			<a class="sw-black" href="#"><i class="fas fa-play"></i></a>
+			<a class="sw-black" href="#"><i class="fas fa-eye"></i></a>
 			<!-- Profile User (Button) -->
-			<a class="sw-font-white float-right" href="../user/profile.html"><i class="fas fa-user"></i></a>
+			<a class="sw-font-white float-right" routerLink="/profile"><i class="fas fa-user"></i></a>
 		</div>
 	</nav>
