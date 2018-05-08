@@ -1,0 +1,53 @@
+	<!-- Navigation Bar -->
+	<nav class="navbar navbar-dark sw-gray fixed-top">
+		<!-- Cancel (<) -->
+		<a routerLink="/widget-list" class="sw-black"><i class="fas fa-chevron-left"></i></a>
+		<!-- New Page Title -->
+		<div class="sw-80-width">
+			<a class="sw-left-padding sw-no-underline" routerLink="/widget-youtube"><b class="sw-black">Widget Edit</b></a>
+		</div>
+		<!-- OK (/) -->
+		<a routerLink="/widget-list" class="sw-black float-right"><i class="fas fa-check"></i></a>
+	</nav>
+
+	<!-- Entry Fields -->
+	<div class="container">
+		<form>
+			<!-- Page Name -->
+			<div><label>Name</label></div>
+			<div class="form-group">
+				<input type="text" name="Name" class="form-control" placeholder="Name">
+			</div>
+
+			<!-- Text -->
+			<div><label>Text</label></div>
+			<div class="form-group">
+				<input type="text" name="Title" class="form-control" placeholder="Text">
+			</div>
+
+			<!-- URL -->
+			<div class="form-group">
+				<div><label>URL</label></div>
+				<input type="URL" name="URL" class="form-control" placeholder="http://www.google.com">
+			</div>
+
+			<!-- Width -->
+			<div class="form-group">
+				<div><label>Width</label></div>
+				<input type="Number" name="Size" class="form-control" placeholder="3">
+			</div>
+			<br>
+
+			<!-- Delete -->
+			<div>
+				<a class="btn btn-danger btn-block" routerLink="/widget-list">Delete</a>
+			</div>
+		</form>
+
+	<!-- Footer -->
+	<nav class="navbar navbar-dark sw-gray fixed-bottom">
+		<!-- Profile User (Button) -->
+		<div class="sw-width">
+			<a class="sw-font-white float-right" routerLink="/profile"><i class="fas fa-user"></i></a>
+		</div>
+	</nav>

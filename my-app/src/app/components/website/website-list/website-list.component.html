@@ -1,0 +1,46 @@
+	<!-- Back Button (<), Website (Clickable) and New Website (+) -->
+	<nav class="navbar navbar-dark bg-primary fixed-top">
+		<!-- Back Button (<) -->
+		<a class="sw-font-white" routerLink="/profile"><i class="fas fa-chevron-left"></i></a>
+		<!-- Website (Clickable) -->
+		<a class = "navbar-brand" routerLink="/website-list"><strong>Websites</strong></a>
+		<!-- (+) Navigation -->
+		<a class="sw-font-white" routerLink="/website-new"><i class="fas fa-plus"></i></a>
+	</nav>
+
+	<!-- List Cogs -->
+	<nav>
+		<div>
+			<!-- Edit Website List (Cogs) website-edit.html-->
+			<ul class="list-group">
+				<!-- Address Book Cog -->
+				<li class="list-group-item">
+					<a routerLink="/page-list" class="text-primary sw-no-underline">Address Book App</a>
+					<a class="float-right" routerLink="/website-edit"><i class="fas fa-cog"></i></a>
+				</li>
+				<!-- Blogger Cog -->
+				<li class="list-group-item">
+					<a routerLink="/page-list" class="text-primary sw-no-underline">Blogger</a>
+					<a class="float-right" routerLink="/website-edit"><i class="fas fa-cog"></i></a>
+				</li>
+				<!-- Blogging App Cog -->
+				<li class="list-group-item">
+					<a routerLink="/page-list" class="text-primary sw-no-underline">Blogging App</a>
+					<a class="float-right" routerLink="/website-edit"><i class="fas fa-cog"></i></a>
+				</li>
+				<!-- Script Testing Cog -->
+				<li class="list-group-item">
+					<a routerLink="/page-list" class="text-primary sw-no-underline">Script Testing App</a>
+					<a class="float-right" routerLink="/website-edit"><i class="fas fa-cog"></i></a>
+				</li>
+		</ul>
+		</div>
+	
+	</nav>
+		<!-- footer -->
+		<nav class="navbar navbar-dark bg-primary fixed-bottom">
+		<!-- Profile User (Button) -->
+		<div class="sw-width">
+			<a class="sw-font-white float-right" routerLink="/profile"><i class="fas fa-user"></i></a>
+		</div>
+	</nav>

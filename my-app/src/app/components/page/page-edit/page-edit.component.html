@@ -1,0 +1,42 @@
+	<!-- Navigation Bar -->
+	<nav class="navbar navbar-dark sw-gray fixed-top">
+		<!-- Cancel (<) -->
+		<a routerLink="/page-list" class="sw-black"><i class="fas fa-chevron-left"></i></a>
+		<!-- New Page Title -->
+		<div class="sw-80-width">
+			<a class="sw-left-padding sw-no-underline" routerLink="/page-edit.html"><b class="sw-black">Edit Page</b></a>
+		</div>
+		<!-- OK (/) -->
+		<a routerLink="/page-list" class="sw-black float-right"><i class="fas fa-check"></i></a>
+	</nav>
+
+	<!-- Entry Fields -->
+	<div class="container">
+		<form>
+			<!-- Page Name -->
+			<div><label>Name</label></div>
+			<div class="form-group">
+				<input type="text" name="Name" placeholder="Blog Post" class="form-control">
+			</div>
+
+			<!-- Page Title -->
+			<div><label>Title</label></div>
+			<div class="form-group">
+				<input type="text" name="Title" placeholder="Page Title" class="form-control">
+			</div>
+
+			<br>
+			
+			<!-- Delete Button -->
+			<div>
+				<a class="btn btn-danger btn-block" routerLink="/page-list">Delete</a>
+			</div>
+		</form>
+
+	<!-- Footer -->
+	<nav class="navbar navbar-dark sw-gray fixed-bottom">
+		<!-- Profile User (Button) -->
+		<div class="sw-width">
+			<a class="sw-font-white float-right" routerLink="/profile"><i class="fas fa-user"></i></a>
+		</div>
+	</nav>

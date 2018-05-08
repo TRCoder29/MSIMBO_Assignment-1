@@ -1,0 +1,64 @@
+	<!-- Navigation Bar -->
+	<nav class="navbar navbar-dark fixed-top sw-gray">
+		<!-- Back (<) -->
+		<a routerLink="/widget-list" class="sw-black"><i class="fas fa-chevron-left"></i></a>
+		
+		<!-- Edit Widget Link -->
+		<div class="sw-80-width">
+			<a class="sw-font-white sw-no-underline float-left" routerLink="/widget-image">Edit Widget</a>
+		</div>
+
+		<!-- Check (/) -->
+		<a routerLink="/widget-list" class="sw-black float-right"><i class="fas fa-check"></i></a>
+	</nav>
+
+	<!-- Widgets -->
+	<div class="container">
+			<form>
+				<!-- Name -->
+				<div><label>Name</label></div>
+				<div class="form-group">
+					<input type="text" name="Name" placeholder="Name" class="form-control">
+				</div>
+
+				<!-- Text -->
+				<div><label>Text</label></div>
+				<div class="form-group">
+					<input type="text" name="Text" placeholder="Text" class="form-control">
+				</div>
+
+				<!-- URL -->
+				<div><label>URL</label></div>
+				<div class="form-group">
+					<input type="URL" name="URL" placeholder="https://www.google.com" class="form-control">
+				</div>
+
+				<!-- Width -->
+				<div><label>Width</label></div>
+				<div class="form-group">
+					<input type="text" name="Width" placeholder="100%" class="form-control">
+				</div>
+
+				<!-- Upload File -->
+				<div><label>Upload</label></div>
+				<div class="form-group">
+					<input type="file" name="Width" placeholder="Width" class="form-control">
+				</div>
+
+				<div>
+					<!-- Upload Button -->
+					<a class="btn btn-primary btn-block" href="#">Upload</a>
+					<br>
+					<!-- Delete Button -->
+					<a class="btn btn-danger btn-block" routerLink="/widget-list">Delete</a>
+				</div>
+			</form>
+	</div>
+
+	<!-- Footer -->
+	<nav class="navbar navbar-dark sw-gray fixed-bottom">
+		<!-- Profile User (Button) -->
+		<div class="sw-width">
+			<a class="sw-font-white float-right" routerLink="/profile"><i class="fas fa-user"></i></a>
+		</div>
+	</nav>

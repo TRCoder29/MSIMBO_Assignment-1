@@ -1,0 +1,34 @@
+	<!-- Navigation Bar -->
+	<nav class="navbar navbar-dark sw-gray fixed-top">
+		<!-- Cancel (<) -->
+		<a routerLink="/page-list" class="sw-black"><i class="fas fa-chevron-left"></i></a>
+		<!-- New Page Title -->
+		<div class="sw-80-width">
+			<a class="sw-left-padding sw-no-underline" routerLink="/page-new"><b class="sw-black">New Page</b></a>
+		</div>
+		<!-- OK (/) -->
+		<a routerLink="/page-list" class="sw-black float-right"><i class="fas fa-check"></i></a>
+	</nav>
+
+	<div class="container">
+		<form>
+			<!-- Name -->
+			<div class="form-group">
+				<label>Name</label>
+				<input type="text" name="Name" placeholder="Page Name" class="form-control">
+			</div>
+			<!-- Title -->
+			<div class="form-group">
+				<label>Title</label>
+				<input type="text" name="Title" placeholder="Page Title" class="form-control">
+			</div>
+		</form>
+	</div>
+
+	<!-- Footer -->
+	<nav class="navbar navbar-dark sw-gray fixed-bottom">
+		<!-- Profile User (Button) -->
+		<div class="sw-width">
+			<a class="sw-font-white float-right" routerLink="/profile"><i class="fas fa-user"></i></a>
+		</div>
+	</nav>
