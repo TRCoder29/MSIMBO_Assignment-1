@@ -1,11 +1,11 @@
 	<!-- Back Button (<), Website (Clickable) and New Website (+) -->
 	<nav class="navbar navbar-dark bg-primary fixed-top">
-		<!-- Back Button (<) -->
-		<a class="sw-font-white" routerLink="/profile"><i class="fas fa-chevron-left"></i></a>
-		<!-- Website (Clickable) -->
-		<a class = "navbar-brand" routerLink="/website-list"><strong>Websites</strong></a>
+		<!-- Back Button (<) Profile Link-->
+		<a class="sw-font-white" routerLink="/user/:userId"><i class="fas fa-chevron-left"></i></a>
+		<!-- Website (Clickable) Website-List Link-->
+		<a class = "navbar-brand" routerLink="/user/:userId/website"><strong>Websites</strong></a>
 		<!-- (+) Navigation -->
-		<a class="sw-font-white" routerLink="/website-new"><i class="fas fa-plus"></i></a>
+		<a class="sw-font-white" routerLink="/user/:uid/website/new"><i class="fas fa-plus"></i></a>
 	</nav>
 
 	<!-- List Cogs -->
@@ -15,23 +15,31 @@
 			<ul class="list-group">
 				<!-- Address Book Cog -->
 				<li class="list-group-item">
-					<a routerLink="/page-list" class="text-primary sw-no-underline">Address Book App</a>
-					<a class="float-right" routerLink="/website-edit"><i class="fas fa-cog"></i></a>
+					<!-- Page-List Link -->
+					<a routerLink="/user/:uid/website/:wid/page" class="text-primary sw-no-underline">Address Book App</a>
+					<!-- Website-Edit Link -->
+					<a class="float-right" routerLink="/user/:uid/website/:wid"><i class="fas fa-cog"></i></a>
 				</li>
 				<!-- Blogger Cog -->
 				<li class="list-group-item">
-					<a routerLink="/page-list" class="text-primary sw-no-underline">Blogger</a>
-					<a class="float-right" routerLink="/website-edit"><i class="fas fa-cog"></i></a>
+					<!-- Page-List Link -->
+					<a routerLink="/user/:uid/website/:wid/page" class="text-primary sw-no-underline">Blogger</a>
+					<!-- Website-Edit Link -->
+					<a class="float-right" routerLink="/user/:uid/website/:wid"><i class="fas fa-cog"></i></a>
 				</li>
 				<!-- Blogging App Cog -->
 				<li class="list-group-item">
-					<a routerLink="/page-list" class="text-primary sw-no-underline">Blogging App</a>
-					<a class="float-right" routerLink="/website-edit"><i class="fas fa-cog"></i></a>
+					<!-- Page-List Link -->
+					<a routerLink="/user/:uid/website/:wid/page" class="text-primary sw-no-underline">Blogging App</a>
+					<!-- Website-Edit Link -->
+					<a class="float-right" routerLink="/user/:uid/website/:wid"><i class="fas fa-cog"></i></a>
 				</li>
 				<!-- Script Testing Cog -->
 				<li class="list-group-item">
-					<a routerLink="/page-list" class="text-primary sw-no-underline">Script Testing App</a>
-					<a class="float-right" routerLink="/website-edit"><i class="fas fa-cog"></i></a>
+					<!-- Page-List Link -->
+					<a routerLink="/user/:uid/website/:wid/page" class="text-primary sw-no-underline">Script Testing App</a>
+					<!-- Website-Edit Link -->
+					<a class="float-right" routerLink="/user/:uid/website/:wid"><i class="fas fa-cog"></i></a>
 				</li>
 		</ul>
 		</div>
@@ -41,6 +49,6 @@
 		<nav class="navbar navbar-dark bg-primary fixed-bottom">
 		<!-- Profile User (Button) -->
 		<div class="sw-width">
-			<a class="sw-font-white float-right" routerLink="/profile"><i class="fas fa-user"></i></a>
+			<a class="sw-font-white float-right" routerLink="/user/:userId"><i class="fas fa-user"></i></a>
 		</div>
 	</nav>

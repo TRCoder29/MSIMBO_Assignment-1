@@ -1,23 +1,23 @@
 
 	<!-- Navigation Bar -->
 	<nav class="navbar navbar-dark fixed-top sw-gray">
-		<!-- Back (<) -->
-		<a class="sw-black" routerLink="/page-list"><i class="fas fa-chevron-left"></i></a>
+		<!-- Back (<) Page-List Link-->
+		<a class="sw-black" routerLink="/user/:uid/website/:wid/page"><i class="fas fa-chevron-left"></i></a>
 		
-		<!-- Widgets Link -->
+		<!-- Widgets Link Widget-List Link-->
 		<div class="sw-80-width">
-			<a class="sw-font-white sw-no-underline float-left" routerLink="/widget-list">Widgets</a>
+			<a class="sw-font-white sw-no-underline float-left" routerLink="/user/:uid/website/:wid/page/:pid/widget">Widgets</a>
 		</div>
 
-		<!-- Widget Choose -->
-		<a routerLink="/widget-chooser" class="sw-black float-right"><i class="fas fa-plus"></i></a>
+		<!-- Widget Choose Widget-Chooser Link-->
+		<a routerLink="/user/:uid/website/:wid/page/:pid/widget/new" class="sw-black float-right"><i class="fas fa-plus"></i></a>
 	</nav>
 
 	<!-- Media Title and Widget -->
 	<div class="container-fluid">
-		<!-- Widget -->
+		<!-- Widget Widget-Heading/Edit Link-->
 		<div class="sw-absolute-right">
-			<a routerLink="/widget-heading">
+			<a routerLink="/user/:uid/website/:wid/page/:pid/widget/:wgid">
 			<i class="fas fa-cogs"></i></a>
 			<a class="sw-black" href="#">
 			<i class="fas fa-bars"></i></a>
@@ -34,9 +34,9 @@
 		<!-- Image Title -->
 		<div><h5>Brain Wellness Takes a Quantum Leap</h5></div>
 
-		<!-- Image Widget-->
+		<!-- Image Widget Widget-Image/Edit Link-->
 		<div class="sw-absolute-right widget-front">
-			<a routerLink="/widget-image">
+			<a routerLink="/user/:uid/website/:wid/page/:pid/widget/:wgid">
 			<i class="fas fa-cogs"></i></a>
 			<a class="sw-black" href="#">
 			<i class="fas fa-bars"></i></a>
@@ -64,9 +64,9 @@
 		<!-- Youtube Title -->
 		<div><h5>The Brain-Changing Benefits of Exercise|Ted Talk</h5></div>
 
-		<!-- Edit Youtube Widget -->
+		<!-- Edit Youtube Widget Widget-Youtube/Edit Link-->
 		<div class="sw-absolute-right widget-front">
-			<a routerLink="/widget-youtube">
+			<a routerLink="/user/:uid/website/:wid/page/:pid/widget/:wgid">
 			<i class="fas fa-cogs"></i></a>
 			<a class="sw-black" href="#">
 			<i class="fas fa-bars"></i></a>
@@ -97,6 +97,6 @@
 			<a class="sw-black" href="#"><i class="fas fa-play"></i></a>
 			<a class="sw-black" href="#"><i class="fas fa-eye"></i></a>
 			<!-- Profile User (Button) -->
-			<a class="sw-font-white float-right" routerLink="/profile"><i class="fas fa-user"></i></a>
+			<a class="sw-font-white float-right" routerLink="/user/:userId"><i class="fas fa-user"></i></a>
 		</div>
 	</nav>

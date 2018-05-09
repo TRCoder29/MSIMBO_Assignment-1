@@ -1,6 +1,7 @@
 	<!-- Navigation Bar -->
 	<nav class="navbar navbar-dark bg-primary fixed-top">
-		<a class = "navbar-brand" routerLink="/profile"><strong>Profile</strong></a>
+		<!-- Profile Link -->
+		<a class = "navbar-brand" routerLink="/user/:userId"><strong>Profile</strong></a>
 		<a class="sw-font-white" href="#"><i class="fas fa-check"></i></a>
 	</nav>
 
@@ -29,9 +30,9 @@
 			</div>
 
 			<div>
-				<!-- Website Button -->
-				<a class="btn btn-primary btn-block" routerLink="/website-list">Websites</a>
-				<!-- Logout Button -->
+				<!-- Website Button Website-List Link-->
+				<a class="btn btn-primary btn-block" routerLink="/user/:userId/website">Websites</a>
+				<!-- Logout Button Login Link-->
 				<a class="btn btn-danger btn-block" routerLink="/login">Logout</a>
 			</div>
 		</form>
@@ -39,6 +40,6 @@
 	<!-- Footer -->
 	<nav class="navbar navbar-dark bg-primary fixed-bottom">
 		<div class="sw-width">
-			<a class="sw-font-white float-right" routerLink="/profile"><i class="fas fa-user"></i></a>
+			<a class="sw-font-white float-right" routerLink="/user/:userId"><i class="fas fa-user"></i></a>
 		</div>
 	</nav>

@@ -2,24 +2,24 @@
 	<!-- Left Navbar -->
 		<div class="col-sm-4 d-none d-sm-block">
 			<div class="container-fluid">
-				<!-- Back Button -->
-				<a class="sw-font-white" routerLink="/website-list"><i class="fas fa-chevron-left"></i></a>
-				<!-- Websites Link -->
-				<a class="sw-left-padding sw-no-underline" routerLink="/website-list"><b class="sw-font-white">Websites</b></a>
-				<!-- New Website (+) -->
-				<a routerLink="/website-new" class="sw-font-white float-right"><i class="fas fa-plus"></i></a>
+				<!-- Back Button Website-List Link-->
+				<a class="sw-font-white" routerLink="/user/:userId/website"><i class="fas fa-chevron-left"></i></a>
+				<!-- Websites Link Website-List Link-->
+				<a class="sw-left-padding sw-no-underline" routerLink="/user/:userId/website"><b class="sw-font-white">Websites</b></a>
+				<!-- New Website (+) Website-New Link-->
+				<a routerLink="/user/:uid/website/new" class="sw-font-white float-right"><i class="fas fa-plus"></i></a>
 			</div>
 		</div>
 
 	<!-- Right Navbar -->
 		<div class="col-sm-8">
 			<div class="container-fluid" >
-				<!-- Back Button -->
-				<a class="sw-font-white d-md-block d-lg-none" routerLink="/website-list"><i class="fas fa-chevron-left"></i></a>
-				<!-- Edit Website -->
-				<a routerLink="/website-edit" class="sw-no-underline"><b class="sw-font-white sw-left-padding">Edit Website</b></a>
-				<!-- Check (/) -->
-				<a routerLink="/website-list" class="sw-font-white float-right"><i class="fas fa-check"></i></a>
+				<!-- Back Button Website-List Link-->
+				<a class="sw-font-white d-md-block d-lg-none" routerLink="/user/:userId/website"><i class="fas fa-chevron-left"></i></a>
+				<!-- Edit Website Website-Edit Link-->
+				<a routerLink="/user/:uid/website/:wid" class="sw-no-underline"><b class="sw-font-white sw-left-padding">Edit Website</b></a>
+				<!-- Check (/) Website-List Link-->
+				<a routerLink="/user/:userId/website" class="sw-font-white float-right"><i class="fas fa-check"></i></a>
 			</div>
 		</div>
 	</nav>
@@ -32,26 +32,34 @@
 						<ul class="list-group">
 						<!-- Address Book Link -->
 						<li class="list-group-item">
-							<a routerLink="/page-list" class="text-primary sw-no-underline">Address Book App</a>
-							<a class="float-right" routerLink="/website-edit"><i class="fas fa-cog"></i></a>
+							<!-- Page-List Link -->
+							<a routerLink="/user/:uid/website/:wid/page" class="text-primary sw-no-underline">Address Book App</a>
+							<!-- Website-Edit Link -->
+							<a class="float-right" routerLink="/user/:uid/website/:wid"><i class="fas fa-cog"></i></a>
 						</li>
 
 						<!-- Blogger Link -->
 						<li class="list-group-item">
-							<a routerLink="/page-list" class="text-primary sw-no-underline">Blogger</a>
-							<a class="float-right" routerLink="/website-edit"><i class="fas fa-cog"></i></a>
+							<!-- Page-List Link -->
+							<a routerLink="/user/:uid/website/:wid/page" class="text-primary sw-no-underline">Blogger</a>
+							<!-- Website-Edit Link -->
+							<a class="float-right" routerLink="/user/:uid/website/:wid"><i class="fas fa-cog"></i></a>
 						</li>
 
 						<!-- Blogging App Link -->
 						<li class="list-group-item">
-							<a routerLink="/page-list" class="text-primary sw-no-underline">Blogging App</a>
-							<a class="float-right" routerLink="/website-edit"><i class="fas fa-cog"></i></a>
+							<!-- Page-List Link -->
+							<a routerLink="/user/:uid/website/:wid/page" class="text-primary sw-no-underline">Blogging App</a>
+							<!-- Website-Edit Link -->
+							<a class="float-right" routerLink="/user/:uid/website/:wid"><i class="fas fa-cog"></i></a>
 						</li>
 						
 						<!-- Script Testing App -->
 						<li class="list-group-item">
-							<a routerLink="/page-list" class="text-primary sw-no-underline">Script Testing App</a>
-							<a class="float-right" routerLink="/website-edit"><i class="fas fa-cog"></i></a>
+							<!-- Page-List Link -->
+							<a routerLink="/user/:uid/website/:wid/page" class="text-primary sw-no-underline">Script Testing App</a>
+							<!-- Website-Edit Link -->
+							<a class="float-right" routerLink="/user/:uid/website/:wid"><i class="fas fa-cog"></i></a>
 						</li>
 						</ul>
 					</div>
@@ -70,8 +78,8 @@
 						<label for="website-description"><b>Website Description</b></label>
 						<textarea class="form-control" rows="5" name="website-description" placeholder="Description"></textarea>
 						<br>
-						<!-- Delete Button -->
-						<a class="btn btn-danger btn-block" routerLink="/website-list">Delete</a>
+						<!-- Delete Button Website-List-->
+						<a class="btn btn-danger btn-block" routerLink="/user/:userId/website">Delete</a>
 				</form>
 			</div>
 		</div>		
@@ -79,6 +87,6 @@
 	<nav class="navbar navbar-dark bg-primary fixed-bottom">
 		<!-- Profile User (Button) -->
 		<div class="sw-width">
-			<a class="sw-font-white float-right" routerLink="/profile"><i class="fas fa-user"></i></a>
+			<a class="sw-font-white float-right" routerLink="user/:userId"><i class="fas fa-user"></i></a>
 		</div>
 	</nav>

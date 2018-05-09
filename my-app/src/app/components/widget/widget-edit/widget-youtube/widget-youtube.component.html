@@ -1,13 +1,13 @@
 	<!-- Navigation Bar -->
 	<nav class="navbar navbar-dark sw-gray fixed-top">
-		<!-- Cancel (<) -->
-		<a routerLink="/widget-list" class="sw-black"><i class="fas fa-chevron-left"></i></a>
-		<!-- New Page Title -->
+		<!-- Cancel (<) Widget-List Link-->
+		<a routerLink="/user/:uid/website/:wid/page/:pid/widget" class="sw-black"><i class="fas fa-chevron-left"></i></a>
+		<!-- New Page Title Widget-Youtube/Edit Link-->
 		<div class="sw-80-width">
-			<a class="sw-left-padding sw-no-underline" routerLink="/widget-youtube"><b class="sw-black">Widget Edit</b></a>
+			<a class="sw-left-padding sw-no-underline" routerLink="/user/:uid/website/:wid/page/:pid/widget/:wgid"><b class="sw-black">Widget Edit</b></a>
 		</div>
-		<!-- OK (/) -->
-		<a routerLink="/widget-list" class="sw-black float-right"><i class="fas fa-check"></i></a>
+		<!-- OK (/) Widget-List Link-->
+		<a routerLink="/user/:uid/website/:wid/page/:pid/widget" class="sw-black float-right"><i class="fas fa-check"></i></a>
 	</nav>
 
 	<!-- Entry Fields -->
@@ -38,9 +38,9 @@
 			</div>
 			<br>
 
-			<!-- Delete -->
+			<!-- Delete Widget-List Link-->
 			<div>
-				<a class="btn btn-danger btn-block" routerLink="/widget-list">Delete</a>
+				<a class="btn btn-danger btn-block" routerLink="/user/:uid/website/:wid/page/:pid/widget">Delete</a>
 			</div>
 		</form>
 
@@ -48,6 +48,6 @@
 	<nav class="navbar navbar-dark sw-gray fixed-bottom">
 		<!-- Profile User (Button) -->
 		<div class="sw-width">
-			<a class="sw-font-white float-right" routerLink="/profile"><i class="fas fa-user"></i></a>
+			<a class="sw-font-white float-right" routerLink="/user/:userId"><i class="fas fa-user"></i></a>
 		</div>
 	</nav>

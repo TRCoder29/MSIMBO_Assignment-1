@@ -1,15 +1,15 @@
 	<!-- Navigation Bar -->
 	<nav class="navbar navbar-dark fixed-top sw-gray">
-		<!-- Back (<) -->
-		<a routerLink="/widget-list" class="sw-black"><i class="fas fa-chevron-left"></i></a>
+		<!-- Back (<) Widget-List Link-->
+		<a routerLink="/user/:uid/website/:wid/page/:pid/widget" class="sw-black"><i class="fas fa-chevron-left"></i></a>
 		
-		<!-- Edit Widget Link -->
+		<!-- Edit Widget Link Widget-Image/Edit Link-->
 		<div class="sw-80-width">
-			<a class="sw-font-white sw-no-underline float-left" routerLink="/widget-image">Edit Widget</a>
+			<a class="sw-font-white sw-no-underline float-left" routerLink="/ser/:uid/website/:wid/page/:pid/widget/:wgid">Edit Widget</a>
 		</div>
 
-		<!-- Check (/) -->
-		<a routerLink="/widget-list" class="sw-black float-right"><i class="fas fa-check"></i></a>
+		<!-- Check (/) Widget-List Link-->
+		<a routerLink="/user/:uid/website/:wid/page/:pid/widget" class="sw-black float-right"><i class="fas fa-check"></i></a>
 	</nav>
 
 	<!-- Widgets -->
@@ -46,11 +46,11 @@
 				</div>
 
 				<div>
-					<!-- Upload Button -->
+					<!-- Upload Button No Link-->
 					<a class="btn btn-primary btn-block" href="#">Upload</a>
 					<br>
-					<!-- Delete Button -->
-					<a class="btn btn-danger btn-block" routerLink="/widget-list">Delete</a>
+					<!-- Delete Button Widget-List Link-->
+					<a class="btn btn-danger btn-block" routerLink="/user/:uid/website/:wid/page/:pid/widget">Delete</a>
 				</div>
 			</form>
 	</div>
@@ -59,6 +59,6 @@
 	<nav class="navbar navbar-dark sw-gray fixed-bottom">
 		<!-- Profile User (Button) -->
 		<div class="sw-width">
-			<a class="sw-font-white float-right" routerLink="/profile"><i class="fas fa-user"></i></a>
+			<a class="sw-font-white float-right" routerLink="/user/:userId"><i class="fas fa-user"></i></a>
 		</div>
 	</nav>

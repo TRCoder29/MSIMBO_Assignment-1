@@ -1,13 +1,14 @@
 	<!-- Navigation Bar -->
 	<nav class="navbar navbar-dark sw-gray fixed-top">
-		<!-- Cancel (<) -->
-		<a routerLink="/page-list" class="sw-black"><i class="fas fa-chevron-left"></i></a>
+		<!-- Cancel (<) Page-List Link-->
+		<a routerLink="/user/:uid/website/:wid/page" class="sw-black"><i class="fas fa-chevron-left"></i></a>
 		<!-- New Page Title -->
 		<div class="sw-80-width">
-			<a class="sw-left-padding sw-no-underline" routerLink="/page-edit"><b class="sw-black">Edit Page</b></a>
+			<!-- Page-Edit Link -->
+			<a class="sw-left-padding sw-no-underline" routerLink="/user/:uid/website/:wid/page/:pid"><b class="sw-black">Edit Page</b></a>
 		</div>
-		<!-- OK (/) -->
-		<a routerLink="/page-list" class="sw-black float-right"><i class="fas fa-check"></i></a>
+		<!-- OK (/) Page-List Link-->
+		<a routerLink="/user/:uid/website/:wid/page" class="sw-black float-right"><i class="fas fa-check"></i></a>
 	</nav>
 
 	<!-- Entry Fields -->
@@ -29,7 +30,8 @@
 			
 			<!-- Delete Button -->
 			<div>
-				<a class="btn btn-danger btn-block" routerLink="/page-list">Delete</a>
+				<!-- Page-List Link-->
+				<a class="btn btn-danger btn-block" routerLink="/user/:uid/website/:wid/page">Delete</a>
 			</div>
 		</form>
 
@@ -37,6 +39,6 @@
 	<nav class="navbar navbar-dark sw-gray fixed-bottom">
 		<!-- Profile User (Button) -->
 		<div class="sw-width">
-			<a class="sw-font-white float-right" routerLink="/profile"><i class="fas fa-user"></i></a>
+			<a class="sw-font-white float-right" routerLink="/user/:userId"><i class="fas fa-user"></i></a>
 		</div>
 	</nav>

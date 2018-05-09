@@ -12,7 +12,7 @@ users = [
 {_id: "234", username: "bob", password: "bob", firstName: "Bob", lastName: "Marley", email: "bob@whatever.com"},
 {_id: "345", username: "charly", password: "charly", firstName: "Charly", lastName: "Garcia", email: "charly@ulem.com"},
 {_id: "456", username: "shiyu", password: "shiyu", firstName: "Shiyu", lastName: "Wang", email: "swang@ulem.org"}
-]
+];
 
   createUser(user: any) {
     user._id = Math.random();
@@ -31,3 +31,11 @@ users = [
   updateUser(userId, user) { … }
   deleteUser(userId) { … }
 }
+
+// 1.  createUser(user) - adds the user parameter instance to the local users array
+// 2.  findUserById(userId) - returns the user in local users array whose _id matches the userId parameter
+// 3.  findUserByUsername(username) - returns the user in local users array whose username matches the parameter username
+// 4.  findUserByCredentials(username, password) - returns the user whose username and password match the username and password parameters
+// 5.  updateUser(userId, user) - updates the user in local users array whose _id matches the userId parameter
+// 6.  deleteUser(userId) - removes the user whose _id matches the userId parameter
+
