@@ -16,7 +16,7 @@ users = [
 
 // 1.  createUser(user) - adds the user parameter instance to the local users array
   createUser(user) {
-    user._id = Math.random();
+    user._id = Math.floor(Math.random()*Math.floor(10000));
     this.users.push(user);
     return user;
   }
