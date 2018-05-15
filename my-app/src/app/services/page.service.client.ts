@@ -17,7 +17,7 @@ pages = [
 // The new page's websiteId is set to the websiteId parameter
 
   createPage(websiteId, page) {
-    page._id = Math.floor(Math.random()*Math.floor(10000));
+    page._id = Math.floor(Math.random() * 10000).toString();
     page.websiteId = websiteId;
     this.pages.push(page);
     return page;

@@ -21,7 +21,7 @@ websites = [
 // The new website's developerId is set to the userId parameter
   createWebsite(userId, website) {
   	// set up _id field
-    website._id = Math.floor(Math.random()*Math.floor(10000));
+    website._id = Math.floor(Math.random() * 10000).toString();
     // set up developerId
     website.developerId = userId;
     //push website into websites

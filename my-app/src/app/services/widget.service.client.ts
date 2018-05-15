@@ -22,7 +22,7 @@ widgets = [
 // The new widget's pageId is set to the pageId parameter
   
   createWidget(pageId, widget) {
-  	widget._id = Math.floor(Math.random() * Math.floor(10000));
+  	widget._id = Math.floor(Math.random() * 10000).toString();
     widget.pageId = pageId;
     this.widgets.push(widget);
     return widget;
@@ -77,10 +77,3 @@ widgets = [
   }
 }
 
-// Implement the following API in the WidgetService service
-
-// 1.	createWidget(pageId, widget) - adds the widget parameter instance to the local widgets array. The new widget's pageId is set to the pageId parameter
-// 2.	findWidgetsByPageId(pageId) - retrieves the widgets in local widgets array whose pageId matches the parameter pageId
-// 3.	findWidgetById(widgetId) - retrieves the widget in local widgets array whose _id matches the widgetId parameter
-// 4.	updateWidget(widgetId, widget) - updates the widget in local widgets array whose _id matches the widgetId parameter
-// 5.	deleteWidget(widgetId) - removes the widget from local widgets array whose _id matches the widgetId parameter
