@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import {Widget} from '../models/widget.model.client';
 
 // injecting service into module
 @Injectable()
@@ -7,7 +8,7 @@ export class WidgetService {
 
   constructor() { }
 
-widgets = [
+widgets: Widget [] = [
   { _id: "123", widgetType: "HEADING", pageId: "321", size: 2, text: "GIZMODO"},
   { _id: "234", widgetType: "HEADING", pageId: "321", size: 4, text: "Lorem ipsum"},
   { _id: "345", widgetType: "IMAGE", pageId: "321", width: "100%", url: "http://lorempixel.com/400/200/"},
@@ -21,7 +22,7 @@ widgets = [
 // 1. createWidget(pageId, widget) - adds the widget parameter instance to the local widgets array.
 // The new widget's pageId is set to the pageId parameter
   
-  createWidget(pageId, widget) {
+  createWidget(pageId: String, widget: Widget) {
   	widget._id = Math.floor(Math.random() * 10000).toString();
     widget.pageId = pageId;
     this.widgets.push(widget);
@@ -32,7 +33,7 @@ widgets = [
 // 2. findWidgetsByPageId(pageId) - retrieves the widgets in local widgets array whose pageId
 // matches the parameter pageId
 
-  findWidgetsByPageId(pageId) {
+  findWidgetsByPageId(pageId: String) {
     let result = [];
       for (let i = 0; i < this.widgets.length; i++) {
       if (this.widgets[i].pageId === pageId) {
@@ -46,7 +47,7 @@ widgets = [
 // 3. findWidgetById(widgetId) - retrieves the widget in local widgets array whose _id
 // matches the widgetId parameter
 
-  findWidgetById(widgetId) {
+  findWidgetById(widgetId: String) {
       for (let i = 0; i < this.widgets.length; i++) {
       if (this.widgets[i]._id === widgetId) {
       	return this.widgets[i];
@@ -58,19 +59,21 @@ widgets = [
 // 4. updateWidget(widgetId, widget) - updates the widget in local widgets array whose _id
 // matches the widgetId parameter
 
-  updateWidget(widgetId, widget) {
+  updateWidget(widgetId: String, widget: Widget) {
     var oldWidget = this.findWidgetById(widgetId);
     var index = this.widgets.indexOf(oldWidget);
 
-    this.widgets[index].type = widget.type;
     this.widgets[index].text = widget.text;
+    this.widgets[index].size = widget.size;
+    this.widgets[index].width = widget.width;
+    this.widgets[index].url = widget.url;
   }
 
 
 // 5. deleteWidget(widgetId) - removes the widget from local widgets array whose _id
 // matches the widgetId parameter
 
-  deleteWidget(widgetId) {
+  deleteWidget(widgetId: String) {
     var widget = this.findWidgetById(widgetId);
     var index = this.widgets.indexOf(widget);
     this.widgets.splice(index, 1);

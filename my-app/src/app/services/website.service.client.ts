@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import {Website} from '../models/website.model.client';
 
 // injecting service into module
 @Injectable()
@@ -7,7 +8,7 @@ export class WebsiteService {
 
   constructor() { }
 
-websites = [
+websites: Website[] = [
  {_id: "123", name: "Facebook", developerId: "456", description: "Lorem"},
  {_id: "234", name: "Tweeter",  developerId: "456", description: "Lorem"},
  {_id: "456", name: "Gizmodo",   developerId: "456", description: "Lorem"},
@@ -19,7 +20,7 @@ websites = [
 
 // 1. createWebsite(userId, website) - adds the website parameter instance to the local websites array.
 // The new website's developerId is set to the userId parameter
-  createWebsite(userId, website) {
+  createWebsite(userId: String, website: Website) {
   	// set up _id field
     website._id = Math.floor(Math.random() * 10000).toString();
     // set up developerId
@@ -32,7 +33,7 @@ websites = [
 
 // 2. findWebsitesByUser(userId) - retrieves the websites in local websites array whose developerId matches
 // the parameter userId
-  findWebsitesByUser(userId) {
+  findWebsitesByUser(userId: String) {
   	let result = [];
       for (let i = 0; i < this.websites.length; i++) {
       if (this.websites[i].developerId === userId) {
@@ -44,7 +45,7 @@ websites = [
 
 // 3. findWebsiteById(websiteId) - retrieves the website in local websites array whose _id matches the
 // websiteId parameter
-  findWebsiteById(websiteId) {
+  findWebsiteById(websiteId: String) {
       for (let i = 0; i < this.websites.length; i++) {
       if (this.websites[i]._id === websiteId) {
       	return this.websites[i];
@@ -55,7 +56,7 @@ websites = [
 
 // 4. updateWebsite(websiteId, website) - updates the website in local websites array whose _id matches
 // the websiteId parameter
-  updateWebsite(websiteId, website) {
+  updateWebsite(websiteId: String, website: Website) {
     var oldWeb = this.findWebsiteById(websiteId);
     var index = this.websites.indexOf(oldWeb);
 
@@ -65,7 +66,7 @@ websites = [
 
 // 5. deleteWebsite(websiteId) - removes the website from local websites array whose _id matches the
 // websiteId parameter
-  deleteWebsite(websiteId) {
+  deleteWebsite(websiteId: String) {
     var web = this.findWebsiteById(websiteId);
     var index = this.websites.indexOf(web);
     this.websites.splice(index, 1);
