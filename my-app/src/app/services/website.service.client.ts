@@ -20,7 +20,7 @@ websites: Website[] = [
 
 // 1. createWebsite(userId, website) - adds the website parameter instance to the local websites array.
 // The new website's developerId is set to the userId parameter
-  createWebsite(userId: String, website: Website) {
+  createWebsite(userId: string, website: Website) {
   	// set up _id field
     website._id = Math.floor(Math.random() * 10000).toString();
     // set up developerId
@@ -33,7 +33,7 @@ websites: Website[] = [
 
 // 2. findWebsitesByUser(userId) - retrieves the websites in local websites array whose developerId matches
 // the parameter userId
-  findWebsitesByUser(userId: String) {
+  findWebsitesByUser(userId: string) {
   	let result = [];
       for (let i = 0; i < this.websites.length; i++) {
       if (this.websites[i].developerId === userId) {
@@ -45,7 +45,7 @@ websites: Website[] = [
 
 // 3. findWebsiteById(websiteId) - retrieves the website in local websites array whose _id matches the
 // websiteId parameter
-  findWebsiteById(websiteId: String) {
+  findWebsiteById(websiteId: string) {
       for (let i = 0; i < this.websites.length; i++) {
       if (this.websites[i]._id === websiteId) {
       	return this.websites[i];
@@ -56,7 +56,7 @@ websites: Website[] = [
 
 // 4. updateWebsite(websiteId, website) - updates the website in local websites array whose _id matches
 // the websiteId parameter
-  updateWebsite(websiteId: String, website: Website) {
+  updateWebsite(websiteId: string, website: Website) {
     var oldWeb = this.findWebsiteById(websiteId);
     var index = this.websites.indexOf(oldWeb);
 
@@ -66,7 +66,7 @@ websites: Website[] = [
 
 // 5. deleteWebsite(websiteId) - removes the website from local websites array whose _id matches the
 // websiteId parameter
-  deleteWebsite(websiteId: String) {
+  deleteWebsite(websiteId: string) {
     var web = this.findWebsiteById(websiteId);
     var index = this.websites.indexOf(web);
     this.websites.splice(index, 1);

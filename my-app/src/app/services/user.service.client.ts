@@ -22,7 +22,7 @@ users: User[] = [
   }
 
 // 2.  findUserById(userId) - returns the user in local users array whose _id matches the userId parameter
-  findUserById(userId: String) {
+  findUserById(userId: string) {
     for (let x = 0; x < this.users.length; x++) {
       if (this.users[x]._id === userId) {
         return this.users[x];
@@ -31,7 +31,7 @@ users: User[] = [
 }
 
 // 3.  findUserByUsername(username) - returns the user in local users array whose username matches the parameter username
-  findUserByUsername(username: String) {
+  findUserByUsername(username: string) {
         for (let x = 0; x < this.users.length; x++) {
       if (this.users[x].username === username) {
         return this.users[x];
@@ -40,7 +40,7 @@ users: User[] = [
 }
 
 // 4.  findUserByCredentials(username, password) - returns the user whose username and password match the username and password parameters
-  findUserByCredentials(username: String, password: String) {
+  findUserByCredentials(username: string, password: String) {
    for(let x = 0; x<this.users.length; x++){
      if (this.users[x].username===username && this.users[x].password===password){
        return this.users[x];
@@ -49,7 +49,7 @@ users: User[] = [
  }
 
 // 5.  updateUser(userId, user) - updates the user in local users array whose _id matches the userId parameter
-  updateUser(userId: String, user: User) {
+  updateUser(userId: string, user: User) {
     var oldUser = this.findUserById(userId);
     var index = this.users.indexOf(oldUser);
 
@@ -61,7 +61,7 @@ users: User[] = [
   }
 
 // 6.  deleteUser(userId) - removes the user whose _id matches the userId parameter
-  deleteUser(userId: String) {
+  deleteUser(userId: string) {
     var oldUser = this.findUserById(userId);
     var index = this.users.indexOf(oldUser);
 
