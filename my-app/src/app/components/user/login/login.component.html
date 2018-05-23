@@ -2,21 +2,32 @@
 	<div class="container">
 		<!-- Login Header -->
 		<h1>Login</h1>
-		<form>
+		<!-- Invalid Username/Password Alert -->
+		<div *ngIf="errorFlag" class="alert alert-danger">Invalid username or password</div>
+
+		<!-- (ngSubmit) is an attribute used as an event listener that will call the login() function in the login.components.ts file. So, when this form is submitted, this function will be called. #f is the name of an element. -->
+		<form (ngSubmit)="login()" #f="NgForm">
 			<!-- Username -->
 			<div class="form-group">
-				<input type="text" name="Username" placeholder="Username" class="form-control">
+				<input class="form-control" type="text" name="Username" placeholder="Username" required ngModel #username="ngModel">
 			</div>
+			<!-- Missing username alert -->
+			<span *ngIf="username.invalid && username.touched">Please enter username!</span>
+
 			<!-- Password -->
 			<div class="form-group">
-				<input type="Password" name="Password" placeholder="Password" class="form-control">
+				<input class="form-control" type="Password" name="Password" placeholder="Password" required ngModel #password="ngModel">
 			</div>
+			<!-- Missing password alert -->
+			<span *ngIf="password.invalid && password.touched">Please enter password!</span>
 
 			<div>
 				<!-- Login Button Profile Link-->
-				<a class="btn btn-primary btn-block" routerLink="/user/:userId">Login</a>
+				<button class="btn btn-primary btn-block" [disabled]="f.invalid" type="submit">Login</button>
 				<!-- Register Button Register Link-->
-				<a class="btn btn-success btn-block" routerLink="/register">Register</a>
+				<button class="btn btn-success btn-block" routerLink="/register">Register</button>
 			</div>
 		</form>
 	</div>
+
+

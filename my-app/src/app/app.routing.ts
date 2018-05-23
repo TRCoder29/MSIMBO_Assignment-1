@@ -20,7 +20,6 @@ import { WidgetEditComponent } from './components/widget/widget-edit/widget-edit
 import { WidgetHeadingComponent } from './components/widget/widget-edit/widget-heading/widget-heading.component';
 import { WidgetImageComponent } from './components/widget/widget-edit/widget-image/widget-image.component';
 import { WidgetYoutubeComponent } from './components/widget/widget-edit/widget-youtube/widget-youtube.component';
-// Import all other components here 
 
 const APP_ROUTES : Routes = [
   { path : '', component: LoginComponent},

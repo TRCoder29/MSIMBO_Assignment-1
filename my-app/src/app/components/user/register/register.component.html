@@ -1,18 +1,25 @@
 	<div class="container">
 		<h1>Register</h1>
-		<form>
+		<div class="alert alert-danger" *ngIf="usernameError">Username is already taken, please try another one!</div>
+		<div class="alert alert-danger" *ngIf="passwordError">Two passwords do not match!</div>
+		<form (ngSubmit)="register()" #f="ngForm">
 			<!-- Username -->
 			<div class="form-group">
-				<input type="text" name="Username" placeholder="Username" class="form-control">
+				<input class="form-control" type="text" name="Username" placeholder="Username" required ngModel #username="ngModel">
 			</div>
+			<span class="alert" *ngIf="username.invalid && username.touched">Please enter username</span>
+
 			<!-- Password -->
 			<div class="form-group">
-				<input type="Password" name="Password" placeholder="Password" class="form-control">
+				<input class="form-control" type="Password" name="Password" placeholder="Password" required ngModel #password="ngModel">
 			</div>
+			<span class="alert" *ngIf="password.invalid && password.touched">Please enter password</span>
+
 			<!-- Verify Password -->
 			<div class="form-group">
-				<input type="Password" name="VerifyPassword" placeholder="Verify Password" class="form-control">
+				<input class="form-control" type="Password" name="VerifyPassword" required ngModel #verifyPassword="ngModel" placeholder="Verify Password">
 			</div>
+			<span class="alert" *ngIf="verifyPassword.invalid && verifyPassword.touched">Please verify password</span>
 
 			<div>
 				<!-- Register Button Profile Link-->
