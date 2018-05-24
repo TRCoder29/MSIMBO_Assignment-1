@@ -2,32 +2,85 @@
 	<div class="container">
 		<!-- Login Header -->
 		<h1>Login</h1>
-		<!-- Invalid Username/Password Alert -->
-		<div *ngIf="errorFlag" class="alert alert-danger">Invalid username or password</div>
 
-		<!-- (ngSubmit) is an attribute used as an event listener that will call the login() function in the login.components.ts file. So, when this form is submitted, this function will be called. #f is the name of an element. -->
+		<!-- Invalid Username/Password Alert -->
+		<div *ngIf="errorFlag" class="alert alert-danger">Invalid username or password!</div>
+
+		<!-- This is the login form. It has the username and password fields. -->
 		<form (ngSubmit)="login()" #f="NgForm">
 			<!-- Username -->
 			<div class="form-group">
 				<input class="form-control" type="text" name="Username" placeholder="Username" required ngModel #username="ngModel">
 			</div>
+
 			<!-- Missing username alert -->
-			<span *ngIf="username.invalid && username.touched">Please enter username!</span>
+			<span class="alert alert-danger" *ngIf="username.invalid && username.touched">Please enter username!</span>
 
 			<!-- Password -->
 			<div class="form-group">
 				<input class="form-control" type="Password" name="Password" placeholder="Password" required ngModel #password="ngModel">
 			</div>
+
 			<!-- Missing password alert -->
-			<span *ngIf="password.invalid && password.touched">Please enter password!</span>
+			<span class="alert alert-danger" *ngIf="password.invalid && password.touched">Please enter password!</span>
 
 			<div>
 				<!-- Login Button Profile Link-->
 				<button class="btn btn-primary btn-block" [disabled]="f.invalid" type="submit">Login</button>
+				
 				<!-- Register Button Register Link-->
 				<button class="btn btn-success btn-block" routerLink="/register">Register</button>
 			</div>
 		</form>
 	</div>
 
+<!-- For the Login feature, in order to check the username and password, we have to first catch the information that is entered. Then after we catch them, we have to compare them to the username/password combinations in our existing array. This is what we're doing in Assignment 4 "Use Template Driven...".
+
+1) We have to use the html from Assignment 1 for our form structure.
+
+2) We have to insert FormsModule into the import array of app.module.ts in order to use ngModel. ngModel is what we will use to connect the variables in the html page and ts page.
+
+3) By naming ngModel #username and ngModel #password, when either of these are called in the ts document, the ts will know that you are referring to these input fields.
+
+4) (ngSubmit) is an attribute used as an event listener that will call the login() function in the login.components.ts file. So, when this form is submitted, this function will be called. We then change the <a> to <button> and the <button> type to 'submit'.
+
+5) #f is the name, the local reference to the form that ts will look for. We are doing the same thing that we did for #username and #password. Variables for these forms and their functions must be created in the ts file as username:string and password:string.
+
+6) @ViewChild is used to access the form via the ts and allows the html to access the logic in the ts. It's added to both the import {Component...} and the OnInit function. ViewChild ('f') allows you to find all of the "children" of the form referenced in this html and ts. loginForm is the name that we're giving this ViewChild function in the ts. So, when we create the login() function, we will use loginForm to reference the ViewChild function, so retrieving the username will look like this.loginForm.value.username; and password will look like this: this.loginForm.value.username;. This is basically saying, "look at the children of the form and retrieve the values of the username and password".
+
+Now, we have to grab the data that we have in our Service to cycle through once we submit the form. To do that, we import {UserService} from the user services document ('../../../services/user.service.client') into the ts file. To use it, we put it into our constructor (private userService: UserService). userService (a name we've given it) is the component. We've basically created an instance of the userService class. UserService is the type. (Note: Private means that it is only allowed to be used in this class. Protected means that it is allowed to be used in any subclass within this class. Public is allowed to be used anywhere in the project.)
+
+So, now remember now that we have imported information from the user.service.client. This is the document that has all of the logic for creating, reading, updating and deleting users. Our goal is to be able to access the array for the entered credentials once the Login/submit button has been pushed. We want to see if that user exists. So, we reference the user variable as defined in the array from the user.service.client doc as well as the User class definitions from the user.model.client doc. The latter lets us know what a user is, what makes up a user.
+
+To now find the user, we state that var user: User = this.userService.findUserByCredentials(this.username, this.password);.
+
+Remember, findUserByCredentials is the function that will search through the array to see if the user exists. If it does, it returns it. If not, it returns as undefined. This is different from this.username = this.loginForm.value.username; and this.password = this.loginForm.value.password; in the ts file. These two things only tell the ts file what to retrieve from the html file when the login button is pushed. The findUserByCredentials portion is what actually does the work of cycling through the array to return a user.
+
+So, then we determine what happens when the user does exist in the array. If the user is found, then they are navigated to the profile.
+
+If the user does not exist, an alert must be created for it as the "else".
+
+If we want to route from one page in angular to another, we have to make sure the import {Router} is present in the document (like from one ts file to another). To use the Router feature, we have to add another component in the constructor called (...private router: Router). Then, we use this.router.navigate(['user', user._id]); The result is that when the user is found, it is successfully logged in and the user is displayed as www.whatever.com/user/(whatever their user ID is).
+
+7) Add required before ngModel to indicate that these elements will be required before the form can be officially submitted.
+
+8-12) In the instance that the user is not found, an alert is shown and user is unable to Login/submit. To make this alert show up as a translucent red alert box above the input field only when an attempt is made to proceed without it, we create a <div> item in the html <div class="alert alert-danger">Invalid username or password</div>. In order to make it hidden, we use *ngIf="errorFlag" with the variable errorFlag, which we can then create in the ts file.
+
+errorFlag has a boolean value. We can add it to the if/else statement, where:
+
+    if (user){
+    	//if user is found, navigate to profile, no error flag needed
+    	this.errorFlag = false;
+    	this.router.navigate(['user', user._id]);
+
+    } else {
+      // if user is not found, error flag triggered
+    	this.errorFlag = true;
+
+To make it so that if either the username or password fields are touched, but nothing is entered, we create an alert to go off. For the username, we use <span class="alert alert-danger" *ngIf="username.invalid && username.touched">Please enter username!</span> and <span class="alert alert-danger" *ngIf="password.invalid && password.touched">Please enter password!</span>. The class="alert..." is what sets it off if ...&&... happens.
+
+To make it so that the Login button is disabled if you enter an invalid username and password, we add [disabled]="f.invalid" to the Login button code in the html. We are basically giving it a disable feature if the form "f" is invalid.
+
+
+-->
 

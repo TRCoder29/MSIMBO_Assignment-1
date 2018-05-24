@@ -1,5 +1,3 @@
-// ViewChild allows you to find all of the "children" of the form.
-// The form referenced in this html and ts is f.
 import { Component, OnInit, ViewChild } from '@angular/core';
 import {NgForm} from '@angular/forms'
 import {UserService} from '../../../services/user.service.client'
@@ -31,13 +29,15 @@ export class LoginComponent implements OnInit {
     this.username = this.loginForm.value.username;
     this.password = this.loginForm.value.password;
 
+    // User data is sourced from the '../../../services/user.service.client'
     var user: User = this.userService.findUserByCredentials(this.username, this.password);
     if (user){
-    	//navigate to profile
+    	//if user is found, navigate to profile, no error flag needed
     	this.errorFlag = false;
     	this.router.navigate(['user', user._id]);
 
     } else {
+      // if user is not found, error flag triggered
     	this.errorFlag = true;
     }
   }

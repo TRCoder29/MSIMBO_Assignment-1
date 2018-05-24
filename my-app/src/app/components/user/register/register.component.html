@@ -1,31 +1,58 @@
 	<div class="container">
+		<!-- Register Header -->
 		<h1>Register</h1>
-		<div class="alert alert-danger" *ngIf="usernameError">Username is already taken, please try another one!</div>
-		<div class="alert alert-danger" *ngIf="passwordError">Two passwords do not match!</div>
+
+
+		<!-- This is the register form. It has the username, password and verify password fields. -->
 		<form (ngSubmit)="register()" #f="ngForm">
 			<!-- Username -->
 			<div class="form-group">
 				<input class="form-control" type="text" name="Username" placeholder="Username" required ngModel #username="ngModel">
 			</div>
-			<span class="alert" *ngIf="username.invalid && username.touched">Please enter username</span>
+
+			<!-- Missing username alert -->
+			<span class="alert alert-danger" *ngIf="username.invalid && username.touched">Please enter username!</span>
+
+			<!-- Alert if username is taken -->
+			<div class="alert alert-danger" *ngIf="usernameError">Username is already taken, please try another one!</div>
 
 			<!-- Password -->
 			<div class="form-group">
 				<input class="form-control" type="Password" name="Password" placeholder="Password" required ngModel #password="ngModel">
 			</div>
-			<span class="alert" *ngIf="password.invalid && password.touched">Please enter password</span>
+
+			<!-- Missing password alert -->
+			<span class="alert alert-danger" *ngIf="password.invalid && password.touched">Please enter password!</span>
 
 			<!-- Verify Password -->
 			<div class="form-group">
 				<input class="form-control" type="Password" name="VerifyPassword" required ngModel #verifyPassword="ngModel" placeholder="Verify Password">
 			</div>
-			<span class="alert" *ngIf="verifyPassword.invalid && verifyPassword.touched">Please verify password</span>
+
+			<!-- Missing verify password alert -->
+			<span class="alert alert-danger" *ngIf="verifyPassword.invalid && verifyPassword.touched">Please verify password!</span>
+
+			<!-- Alert if password and verify password don't match) -->
+			<div class="alert alert-danger" *ngIf="passwordError">Two passwords do not match!</div>
 
 			<div>
 				<!-- Register Button Profile Link-->
-				<a class="btn btn-primary btn-block" routerLink="/user/:userId">Register</a>
+				<button class="btn btn-primary btn-block" type="submit">Register</button>
 				<!-- Cancel Button Login Link-->
-				<a class="btn btn-danger btn-block" routerLink="/login">Cancel</a>
+				<button class="btn btn-danger btn-block" routerLink="/login">Cancel</button>
 			</div>
 		</form>
 	</div>
+
+
+<!-- Assignment 4 (cont.)
+
+We have created the function of the login page. Now, we have to make it so that when we click Register we create a new user, which is added to the array.
+
+We then do the same thing that we did in the login html and define the elements in the form. required ngModel #username="ngModel", required ngModel #password="ngModel" and required ngModel #verifyPassword="ngModel". At this point, we can take a look at what we did in login and see what concepts we can transfer over.
+
+We change the <a> tags to <button> tags, and make it so that they have a "submit" type. This basically says that these are buttons that will submit information. We have deleted the router links, because we have specified that they are buttons, not <a> tags, which require hrefs.
+
+We can use the same form name of #f="ngForm" in angular.
+
+	 -->
