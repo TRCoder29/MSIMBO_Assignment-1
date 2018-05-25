@@ -4,13 +4,13 @@
 
 
 		<!-- This is the register form. It has the username, password and verify password fields. -->
-		<form (ngSubmit)="register()" #f="ngForm">
+		<form (ngSubmit)="register()" #f="NgForm">
 			<!-- Username -->
 			<div class="form-group">
 				<input class="form-control" type="text" name="Username" placeholder="Username" required ngModel #username="ngModel">
 			</div>
 
-			<!-- Missing username alert -->
+			<!-- Missing/Invalid username alert -->
 			<span class="alert alert-danger" *ngIf="username.invalid && username.touched">Please enter username!</span>
 
 			<!-- Alert if username is taken -->
@@ -21,7 +21,7 @@
 				<input class="form-control" type="Password" name="Password" placeholder="Password" required ngModel #password="ngModel">
 			</div>
 
-			<!-- Missing password alert -->
+			<!-- Missing/Invalid password alert -->
 			<span class="alert alert-danger" *ngIf="password.invalid && password.touched">Please enter password!</span>
 
 			<!-- Verify Password -->
@@ -29,15 +29,15 @@
 				<input class="form-control" type="Password" name="VerifyPassword" required ngModel #verifyPassword="ngModel" placeholder="Verify Password">
 			</div>
 
-			<!-- Missing verify password alert -->
+			<!-- Missing/Invalid verify password alert -->
 			<span class="alert alert-danger" *ngIf="verifyPassword.invalid && verifyPassword.touched">Please verify password!</span>
 
 			<!-- Alert if password and verify password don't match) -->
-			<div class="alert alert-danger" *ngIf="passwordError">Two passwords do not match!</div>
+			<div class="alert alert-danger" *ngIf="passwordError">Passwords do not match!</div>
 
 			<div>
 				<!-- Register Button Profile Link-->
-				<button class="btn btn-primary btn-block" type="submit">Register</button>
+				<button class="btn btn-primary btn-block" type="submit" [disabled]="f.invalid">Register</button>
 				<!-- Cancel Button Login Link-->
 				<button class="btn btn-danger btn-block" routerLink="/login">Cancel</button>
 			</div>
@@ -47,12 +47,48 @@
 
 <!-- Assignment 4 (cont.)
 
-We have created the function of the login page. Now, we have to make it so that when we click Register we create a new user, which is added to the array.
+We have created the function of the login page. Now, we have to make it so that if we click Register (rather than Login) we create a new user, which is added to the array.
 
-We then do the same thing that we did in the login html and define the elements in the form. required ngModel #username="ngModel", required ngModel #password="ngModel" and required ngModel #verifyPassword="ngModel". At this point, we can take a look at what we did in login and see what concepts we can transfer over.
+We have to make sure:
+1) username, password and verify password fields are filled
+2) The password and verify password fields match
+3) The username doesn't already exist in the system
 
-We change the <a> tags to <button> tags, and make it so that they have a "submit" type. This basically says that these are buttons that will submit information. We have deleted the router links, because we have specified that they are buttons, not <a> tags, which require hrefs.
+So, for the first step, we must first do the same thing that we did in the login html and define the data elements in the form for the component ts to acknowledge. We must also make them required fields by using (required ngModel #username="ngModel", required ngModel #password="ngModel" and required ngModel #verifyPassword="ngModel"). At this point, we can take a look at what we did in login and see what concepts we can transfer over.
 
-We can use the same form name of #f="ngForm" in angular.
+We change the <a> tags to <button> tags, and make it so that the Register button has a "submit" type. This basically says that this is the button that will submit information. We have deleted the router link, because it's not routing to another page in our app, the way that the register page's Cancel button will route back to a clean Login page when pressed. The Cancel button keeps its routerLink, because it simply routes back to a page without logic.
 
+Then, we add (ngSubmit)="register" to the <form> tag. The register() function will be called in the register component doc. Then, we add #f="ngForm". Remember, #f is the local reference to the register form that the component ts will look for. We can use the same form name of #f="ngForm" that we used in login html/ts.
+
+For the second part, we have to make sure the 
+
+Remember, we created verifyPassword, passwordError and usernameError in the register html via (required ngModel #verifyPassword="ngModel", ). So, now, we are defining, connecting and them in the register components doc.
+
+ // If the password is not the same as verifyPassword,
+    // then the passwordError command is fired. If they do match, then
+    //the registration process continues and the username entered into the form
+    // is checked against existing usernames in the database via fundUserByUsername.
+    // If the username exists, the usernameError is fired, and a new username must be
+    // chosen before proceeding. If the username does not exist in the database, then 
+  	if(this.password != this.verifyPassword) {
+  		this.passwordError = true;
+  	} else{
+  		this.passwordError = false;
+  		const user: User = this.userService.findUserByUsername(this.username)
+  		if(user){
+  			this.usernameError = true;
+  		} else {
+  			this.usernameError = false;
+  			this.passwordError = false;
+  			const newUser: User = {
+  				_id: " ",
+  				username: this.username,
+  				password: this.password,
+  				firstName: " ",
+  				lastName: " ",
+  				email: " ",
+  			};
+  			this.userService.createUser(newUser);
+  			var id = this.userService.findUserByUsername(this.username)._id;
+  			this.router.navigate(['user', user._id]);
 	 -->
