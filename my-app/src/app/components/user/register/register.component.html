@@ -26,7 +26,7 @@
 
 			<!-- Verify Password -->
 			<div class="form-group">
-				<input class="form-control" type="Password" name="VerifyPassword" required ngModel #verifyPassword="ngModel" placeholder="Verify Password">
+				<input class="form-control" type="Password" name="verifyPassword" required ngModel #verifyPassword="ngModel" placeholder="Verify Password">
 			</div>
 
 			<!-- Missing/Invalid verify password alert -->
@@ -60,35 +60,121 @@ We change the <a> tags to <button> tags, and make it so that the Register button
 
 Then, we add (ngSubmit)="register" to the <form> tag. The register() function will be called in the register component doc. Then, we add #f="ngForm". Remember, #f is the local reference to the register form that the component ts will look for. We can use the same form name of #f="ngForm" that we used in login html/ts.
 
-For the second part, we have to make sure the 
+For the second part, we have to make sure the user fills all of the forms, so we use <span class="alert alert-danger" *ngIf="username.invalid && username.touched">Please enter username!</span>. This basically says that if the username field is touched but nothing is entered, an alert will fire, instructing the user to enter the missing information. We do the same thing for the password and verifyPassword fields.
 
-Remember, we created verifyPassword, passwordError and usernameError in the register html via (required ngModel #verifyPassword="ngModel", ). So, now, we are defining, connecting and them in the register components doc.
+Question: Why are we using a <span> for one alert and a <div> for the other?
 
- // If the password is not the same as verifyPassword,
-    // then the passwordError command is fired. If they do match, then
-    //the registration process continues and the username entered into the form
-    // is checked against existing usernames in the database via fundUserByUsername.
-    // If the username exists, the usernameError is fired, and a new username must be
-    // chosen before proceeding. If the username does not exist in the database, then 
-  	if(this.password != this.verifyPassword) {
-  		this.passwordError = true;
-  	} else{
+For the Register button, we are making it so that if any of the other fields are invalid/empty, the button will be disabled until they are filled. To do this, we add [disabled]="f.invalid", which literally means to disable the button if the form "f" is invalid.
+
+We now create the register function in the ts. We establish the variables that we set up in the html file:
+username: string;
+password: string;
+verifyPassword: string;
+
+We call on the form and view it's fields or it's "children" from the html doc. In that doc, we labeled it #f="NgForm". To call on this form in the ts, we add ViewChild into the import {Component, OnINit} field, and then incorporate @ViewChild('f') registerForm: NgForm; into the export class RegisterComponent.
+
+Question: What does this line mean: export class RegisterComponent implements OnInit? What exactly is it doing? registerForm is a variable, NgForm; is the variable type.
+
+Question: What does this mean, though? I get a string, number and boolean, but what does the NgForm type mean exactly?
+
+We then import {NgForm} from '@angular/forms'.
+
+Question: Why, though? What does it mean when we add NgForms from @angular/forms?
+
+We then use the variables in the register() function.
+
+this.username=this.registerForm.value.username;
+this.password=this.registerForm.value.password;
+this.username=this.registerForm.value.verifyPassword;
+
+These equations mean that the variables that we have defined here (username, password, verifyPassword) are made up of the values generated from the form, which we have labeled registerForm. So, whatever information the user enters into these fields, that is what these are referring to. This is what the ts is gathering.
+
+
+Now, we want to make sure the values entered into the password and verify password fields match when the user enters them into the form. So, we now have to create a function for this in the register() by using an if statement.
+
+if (this.password != this.verifyPassword), which means if the password does not equal verifyPassword, something will happen.
+
+We can create a new variable to express what will happen. We will call it passwordError: boolean; We then express it as:
+
+if (this.password != this.verifyPassword){
+	this.passwordError=true;
+}
+
+This means that if the password and verify password do not match,  yes (true), a passwordError has been committed.
+
+We then add an alert feature in the html to show up when there is a password error.
+
+<div class="alert alert-danger" *ngIf="passwordError">Passwords do not match!</div>
+
+This is basically saying hide this alert unless (*ngIf = unless) a passwordError occurs.
+
+We then add an else statement to show the opposite effect, when there is no passwordError:
+
+else{
   		this.passwordError = false;
-  		const user: User = this.userService.findUserByUsername(this.username)
-  		if(user){
+
+This means that, no (false), no passwordError has been committed, so we can then move on to the registration process, which is expressed as
+
+const user: User = this.userService.findUserByUsername(this.username)
+
+This literally gives instructions to define the user by first checking to see if the user already exists by looking into UserServices to utilize the function findUserByUsername, which finds users according to the username entered into the form. The username value entered into the form is identified as (this.username).
+
+Question: Why are we using const?
+Answer: Because it's not going to change.
+
+To make this fully functional, we must import the UserService, User and Router.
+
+import {UserService} from '../../../services/user.service.client' [findUserByUsername comes from here]
+
+import {User} from '../../../models/user.model.client' [user:User (i.e. _id, username, password, firstName, lastName, email) is defined here]
+
+import {Router} from '@angular/router' [Question: Why is this needed? I think it's to route us to another page in the app, but check.]
+
+In the constructor, we create the components (private userService: UserService, private router: Router)
+
+Now that that is established, we have to determine what to do if the username exists in the system already. We then create another error variable and if statement.
+
+usernameError: boolean;
+
+and
+
+if(user){
   			this.usernameError = true;
-  		} else {
-  			this.usernameError = false;
-  			this.passwordError = false;
-  			const newUser: User = {
-  				_id: " ",
-  				username: this.username,
-  				password: this.password,
-  				firstName: " ",
-  				lastName: " ",
-  				email: " ",
+
+This represents what happens if there is a usernameError, meaning that the username exists in the system.
+
+
+
+When the user does not exist (and ther is no password error), we want to register them by creating a profile for them in the system.
+
+else {
+  	this.usernameError = false;
+  	this.passwordError = false;
+        
+  	const newUser: User = {
+  		_id: " ",
+  		username: this.username,
+  		password: this.password,
+  		firstName: " ",
+  		lastName: " ",
+  		email: " ",
   			};
-  			this.userService.createUser(newUser);
-  			var id = this.userService.findUserByUsername(this.username)._id;
-  			this.router.navigate(['user', user._id]);
+
+We establish a variable for the new user that we will be creating to put into the User array, which is newUser. newUser is defined by _it, username, etc.
+
+The _id is going to be generated automatically according to the createUser function in UserServices, which automatically assigns a user ID upon creation of the profile. username and password are going to be the equivalent of this.username and this.password, which were entered and verified already. The other sections will be defined with " ", meaning that the user will have to enter the information into the form on the registration page.
+
+
+We have a createUser function already in the UserServices (where we retrieved findUserByUsername), so we will call on it now to create the user profile once the register form is completely filled out.
+
+	this.userService.createUser(newUser);
+  	var id = this.userService.findUserByUsername(this.username)._id;
+  	this.router.navigate(['user', user._id]);
+
+  	The first line gives instructions to look at userService, look at the createUser function and use the info created in newUser to create a new user profile.
+
+  	The third line navigates (or routes) the user to their profile once the registration process is complete. The profile will display their user ID in the web page address (i.e. www.google.com/user/1234).
+
+  	The second line is what we use to find the ID. It's basically creating the variable id, establishing it as a string, then giving instructions to look in userSerice, using the findUserByUsername function, using this.username, then looking at that retrieved user's ID.
+  	
 	 -->

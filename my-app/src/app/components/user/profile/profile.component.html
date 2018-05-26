@@ -2,7 +2,7 @@
 	<nav class="navbar navbar-dark bg-primary fixed-top">
 		<!-- Profile Link -->
 		<a class = "navbar-brand" routerLink="/user/:userId"><strong>Profile</strong></a>
-		<a class="sw-font-white" href="#"><i class="fas fa-check"></i></a>
+		<button class="sw-font-white" type="submit" form="profileForm" [disabled]="f.invalid"><i class="fas fa-check"></i></button>
 	</nav>
 
 	<div class="container">
@@ -43,3 +43,17 @@
 			<a class="sw-font-white float-right" routerLink="/user/:userId"><i class="fas fa-user"></i></a>
 		</div>
 	</nav>
+
+
+<!-- We want to be able to view and update the user's profile information once they log in or register.
+
+ngForm - gives the form a name
+
+ngModel - binds all of the fields of the form together under ngForm
+
+ngSubmit - links the function from the compotent ts that allows us to submit the form. In this case, it's update(), since that will be the primary function while the user visits their profile page.
+
+
+
+
+ -->

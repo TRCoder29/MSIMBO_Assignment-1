@@ -39,6 +39,7 @@ export class RegisterComponent implements OnInit {
   		} else {
   			this.usernameError = false;
   			this.passwordError = false;
+        
   			const newUser: User = {
   				_id: " ",
   				username: this.username,
