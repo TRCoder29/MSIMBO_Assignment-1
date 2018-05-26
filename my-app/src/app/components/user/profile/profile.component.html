@@ -2,31 +2,31 @@
 	<nav class="navbar navbar-dark bg-primary fixed-top">
 		<!-- Profile Link -->
 		<a class = "navbar-brand" routerLink="/user/:userId"><strong>Profile</strong></a>
-		<button class="sw-font-white" type="submit" form="profileForm" [disabled]="f.invalid"><i class="fas fa-check"></i></button>
+		<button class=" btn sw-font-white sw-button-to-a" type="submit" form="profileForm" [disabled]="f.invalid"><i class="fas fa-check"></i></button>
 	</nav>
 
 	<div class="container">
 		<h1>Profile</h1>
-		<form (ngSubmit)="update()">
+		<form (ngSubmit)="update()" form="profileForm">
 			<!-- Username -->
-			<div><label><strong>Username</strong></label></div>
+			<div><label for="username"><strong>Username</strong></label></div>
 			<div class="form-group">
-				<input type="text" name="Username" placeholder="Username" class="form-control">
+				<input type="text" name="Username" placeholder="Username" class="form-control" required ngModel={{user.username}} #username="ngModel">
 			</div>
 			<!-- Email -->
-			<div><label><strong>Email</strong></label></div>
+			<div><label for="email"><strong>Email</strong></label></div>
 			<div class="form-group">
-				<input type="Email" name="Email" placeholder="Email" class="form-control">
+				<input type="Email" name="Email" placeholder="Email" class="form-control" ngModel={{user.email}} #email="ngModel">
 			</div>
 			<!-- First Name -->
-			<div><label><strong>First Name</strong></label></div>
+			<div><label for="firstName"><strong>First Name</strong></label></div>
 			<div class="form-group">
-				<input type="text" name="FirstName" placeholder="First Name" class="form-control">
+				<input type="text" name="FirstName" placeholder="First Name" class="form-control" required ngModel={{user.firstName}} #firstName="ngModel">
 			</div>
 			<!-- Last Name -->
-			<div><label><strong>Last Name</strong></label></div>
+			<div><label for="lastName"><strong>Last Name</strong></label></div>
 			<div class="form-group">
-				<input type="text" name="LastName" placeholder="Last Name" class="form-control">
+				<input type="text" name="LastName" placeholder="Last Name" class="form-control" ngModel={{user.lastName}} #lastName="ngModel">
 			</div>
 
 			<div>
@@ -47,13 +47,167 @@
 
 <!-- We want to be able to view and update the user's profile information once they log in or register.
 
-ngForm - gives the form a name
-
-ngModel - binds all of the fields of the form together under ngForm
+We start by adding (ngSubmit)="update()" to <form>.
 
 ngSubmit - links the function from the compotent ts that allows us to submit the form. In this case, it's update(), since that will be the primary function while the user visits their profile page.
 
+(ngSubmit)="update()" will connect to the update() function defined in the component ts.
+
+Now, remember the check mark? That is also an event that will submit/update the profile information when we click it, so we have to make that functional as well. We do this by changing it from <a> into a <button> and adding type="submit". Because we've added this type, we delete the href, because we are now telling it to submit information, rather than to re-route to somewhere.
+
+Changing it from <a> to <button> changes how it looks to a box button rather than the free-floating check mark that it was before. To update it, we create styling for it to remove the grey styling of the button. We have created the class sw-button-to-a, which we update in style.css as
+
+.sw-button-to-a{
+	background-color: transparent;
 
 
+The button is now "clear" and therefore showing the navbar color of blue, but there's still a button border around it. To get rid of it, we add btn (a Bootstrap class) to the <button>.
+
+<button class=" btn sw-font-white sw-button-to-a" type="submit" form="profileForm" [disabled]="f.invalid"><i class="fas fa-check"></i></button>
+
+Notice that the code for this check mark is outside of the form that updates the profile information, so this button doesn't yet know what it's submitting once it's pushed. Therefore, we need to bind that button with the form that does submit the profile info. To do this, we then add form="profileForm" to <button> and to <form>.
+
+Question: Why form="profileForm"? Where is this equation housed? Why not use ngSubmit again in the check mark button?
+
+We now make it so that if the form is invalid, the submit button is disabled, by adding [disabled]="f.invalid".
+
+Now, we add the ngModel to the form.
+
+ngModel - binds all of the fields of the form together under ngForm
+
+We add #f="ngForm" to link it to the functionality in the profile component ts.
+
+ngForm - gives the form a name
+
+
+In the <label> for each respective field, we add:
+
+for="username"
+for="email"
+for="firstName"
+for="lastName"
+
+The for= attribute specifies which form element a label is bound to. (See w3schools)
+
+In the <input> tags, we add:
+
+required ngModel #username="ngModel"
+ngModel #email="ngModel"
+ngModel #firstName="ngModel"
+ngModel #lastName="ngModel"
+
+For this form, we're making it so that the email and names aren't required, so we're leaving the required attribute off.
+
+Now, we go to the component ts doc to add our functions.
+
+
+ngOnInit() is a function that will automatically run when the page is loaded. So, within this function, we will indicate what we want to happen automatically, once the page is loaded.
+
+The first thing we want to display is the user data in their proper fields in the profile.
+
+Remember that we have made it so that the user ID is captured and displayed once a user either logs in or registers. We can use this same user ID to retrieve and display profile information.
+
+We start by importing a class called ActivatedRoute, which gives us the ability to retrieve our current url from @angular/router.
+
+import {ActivatedRoute} from '@angular/router'
+
+We then create an instance for ActivatedRoute in the constructor with a type of ActivatedRoute.
+
+constructor(private activatedRoute: ActivatedRoute)
+
+In the ngOnInit(), we create 
+
+var profile = this;
+  	this.activatedRoute.params.subscribe(
+	function info(params){
+		profile.uid = params['uid']
+	}
+)
+
+We created var profile = this, because if we used "this" within the info function, it would be so deeply nested, that it would not refer to the same "this" as before, and we would get an error.
+
+params allows us to collect all of the parameters held inside the activatedRoute.
+
+subscribe is a function tha will wait while the page is loading, and runs another function that will be ready by the time the page finishes loading.
+
+profile.uid = params['uid'] represents the user ID in our url, so essentially, this function is first requiring that we identify and acknowledge the user ID in the url, which is found in the parameters (params) of the activatedRoute.
+
+Now, we take that user ID that we found and grab the user data from userService, according to the user ID (uid) that we just found.
+
+That's essentially what this means:
+profile.user = profile.userService.findUserById(profile.uid);
+
+But first, we have to add user services by importing UserService to the component ts doc.
+
+import {UserService} from '../../../services/user.service.client'
+import {User} from '../../../models/user.model.client'
+
+We also add userService to the constructor:
+
+constructor(private activatedRoute: ActivatedRoute, private userService: UserService)
+
+
+We then add the part that grabs the user data from userServices.
+
+this.activatedRoute.params.subscribe(
+function info(params){
+	profile.uid = params['uid']
+	profile.user = profile.userService.findUserById(profile.uid);
+		
+	}
+)
+
+Now, we define the variables for the profile fields that will store the information entered.
+
+	uid: string;
+	user: User;
+	username: string;
+	email: string;
+	firstName: string;
+	lastName: string;
+
+
+We will then add them to the info function.
+
+  ngOnInit() {
+  	var profile = this;
+  	this.activatedRoute.params.subscribe(
+	function info(params){
+		profile.uid = params['uid']
+		profile.user = profile.userService.findUserById(profile.uid);
+		profile.username = profile.user.username;
+		profile.email = profile.user.email;
+		profile.firstName = profile.user.firstName;
+		profile.lastName = profile.user.lastName;
+  });
+
+These items represent the values of the profile form fields.
+
+We now officially bind these items we created in the component ts with their values in the fields represented in the html. So, we then revisit the attributes that we created earlier:
+
+required ngModel #username="ngModel"
+ngModel #email="ngModel"
+ngModel #firstName="ngModel"
+ngModel #lastName="ngModel"
+
+We update the ngModel to give them values:
+
+required ngModel="{{user.username}}" #username="ngModel"
+ngModel="{{user.email}}" #email="ngModel"
+ngModel="{{user.firstName}}" #firstName="ngModel"
+ngModel="{{user.lastName}}" #lastName="ngModel"
+
+We use user. so that the values will be pulled from userServices.
+
+We now create the function for updating user information.
+
+update(){
+		this.username = this.profileForm.value.username;
+		this.email = this.profileForm.value.email;
+		this.firstName = this.profileForm.value.firstName;
+		this.lastName = this.profileForm.value.lastName;
+	}
+
+We must now make sure that we check to see if the user already exists in the system.
 
  -->
