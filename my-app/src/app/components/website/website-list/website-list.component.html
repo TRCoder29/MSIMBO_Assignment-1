@@ -1,11 +1,11 @@
 	<!-- Back Button (<), Website (Clickable) and New Website (+) -->
 	<nav class="navbar navbar-dark bg-primary fixed-top">
 		<!-- Back Button (<) Profile Link-->
-		<a class="sw-font-white" routerLink="/user/:userId"><i class="fas fa-chevron-left"></i></a>
+		<a class="sw-font-white" routerLink="/user/{{uid}}"><i class="fas fa-chevron-left"></i></a>
 		<!-- Website (Clickable) Website-List Link-->
-		<a class = "navbar-brand" routerLink="/user/:userId/website"><strong>Websites</strong></a>
+		<a class = "navbar-brand" routerLink="/user/{{uid}}/website"><strong>Websites</strong></a>
 		<!-- (+) Navigation -->
-		<a class="sw-font-white" routerLink="/user/:uid/website/new"><i class="fas fa-plus"></i></a>
+		<a class="sw-font-white" routerLink="/user/{{uid}}/website/new"><i class="fas fa-plus"></i></a>
 	</nav>
 
 	<!-- List Cogs -->
@@ -14,11 +14,11 @@
 			<!-- Edit Website List (Cogs) website-edit.html-->
 			<ul class="list-group">
 				<!-- Address Book Cog -->
-				<li class="list-group-item">
+				<li class="list-group-item" *ngFor = "let website of websites">
 					<!-- Page-List Link -->
-					<a routerLink="/user/:uid/website/:wid/page" class="text-primary sw-no-underline">Address Book App</a>
+					<a class="text-primary sw-no-underline" routerLink="/user/{{uid}}/website/{{website.id}}/page">{{website.name}}</a>
 					<!-- Website-Edit Link -->
-					<a class="float-right" routerLink="/user/:uid/website/:wid"><i class="fas fa-cog"></i></a>
+					<a class="float-right" routerLink="/user/{{uid}}/website/{{website._id}}"><i class="fas fa-cog"></i></a>
 				</li>
 				<!-- Blogger Cog -->
 				<li class="list-group-item">
@@ -49,6 +49,6 @@
 		<nav class="navbar navbar-dark bg-primary fixed-bottom">
 		<!-- Profile User (Button) -->
 		<div class="sw-width">
-			<a class="sw-font-white float-right" routerLink="/user/:userId"><i class="fas fa-user"></i></a>
+			<a class="sw-font-white float-right" routerLink="/user/{{uid}}"><i class="fas fa-user"></i></a>
 		</div>
 	</nav>

@@ -7,6 +7,13 @@
 
 	<div class="container">
 		<h1>Profile</h1>
+
+		<!-- Alert if username already exists -->
+		<div *ngIF="usernameTaken" class="alert alert-danger">Username taken, please try another one.</div>
+
+		<!-- Alert if profile updated successfully -->
+		<div *ngIF="submitSuccess" class="alert alert-success">Updated successfully!</div>
+
 		<form (ngSubmit)="update()" form="profileForm">
 			<!-- Username -->
 			<div><label for="username"><strong>Username</strong></label></div>
@@ -183,6 +190,41 @@ We will then add them to the info function.
 
 These items represent the values of the profile form fields.
 
+-----------------------------
+Some alternative workarounds for this section:
+
+  ngOnInit() {
+  	this.activatedRoute.params.subscribe(
+	function info(params){
+		this.uid = params['uid']
+		this.user = this.userService.findUserById(this.uid);
+		this.username = this.user.username;
+		this.email = this.user.email;
+		this.firstName = this.user.firstName;
+		this.lastName = this.user.lastName;
+	}.bind(this));
+  }
+
+  This binds "this" with the same "this" referred to in the class.
+
+Or...
+
+  ngOnInit() {
+  	this.activatedRoute.params.subscribe(
+  		params => {
+		this.uid = params['uid']
+		this.user = this.userService.findUserById(this.uid);
+		this.username = this.user.username;
+		this.email = this.user.email;
+		this.firstName = this.user.firstName;
+		this.lastName = this.user.lastName;
+  });
+
+	This is an arrow function. It won't replace the this value.
+
+	This function takes the parameters and 
+-----------------------------
+
 We now officially bind these items we created in the component ts with their values in the fields represented in the html. So, we then revisit the attributes that we created earlier:
 
 required ngModel #username="ngModel"
@@ -208,6 +250,8 @@ update(){
 		this.lastName = this.profileForm.value.lastName;
 	}
 
-We must now make sure that we check to see if the user already exists in the system.
+We must now make sure that we check to see if the username already exists in the system.
+
+
 
  -->

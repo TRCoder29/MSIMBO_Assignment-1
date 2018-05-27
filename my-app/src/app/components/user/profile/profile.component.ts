@@ -17,6 +17,9 @@ export class ProfileComponent implements OnInit {
 	email: string;
 	firstName: string;
 	lastName: string;
+	oldUsername: string;
+	usernameTaken: boolean;
+	submitSuccess: boolean;
 
   constructor(private activatedRoute: ActivatedRoute, private userService: UserService) { }
 
@@ -30,6 +33,7 @@ export class ProfileComponent implements OnInit {
 		profile.email = profile.user.email;
 		profile.firstName = profile.user.firstName;
 		profile.lastName = profile.user.lastName;
+		profile.oldUsername = profile.user.username;
   });
 }
 
@@ -38,5 +42,23 @@ export class ProfileComponent implements OnInit {
 		this.email = this.profileForm.value.email;
 		this.firstName = this.profileForm.value.firstName;
 		this.lastName = this.profileForm.value.lastName;
+
+		const aUser: User = this.userService.findUserByUsername(this.username);
+		if(aUser && this.oldUsername != this.username){
+			this.usernameTaken = true;
+			this.submitSuccess = false;
+		} else {
+			const updatedUser: User = {
+				_id: this.user._id,
+				username: this.username,
+				password: this.user.password,
+				firstName: this.firstName,
+				lastName: this.lastName,
+				email: this.email
+			};
+			this.userService.updateUser(this.uid, updatedUser);
+			this.usernameTaken = false;
+			this.submitSuccess = true;
+		}
 	}
 
