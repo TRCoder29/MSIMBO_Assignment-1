@@ -3,11 +3,11 @@
 		<div class="col-sm-4 d-none d-sm-block">
 			<div class="container-fluid">
 				<!-- Back Button Website-List Link-->
-				<a class="sw-font-white" routerLink="/user/:userId/website"><i class="fas fa-chevron-left"></i></a>
+				<a class="sw-font-white" routerLink="/user/{{uid}}/website"><i class="fas fa-chevron-left"></i></a>
 				<!-- Websites Link Website-List Link-->
-				<a class="sw-left-padding sw-no-underline" routerLink="/user/:userId/website"><b class="sw-font-white">Websites</b></a>
+				<a class="sw-left-padding sw-no-underline" routerLink="/user/{{uid}}/website"><b class="sw-font-white">Websites</b></a>
 				<!-- New Website Link Website-New Link-->
-				<a routerLink="/user/:uid/website/new" class="sw-font-white float-right"><i class="fas fa-plus"></i></a>
+				<a routerLink="/user/{{uid}}/website/new" class="sw-font-white float-right"><i class="fas fa-plus"></i></a>
 			</div>
 		</div>
 
@@ -15,9 +15,9 @@
 		<div class="col-sm-8">
 			<div class="container-fluid">
 				<!-- New Website Title Website-New Link-->
-				<a routerLink="/user/:uid/website/new" class="sw-no-underline"><b class="sw-font-white">New Website</b></a>
+				<a routerLink="/user/{{uid}}/website/new" class="sw-no-underline"><b class="sw-font-white">New Website</b></a>
 				<!-- Check (/) Website-List Link-->
-				<a routerLink="/user/:userId/website" class="sw-font-white float-right"><i class="fas fa-check"></i></a>
+				<button class="sw-font-white float-right"><i class="fas fa-check"></i></button>
 			</div>
 		</div>
 	</nav>
@@ -32,27 +32,6 @@
 						<li class="list-group-item">
 							<!-- Address Book App Page-List Link-->
 							<a routerLink="/user/:uid/website/:wid/page" class="text-primary sw-no-underline">Address Book App</a>
-							<!-- Edit Website List (Cogs) Website-Edit Link-->
-							<a class="float-right" routerLink="/user/:uid/website/:wid"><i class="fas fa-cog"></i></a>
-						</li>
-
-						<li class="list-group-item">
-							<!-- Blogger Page-List Link-->
-							<a routerLink="/user/:uid/website/:wid/page" class="text-primary sw-no-underline">Blogger</a>
-							<!-- Edit Website List (Cogs) Website-Edit Link-->
-							<a class="float-right" routerLink="/user/:uid/website/:wid"><i class="fas fa-cog"></i></a>
-						</li>
-
-						<li class="list-group-item">
-							<!-- Blogging App Page-List Link-->
-							<a routerLink="/user/:uid/website/:wid/page" class="text-primary sw-no-underline">Blogging App</a>
-							<!-- Edit Website List (Cogs) Website-Edit Link-->
-							<a class="float-right" routerLink="/user/:uid/website/:wid"><i class="fas fa-cog"></i></a>
-						</li>
-
-						<li class="list-group-item">
-							<!-- Script Testing App Page-List Link-->
-							<a routerLink="/user/:uid/website/:wid/page" class="text-primary sw-no-underline">Script Testing App</a>
 							<!-- Edit Website List (Cogs) Website-Edit Link-->
 							<a class="float-right" routerLink="/user/:uid/website/:wid"><i class="fas fa-cog"></i></a>
 						</li>
@@ -84,3 +63,13 @@
 			<a class="sw-font-white float-right" routerLink="/user/:userId"><i class="fas fa-user"></i></a>
 		</div>
 	</nav>
+
+<!-- Website-new allows users to create new websites. It's currenly showing the default websites list and other default route paths. We have to make this dynamic the way we did website-list.
+
+We will need the same variables, imports, components and ngOnInit function from the website-list component ts for the website-new component ts, so we can copy and paste them in their respective places.
+
+Then, we go to the html, delete all <li> items, except for the first one, which we will be editing.
+
+Change the fas-fa-check from <a> to <button> with type="submit" and [disabled]="f.invalid".
+
+	 -->

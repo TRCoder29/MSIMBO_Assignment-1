@@ -13,33 +13,12 @@
 		<div>
 			<!-- Edit Website List (Cogs) website-edit.html-->
 			<ul class="list-group">
-				<!-- Address Book Cog -->
+				<!-- Website List -->
 				<li class="list-group-item" *ngFor = "let website of websites">
 					<!-- Page-List Link -->
 					<a class="text-primary sw-no-underline" routerLink="/user/{{uid}}/website/{{website.id}}/page">{{website.name}}</a>
 					<!-- Website-Edit Link -->
 					<a class="float-right" routerLink="/user/{{uid}}/website/{{website._id}}"><i class="fas fa-cog"></i></a>
-				</li>
-				<!-- Blogger Cog -->
-				<li class="list-group-item">
-					<!-- Page-List Link -->
-					<a routerLink="/user/:uid/website/:wid/page" class="text-primary sw-no-underline">Blogger</a>
-					<!-- Website-Edit Link -->
-					<a class="float-right" routerLink="/user/:uid/website/:wid"><i class="fas fa-cog"></i></a>
-				</li>
-				<!-- Blogging App Cog -->
-				<li class="list-group-item">
-					<!-- Page-List Link -->
-					<a routerLink="/user/:uid/website/:wid/page" class="text-primary sw-no-underline">Blogging App</a>
-					<!-- Website-Edit Link -->
-					<a class="float-right" routerLink="/user/:uid/website/:wid"><i class="fas fa-cog"></i></a>
-				</li>
-				<!-- Script Testing Cog -->
-				<li class="list-group-item">
-					<!-- Page-List Link -->
-					<a routerLink="/user/:uid/website/:wid/page" class="text-primary sw-no-underline">Script Testing App</a>
-					<!-- Website-Edit Link -->
-					<a class="float-right" routerLink="/user/:uid/website/:wid"><i class="fas fa-cog"></i></a>
 				</li>
 		</ul>
 		</div>
@@ -52,3 +31,68 @@
 			<a class="sw-font-white float-right" routerLink="/user/{{uid}}"><i class="fas fa-user"></i></a>
 		</div>
 	</nav>
+
+
+
+<!-- We have website data in our website services. We now want to be able to access the data from the actual list of websites according to the profile that we are accessing.
+
+We first import website service in the component ts doc.
+
+import { WebsiteService } from '../../../services/website.service.client'
+
+This is where the actual website data is held.]
+
+Then, we add import { Website } from '../../../models/website.model.client'
+
+This is where we officially define what variables go into a Website object array.
+
+Then we create a variable to atore the info we need. In this case, it's the websites array from website services.
+
+websites: [];
+
+We have to then go back to the profile html and update the Website button, because right now, it's just routing to a basic website list default page. We want to make it more dynamic.
+
+We take the code for the website button and change the :userId to {{uid}}.
+
+<a class="btn btn-primary btn-block" routerLink="/user/:userId/website">Websites</a>
+
+<a class="btn btn-primary btn-block" routerLink="/user/{{uid}}/website">Websites</a>
+
+To create a variable to store the user ID in the url, we have to create a variable and import router service.
+
+uid: string;
+
+import { ActivatedRoute } from '@angular/router'
+
+Then we update the constructor:
+
+constructor(private websiteService: WebsiteService, private activatedRoute: ActivatedRoute) { }
+
+In ngOnInit(), we add:
+this.activatedRoute.params.subscribe(params =>) {
+	this.uid = params['uid'];
+	this.websites = this.websiteService.findWebsitesByUser(this.uid);
+
+The first "this" represents the uid in the url.
+
+The second one allows us to find all of the websies stored in website services according to the user ID.
+
+Now, we go back to the html and change the default list that we've been using so that the website list page will truly be dynamic and display accourding to the current user ID.
+
+We change the first link, which was originally the Address Book website placeholder from:
+
+<li class="list-group-item">
+	<a class="text-primary sw-no-underline" routerLink="/user/:uid/website/:wid/page">Address Book App</a>
+
+to
+
+<li class="list-group-item" *ngFor = "let website of websites">
+	<a class="text-primary sw-no-underline" routerLink="/user/{{uid}}/website/{{website.id}}/page">{{website.name}}</a>
+
+The parts in {{}} are what make it dynamic. They will navigate to the working data. Actual titles and links will show up where it says {{website.name}}, instead of the Address Book App placeholder.
+
+Do the same for the profile link, the plus sign, and the back button.
+
+Delete all of the other placeholder links in the html docs.
+
+ -->

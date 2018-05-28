@@ -9,12 +9,12 @@
 		<h1>Profile</h1>
 
 		<!-- Alert if username already exists -->
-		<div *ngIF="usernameTaken" class="alert alert-danger">Username taken, please try another one.</div>
+		<div *ngIf="usernameTaken" class="alert alert-danger">Username taken, please try another one.</div>
 
 		<!-- Alert if profile updated successfully -->
-		<div *ngIF="submitSuccess" class="alert alert-success">Updated successfully!</div>
+		<div *ngIf="submitSuccess" class="alert alert-success">Updated successfully!</div>
 
-		<form (ngSubmit)="update()" form="profileForm">
+		<form (ngSubmit)="update()" id="profileForm" #f="ngForm">
 			<!-- Username -->
 			<div><label for="username"><strong>Username</strong></label></div>
 			<div class="form-group">
@@ -38,7 +38,7 @@
 
 			<div>
 				<!-- Website Button Website-List Link-->
-				<a class="btn btn-primary btn-block" routerLink="/user/:userId/website">Websites</a>
+				<a class="btn btn-primary btn-block" routerLink="/user/{{uid}}/website">Websites</a>
 				<!-- Logout Button Login Link-->
 				<a class="btn btn-danger btn-block" routerLink="/login">Logout</a>
 			</div>
@@ -251,7 +251,63 @@ update(){
 	}
 
 We must now make sure that we check to see if the username already exists in the system.
+-----------------------------------
+Note: Get help with 4.2, starting @11:12. It doesn't make sense to me. What does aUser, oldUsername and this.username mean?!
 
+// If we can find a user with this username, then it means that this user already exists, and cannot be used to register or update the account; or if the username has not been changed.
 
+aUser will be the variable for the new user in this equation.
+
+const aUser: User = this.userService.findUserByUsername(this.username);
+
+This line looks into userService, calls upon the function findUserByUsername, according to the username entered into the form (this.username).
+
+We then define what happens with this username (aUser) if it is or is not found to exist in the user array, using the following if statement:
+
+if(aUser && this.oldUsername != this.username){
+			this.usernameTaken = true;
+			this.submitSuccess = false;
+
+oldUsername: string; and username: string; are the same thing, but we have to make a distinction when they appear together at times when we're checking and updating information. oldUsername will appear in the if statement that checks for system matches if and only if information has been changed in the field.
+
+aUser represents the user information as it exists once a profile page is loaded, and is sourced from userService.
+
+-----------------------------------
+
+Then, we create the alerts to express that the username is already taken or that the changes are submitted successfully.
+
+In the component ts doc, we create two variables:
+
+usernameTaken: boolean;
+submitSuccess: boolean;
+
+In the html, we add two <div> above the <form>:
+
+<div *ngIf="usernameTaken" class="alert alert-danger">Username taken, please try another one.</div>
+
+<div *ngIf="submitSuccess" class="alert alert-success">Updated successfully!</div>
+
+When *ngIf is true for the situation represented in the component ts doc, then these alerts will run. *ngIf is the element that makes this happen. It's hidden until the respective boolean is true. So, if this.usernameTaken = true then the usernameTaken *ngIf alert will appear. Same for *ngIf="submitSuccess"
+
+Once the username, etc. are verified, we have to officially add the updated data to our array. This is the info that will be captured:
+
+else {
+			const updatedUser: User = {
+				_id: this.user._id,
+				username: this.username,
+				password: this.user.password,
+				firstName: this.firstName,
+				lastName: this.lastName,
+				email: this.email
+
+Note: At some point, add a change password feature here.
+
+We then call the updateUser() function and instruct it to update the user according to the current uid and the information provided in updatedUser: User.
+
+this.userService.updateUser(this.uid, updatedUser);
+this.usernameTaken = false;
+this.submitSuccess = true;
+
+Question: Why do we need usernameTake and submitSuccess here again?
 
  -->
