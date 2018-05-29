@@ -7,7 +7,7 @@
 		<div *ngIf="errorFlag" class="alert alert-danger">Invalid username or password!</div>
 
 		<!-- This is the login form. It has the username and password fields. -->
-		<form (ngSubmit)="login()" #f="NgForm">
+		<form (ngSubmit)="login()" #f="ngForm">
 			<!-- Username -->
 			<div class="form-group">
 				<input class="form-control" type="text" name="Username" placeholder="Username" required ngModel #username="ngModel">

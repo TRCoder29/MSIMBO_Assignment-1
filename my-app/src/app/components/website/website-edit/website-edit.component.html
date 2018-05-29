@@ -3,11 +3,11 @@
 		<div class="col-sm-4 d-none d-sm-block">
 			<div class="container-fluid">
 				<!-- Back Button Website-List Link-->
-				<a class="sw-font-white" routerLink="/user/:userId/website"><i class="fas fa-chevron-left"></i></a>
+				<a class="sw-font-white" routerLink="/user/{{uid}}/website"><i class="fas fa-chevron-left"></i></a>
 				<!-- Websites Link Website-List Link-->
-				<a class="sw-left-padding sw-no-underline" routerLink="/user/:userId/website"><b class="sw-font-white">Websites</b></a>
+				<a class="sw-left-padding sw-no-underline" routerLink="/user/{{uid}}/website"><b class="sw-font-white">Websites</b></a>
 				<!-- New Website (+) Website-New Link-->
-				<a routerLink="/user/:uid/website/new" class="sw-font-white float-right"><i class="fas fa-plus"></i></a>
+				<a routerLink="/user/{{uid}}/website/new" class="sw-font-white float-right"><i class="fas fa-plus"></i></a>
 			</div>
 		</div>
 
@@ -15,11 +15,11 @@
 		<div class="col-sm-8">
 			<div class="container-fluid" >
 				<!-- Back Button Website-List Link-->
-				<a class="sw-font-white d-md-block d-lg-none" routerLink="/user/:userId/website"><i class="fas fa-chevron-left"></i></a>
+				<a class="sw-font-white d-md-block d-lg-none" routerLink="/user/{{uid}}/website"><i class="fas fa-chevron-left"></i></a>
 				<!-- Edit Website Website-Edit Link-->
-				<a routerLink="/user/:uid/website/:wid" class="sw-no-underline"><b class="sw-font-white sw-left-padding">Edit Website</b></a>
+				<a routerLink="/user/{{uid}}/website/{{wid}}" class="sw-no-underline"><b class="sw-font-white sw-left-padding">Edit Website</b></a>
 				<!-- Check (/) Website-List Link-->
-				<a routerLink="/user/:userId/website" class="sw-font-white float-right"><i class="fas fa-check"></i></a>
+				<button class="btn sw-font-white sw-button-to-a float-right" type="submit" form="websiteForm"><i class="fas fa-check"></i></button>
 			</div>
 		</div>
 	</nav>
@@ -30,36 +30,11 @@
 					<div class="container">
 						<!-- Edit Website List (Cogs) -->
 						<ul class="list-group">
-						<!-- Address Book Link -->
-						<li class="list-group-item">
-							<!-- Page-List Link -->
-							<a routerLink="/user/:uid/website/:wid/page" class="text-primary sw-no-underline">Address Book App</a>
-							<!-- Website-Edit Link -->
-							<a class="float-right" routerLink="/user/:uid/website/:wid"><i class="fas fa-cog"></i></a>
-						</li>
-
-						<!-- Blogger Link -->
-						<li class="list-group-item">
-							<!-- Page-List Link -->
-							<a routerLink="/user/:uid/website/:wid/page" class="text-primary sw-no-underline">Blogger</a>
-							<!-- Website-Edit Link -->
-							<a class="float-right" routerLink="/user/:uid/website/:wid"><i class="fas fa-cog"></i></a>
-						</li>
-
-						<!-- Blogging App Link -->
-						<li class="list-group-item">
-							<!-- Page-List Link -->
-							<a routerLink="/user/:uid/website/:wid/page" class="text-primary sw-no-underline">Blogging App</a>
-							<!-- Website-Edit Link -->
-							<a class="float-right" routerLink="/user/:uid/website/:wid"><i class="fas fa-cog"></i></a>
-						</li>
-						
-						<!-- Script Testing App -->
-						<li class="list-group-item">
-							<!-- Page-List Link -->
-							<a routerLink="/user/:uid/website/:wid/page" class="text-primary sw-no-underline">Script Testing App</a>
-							<!-- Website-Edit Link -->
-							<a class="float-right" routerLink="/user/:uid/website/:wid"><i class="fas fa-cog"></i></a>
+							<li class="list-group-item" *ngFor = "let website of websites">
+							<!-- Page-List-->
+							<a class="text-primary sw-no-underline" routerLink="/user/{{uid}}/website/{{website.id}}/page">{{website.name}}</a>
+							<!-- Edit Website List (Cogs) Website-Edit Link-->
+							<a class="float-right" routerLink="/user/{{uid}}/website/{{website._id}}"><i class="fas fa-cog"></i></a>
 						</li>
 						</ul>
 					</div>
@@ -68,18 +43,23 @@
 	<!-- Right Fields -->
 		<div class="col-sm-8 float-right">
 			<div class="container">
-				<form>
+				<form id="websiteForm" (ngSubmit)="update()" #f=ngForm>
 					<!-- Website Name -->
 					<div class="form-group"></div>
-						<label for="website-name"><b>Website Name</b></label>
-						<input class="form-control" type="text" name="website-name" placeholder="Name">
+						<label for="website-name"><b>Name</b></label>
+						<input class="form-control" type="text" name="name" placeholder="Name" required ngModel #name="ngModel">
+
+					<!-- Missing Name Alert -->
+					<div class="alert alert-warning" *ngIf="name.invalid && name.touched">Name cannot be empty.</div>
+
 					<!-- Website Description -->
 					<div class="form-group"></div>
-						<label for="website-description"><b>Website Description</b></label>
-						<textarea class="form-control" rows="5" name="website-description" placeholder="Description"></textarea>
-						<br>
-						<!-- Delete Button Website-List-->
-						<a class="btn btn-danger btn-block" routerLink="/user/:userId/website">Delete</a>
+						<label for="website-description"><b>Description</b></label>
+						<textarea class="form-control" rows="5" name="description" placeholder="Description" ngModel #description="ngModel"></textarea>
+					<!-- Delete Button Website-List-->
+					<a (click)="delete" type="button" class="btn btn-danger btn-block">Delete</a>
+					<!-- Update Button Website-List-->
+					<button class="btn btn-primary sw-color-white btn-block float-right" type="submit">Update</button>
 				</form>
 			</div>
 		</div>		
@@ -90,3 +70,11 @@
 			<a class="sw-font-white float-right" routerLink="user/:userId"><i class="fas fa-user"></i></a>
 		</div>
 	</nav>
+
+
+<!-- For this page, we need to have the website list on the left and the edit website form on the right. Upon initializing the current name and description, the user will be able to either delete or update the information in the form if the user makes any changes. To get started, we can copy and paste the data for the website-new into the website-edit html and component ts docs.
+
+
+
+
+-->

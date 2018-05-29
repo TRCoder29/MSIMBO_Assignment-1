@@ -4,7 +4,7 @@
 
 
 		<!-- This is the register form. It has the username, password and verify password fields. -->
-		<form (ngSubmit)="register()" #f="NgForm">
+		<form (ngSubmit)="register()" #f="ngForm">
 			<!-- Username -->
 			<div class="form-group">
 				<input class="form-control" type="text" name="Username" placeholder="Username" required ngModel #username="ngModel">

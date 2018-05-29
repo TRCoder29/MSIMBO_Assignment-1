@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
+import { NgForm } from '@angular/forms'
 import {ActivatedRoute} from '@angular/router'
 import {UserService} from '../../../services/user.service.client'
 import {User} from '../../../models/user.model.client'
@@ -11,6 +12,7 @@ import {User} from '../../../models/user.model.client'
 export class ProfileComponent implements OnInit {
 
 	@ViewChild('f') profileForm: NgForm;
+
 	uid: string;
 	user: User;
 	username: string;
@@ -61,4 +63,4 @@ export class ProfileComponent implements OnInit {
 			this.submitSuccess = true;
 		}
 	}
-
+}

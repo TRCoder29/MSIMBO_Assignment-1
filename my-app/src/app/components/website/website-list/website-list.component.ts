@@ -16,10 +16,9 @@ websites: Website[];
   constructor(private websiteService: WebsiteService, private activatedRoute: ActivatedRoute) { }
 
   ngOnInit() {
-  	this.activatedRoute.params.subscribe(params =>) {
+  	this.activatedRoute.params.subscribe(params => {
   		this.uid = params['uid'];
   		this.websites = this.websiteService.findWebsitesByUser(this.uid);
-  	}
+  	});
   }
-
 }
