@@ -1,58 +1,58 @@
 	<!-- Navigation Bar -->
 	<nav class="navbar navbar-dark fixed-top sw-gray">
 		<!-- Back (<) Widget-List Link-->
-		<a routerLink="/user/:uid/website/:wid/page/:pid/widget" class="sw-black"><i class="fas fa-chevron-left"></i></a>
+		<a routerLink="/user/{{uid}}/website/{{wid}}/page/{{pid}}/widget" class="sw-black"><i class="fas fa-chevron-left"></i></a>
 		
 		<!-- Edit Widget Link Widget-Image/Edit Link-->
 		<div class="sw-80-width">
-			<a class="sw-font-white sw-no-underline float-left" routerLink="/ser/:uid/website/:wid/page/:pid/widget/:wgid">Edit Widget</a>
+			<a class="sw-font-white sw-no-underline float-left" routerLink="/ser/{{uid}}/website/{{wid}}/page/{{pid}}/widget/{{wgid}}">Edit Widget</a>
 		</div>
 
 		<!-- Check (/) Widget-List Link-->
-		<a routerLink="/user/:uid/website/:wid/page/:pid/widget" class="sw-black float-right"><i class="fas fa-check"></i></a>
+		<button class="sw-button-to-a sw-black float-right" type="submit" form="widgetForm" [disabled]="f.invalid"><i class="fas fa-check"></i></button>
 	</nav>
 
-	<!-- Widgets -->
+	<!-- Form -->
 	<div class="container">
-			<form>
-				<!-- Name -->
-				<div><label>Name</label></div>
-				<div class="form-group">
-					<input type="text" name="Name" placeholder="Name" class="form-control">
-				</div>
+		<form if="widgetForm" (ngSubmit)="update()" #f="ngForm">
+			<!-- Name -->
+			<div><label>Name</label></div>
+			<div class="form-group">
+				<input type="text" name="Name" placeholder="name" class="form-control" ngModel="{{widget.name}}" #name="ngModel">
+			</div>
 
-				<!-- Text -->
-				<div><label>Text</label></div>
-				<div class="form-group">
-					<input type="text" name="Text" placeholder="Text" class="form-control">
-				</div>
+			<!-- Text -->
+			<div><label>Text</label></div>
+			<div class="form-group">
+				<input type="text" name="Text" placeholder="Text" class="form-control" ngModel="{{widget.text}}" #text="ngModel">
+			</div>
 
-				<!-- URL -->
-				<div><label>URL</label></div>
-				<div class="form-group">
-					<input type="URL" name="URL" placeholder="https://www.google.com" class="form-control">
-				</div>
+			<!-- URL -->
+			<div><label>URL</label></div>
+			<div class="form-group">
+				<input type="URL" name="URL" placeholder="https://www.google.com" class="form-control">
+			</div>
 
-				<!-- Width -->
-				<div><label>Width</label></div>
-				<div class="form-group">
-					<input type="text" name="Width" placeholder="100%" class="form-control">
-				</div>
+			<!-- Width -->
+			<div><label>Width</label></div>
+			<div class="form-group">
+				<input type="text" name="Width" placeholder="100%" class="form-control">
+			</div>
 
-				<!-- Upload File -->
-				<div><label>Upload</label></div>
-				<div class="form-group">
-					<input type="file" name="Width" placeholder="Width" class="form-control">
-				</div>
+			<!-- Upload File -->
+			<div><label>Upload</label></div>
+			<div class="form-group">
+				<input type="file" name="Width" placeholder="Width" class="form-control">
+			</div>
 
-				<div>
-					<!-- Upload Button No Link-->
-					<a class="btn btn-primary btn-block" href="#">Upload</a>
-					<br>
-					<!-- Delete Button Widget-List Link-->
-					<a class="btn btn-danger btn-block" routerLink="/user/:uid/website/:wid/page/:pid/widget">Delete</a>
-				</div>
-			</form>
+			<div>
+				<!-- Upload Button No Link-->
+				<button class="btn btn-primary btn-block" type="submit" [disabled]="f.invalid">Upload</button>
+				<br>
+				<!-- Delete Button Widget-List Link-->
+				<a class="btn btn-danger btn-block" routerLink="/user/:uid/website/:wid/page/:pid/widget">Delete</a>
+			</div>
+		</form>
 	</div>
 
 	<!-- Footer -->
