@@ -23,7 +23,7 @@ wid: string;
   constructor(private websiteService: WebsiteService, private activatedRoute: ActivatedRoute, private router: Router) { }
 
   ngOnInit() {
-  	  	this.activatedRoute.params.subscribe(params => {
+  	  this.activatedRoute.params.subscribe(params => {
   		this.uid = params['uid'];
   		this.wid = params['wid'];
   		this.websites = this.websiteService.findWebsitesByUser(this.uid);
@@ -34,11 +34,22 @@ wid: string;
   }
 
   update(){
+    this.name = this.websiteForm.value.name;
+    this.description = this.websiteForm.value.description;
+    const updatedWeb: WebSite = {
+      _id: this.wid,
+      name: this.name,
+      developerId: this.uid,
+      description: this.description
+    }
 
+    this.websiteService.updateWebsite(this.wid, updatedWeb);
+    this.router.navigate(['user', this.uid]);
   }
 
   delete(){
-
+     this.websiteService.deleteWebsite(this.wid);
+     this.router.navigate(['user', this.uid]);
   }
 
 }

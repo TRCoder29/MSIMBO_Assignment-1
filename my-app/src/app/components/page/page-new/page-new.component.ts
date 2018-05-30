@@ -1,4 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
+import { ActivatedRoute } from '@angular/router'
+import { Page } from '../../../models/page.model.clients'
+import { PageService } from '../../../services/page.service.client'
+import { NgForm } from '@angular/forms'
+import { Router } from '@angular/router'
 
 @Component({
   selector: 'app-page-new',
@@ -7,9 +12,33 @@ import { Component, OnInit } from '@angular/core';
 })
 export class PageNewComponent implements OnInit {
 
-  constructor() { }
+@ViewChild('f') pageForm: NgForm;
+	uid: string;
+	wid: string;
+	name: string;
+	description: string;
+
+  constructor(private pageService: PageService, private activatedRoute: ActivatedRoute, private router: Router) { }
 
   ngOnInit() {
+  	  	this.activatedRoute.params.subscribe(params => {
+  	this.uid = params['uid'];
+  	this.wid = params['wid'];
+  	});
   }
+
+	create(){
+		this.name = this.pageForm.value.name;
+		this.description = this.pageForm.value.description;
+	
+		const newPage: Page = {
+			_id: "",
+			name: this.name,
+			websiteId: this.wid,
+			description: this.description
+		}
+	this.pageService.createPage(this.wid, newPage);
+	this.router.navigate(['user', this.uid, 'website', this.wid, 'page']);
+	}
 
 }

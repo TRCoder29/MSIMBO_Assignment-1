@@ -1,27 +1,38 @@
 	<!-- Navigation Bar -->
 	<nav class="navbar navbar-dark sw-gray fixed-top">
 		<!-- Cancel (<) Page-List Link-->
-		<a routerLink="/user/:uid/website/:wid/page" class="sw-black"><i class="fas fa-chevron-left"></i></a>
+		<a routerLink="/user/{{uid}}/website/{{wid}}/page" class="sw-black"><i class="fas fa-chevron-left"></i></a>
 		<!-- New Page Title Page-New Link-->
 		<div class="sw-80-width">
-			<a class="sw-left-padding sw-no-underline" routerLink="/user/:uid/website/:wid/page/new"><b class="sw-black">New Page</b></a>
+			<a class="sw-left-padding sw-no-underline" routerLink="/user/{{uid}}/website/{{wid}}/page/new"><b class="sw-black">New Page</b></a>
 		</div>
+
 		<!-- OK (/) Page-List Link-->
-		<a routerLink="/user/:uid/website/:wid/page" class="sw-black float-right"><i class="fas fa-check"></i></a>
+		<button type="submit" form="pageForm" class="sw-button-to-a sw-black float-right"><i class="fas fa-check"></i></button>
 	</nav>
 
 	<div class="container">
-		<form>
+		<form id="pageForm" (ngSubmit)="create()" #f="ngForm">
 			<!-- Name -->
 			<div class="form-group">
 				<label>Name</label>
-				<input type="text" name="Name" placeholder="Page Name" class="form-control">
+				<input type="text" name="page-name" placeholder="Enter your page name." class="form-control" required ngModel #name="page-name">
 			</div>
+
+			<!-- Alert for Empty Name Field -->
+			<div *ngIf="name.invalid && name.touched" class="alert alert-warning"> Name cannot be empty.</div>
+
 			<!-- Title -->
 			<div class="form-group">
-				<label>Title</label>
-				<input type="text" name="Title" placeholder="Page Title" class="form-control">
+				<label>Page Description</label>
+				<input type="text" name="description" placeholder="Enter your page description." class="form-control" ngModel #description="ngModel">
 			</div>
+
+			<!-- Submit Button -->
+			<button class="btn btn-success btn-block" type="submit" [disabled]="f.invalid">Submit</button>
+
+			<!-- Cancel Button -->
+			<button class="btn btn-danger btn-block" routerLink="/user/{{uid}}/website/{{wid}}/page">Cancel</button>
 		</form>
 	</div>
 
@@ -29,6 +40,6 @@
 	<nav class="navbar navbar-dark sw-gray fixed-bottom">
 		<!-- Profile User (Button) -->
 		<div class="sw-width">
-			<a class="sw-font-white float-right" routerLink="/user/:userId"><i class="fas fa-user"></i></a>
+			<a class="sw-font-white float-right" routerLink="/user/{{uid}}"><i class="fas fa-user"></i></a>
 		</div>
 	</nav>
