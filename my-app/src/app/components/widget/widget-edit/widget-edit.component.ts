@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { Widget } from '../../../models/widget.model.client'
-import { WidgetService } from '../../../services/widget.service.client'
 import { ActivatedRoute } from '@angular/router'
+import { WidgetService } from '../../../services/widget.service.client'
+import { Widget } from '../../../models/widget.model.client'
 
 @Component({
   selector: 'app-widget-edit',
@@ -9,9 +9,9 @@ import { ActivatedRoute } from '@angular/router'
   styleUrls: ['./widget-edit.component.css']
 })
 export class WidgetEditComponent implements OnInit {
-
-	wgid: string;
-	widget: Widget;
+  
+  wgid: string;
+  widget: Widget;
 	name: string;
 	text: string;
 	size: number;

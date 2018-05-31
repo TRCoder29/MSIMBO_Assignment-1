@@ -9,7 +9,7 @@
 		</div>
 
 		<!-- OK (/) Widget-List Link-->
-		<button class="sw-black float-right" type="submit" form="widgetForm"><i class="fas fa-check" [disabled]="f.invalid"></i></button>
+		<button class="btn sw-button-to-a sw-black float-right" type="submit" form="widgetForm" [disabled]="f.invalid"><i class="fas fa-check"></i></button>
 	</nav>
 
 	<!-- Entry Fields -->
@@ -19,13 +19,13 @@
 			<!-- Page Name -->
 			<div><label>Name</label></div>
 			<div class="form-group">
-				<input type="text" name="name" ngModel="{{widget.name}}" #name="ngModel" class="form-control" placeholder="Name">
+				<input class="form-control" type="text" name="name" placeholder="Name" ngModel="{{widget.name}}" #name="ngModel"  >
 			</div>
 
 			<!-- Page Text -->
 			<div><label>Text</label></div>
 			<div class="form-group">
-				<input type="text" name="text" class="form-control" placeholder="Text" required ngModel="{{widget.text}}" #text="ngModel">
+				<input class="form-control" type="text" name="text"  placeholder="Text" required ngModel="{{widget.text}}" #text="ngModel">
 			</div>
 
 			<!-- Alert Empty Text -->
@@ -34,7 +34,7 @@
 			<!-- Size -->
 			<div class="form-group">
 				<div><label>Size</label></div>
-				<input type="number" name="size" class="form-control" placeholder="3" required ngModel="{{widget.size}}" #size="ngModel">
+				<input class="form-control" type="number" name="size"  placeholder="3" required ngModel="{{widget.size}}" #size="ngModel">
 			</div>
 
 			<!-- Alert Empty Size -->

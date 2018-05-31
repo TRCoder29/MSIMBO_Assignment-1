@@ -1,7 +1,7 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { NgForm } from '@angular/forms'
 import { UserService } from '../../../services/user.service.client'
 import { User } from '../../../models/user.model.client'
+import { NgForm } from '@angular/forms'
 import { Router } from '@angular/router'
 
 @Component({
@@ -28,7 +28,6 @@ export class LoginComponent implements OnInit {
   login(){
     this.username = this.loginForm.value.username;
     this.password = this.loginForm.value.password;
- 
     // User data is sourced from the '../../../services/user.service.client'
     var user: User = this.userService.findUserByCredentials(this.username, this.password);
     if (user){

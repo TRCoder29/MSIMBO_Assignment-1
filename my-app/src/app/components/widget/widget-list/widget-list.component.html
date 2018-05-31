@@ -13,39 +13,37 @@
 		<a routerLink="/user/{{uid}}/website/{{wid}}/page/{{pid}}/widget/new" class="sw-black float-right"><i class="fas fa-plus"></i></a>
 	</nav>
 
-	<!-- Title -->
-	<h1>Media</h1>
-
 	<br>
 
 	<!-- Widget Section -->
 	<div class="container-fluid">
-
-		<!-- Edit Widget Links (Cogs)-->
-		<div class="sw-absolute-right widget-front">
-			<a routerLink="/user/{{uid}}/website/{{wid}}/page/{{pid}}/widget/{{widget._id}}">
-			<i class="fas fa-cogs"></i></a>
-			<a class="sw-black" href="#">
-			<i class="fas fa-bars"></i></a>
+		<div *ngFor="let widget of widgets">
+			<!-- Edit Widget (Cogs)-->
+			<div class="sw-absolute-right widget-front" >
+				<a routerLink="/user/{{uid}}/website/{{wid}}/page/{{pid}}/widget/{{widget._id}}">
+				<i class="fas fa-cogs"></i></a>
+				<a class="sw-black" href="#">
+				<i class="fas fa-bars"></i></a>
+			</div>
 		</div>
 
 		<!-- Content of Each Widget -->
 		<div [ngSwitch]="widget.widgetType">
-			
 			<!-- Heading -->
 			<div *ngSwitchCase="'HEADING'">
-				<div [ngSwitch]="widget.size"></div>
+				<div [ngSwitch]="widget.size">
 					<div *ngSwitchCase="1"><h1>{{widget.text}}</h1></div>
 					<div *ngSwitchCase="2"><h2>{{widget.text}}</h2></div>
 					<div *ngSwitchCase="3"><h3>{{widget.text}}</h3></div>
 					<div *ngSwitchCase="4"><h4>{{widget.text}}</h4></div>
 					<div *ngSwitchCase="5"><h5>{{widget.text}}</h5></div>
 					<div *ngSwitchCase="6"><h6>{{widget.text}}</h6></div>
+				</div>
 			</div>
 
 			<!-- Image -->
 			<div *ngSwitchCase="'IMAGE'">
-				<img [src]="widget.url" [style.width]="widget.width"></img>
+				<img [src]="widget.url" [style.width]="widget.width">
 			</div>
 
 			<!-- YouTube -->
@@ -56,6 +54,7 @@
 			</div>
 
 		</div>
+	</div>
 
 	<!-- Footer -->
 	<nav class="navbar navbar-dark sw-gray fixed-bottom sw-gray">

@@ -30,7 +30,7 @@ export class WidgetListComponent implements OnInit {
   getYoutubeUrl(url){
   	let embedUrl = "https://www.youtube.com/embed";
   	const parsedUrl = url.split('/');
-  	embedUrl += parsedUrl(parsedUrl.length -1);
+  	embedUrl += parsedUrl[parsedUrl.length -1]
 
   	return this.sanitizer.bypassSecurityTrustResourceUrl(embedUrl);
   }
