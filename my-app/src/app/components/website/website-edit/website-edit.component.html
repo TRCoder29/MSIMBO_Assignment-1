@@ -47,19 +47,21 @@
 					<!-- Website Name -->
 					<div class="form-group"></div>
 						<label for="website-name"><b>Name</b></label>
-						<input class="form-control" type="text" name="name" placeholder="Name" required ngModel #name="ngModel">
+						<input class="form-control" type="text" name="name" placeholder="Name" required ngModel={{website.name}} #name="ngModel">
 
 					<!-- Missing Name Alert -->
 					<div class="alert alert-warning" *ngIf="name.invalid && name.touched">Name cannot be empty.</div>
 
 					<!-- Website Description -->
-					<div class="form-group"></div>
+					<div class="form-group">
 						<label for="website-description"><b>Description</b></label>
-						<textarea class="form-control" rows="5" name="description" placeholder="Description" ngModel #description="ngModel"></textarea>
+						<textarea class="form-control" rows="5" name="description" placeholder="Description" ngModel={{website.description}} #description="ngModel"></textarea>
+					</div>
+
 					<!-- Delete Button Website-List-->
-					<a (click)="delete" type="button" class="btn btn-danger btn-block">Delete</a>
+					<button (click)="delete" type="button" class="btn btn-danger btn-block">Delete</button>
 					<!-- Update Button Website-List-->
-					<button class="btn btn-primary sw-color-white btn-block float-right" type="submit">Update</button>
+					<button class="btn btn-primary btn-block float-right" type="submit">Update</button>
 				</form>
 			</div>
 		</div>		

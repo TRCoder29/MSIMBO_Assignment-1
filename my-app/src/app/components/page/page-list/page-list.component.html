@@ -1,13 +1,13 @@
 	<!-- Navigation Bar -->
 	<nav class="navbar navbar-dark sw-gray fixed-top">
 		<!-- Back Button (<) Website-List Link-->
-		<a routerLink="user/:userId/website" class="sw-black"><i class="fas fa-chevron-left"></i></a>
+		<a routerLink="user/{{uid}}/website" class="sw-black"><i class="fas fa-chevron-left"></i></a>
 		<div class="sw-80-width">
 			<!-- Pages Link Page-List Link-->
-			<a class="sw-left-padding sw-no-underline" routerLink="/user/:uid/website/:wid/page"><b class="sw-black">Pages</b></a>
+			<a class="sw-left-padding sw-no-underline" routerLink="/user/{{uid}}/website/{{wid}}/page"><b class="sw-black">Pages</b></a>
 		</div>
 		<!-- New Page (+) Page-New Link-->
-		<a routerLink="/user/:uid/website/:wid/page/new" class="sw-black float-right"><i class="fas fa-plus"></i></a>
+		<a routerLink="/user/{{uid}}/website/{{wid}}/page/new" class="sw-black float-right"><i class="fas fa-plus"></i></a>
 	</nav>
 
 	<!-- List Cogs -->
@@ -15,38 +15,11 @@
 		<div>
 			<ul class="list-group">
 			<!-- Edit Website List (Cogs) website-edit.html-->
-				<li class="list-group-item">
-					<!-- Blog Post Link Widget-List Link-->
-					<a routerLink="/user/:uid/website/:wid/page/:pid/widget" class="text-primary sw-no-underline">Blog Post</a>
+				<li class="list-group-item" *ngFor="let page of pages">
+					<!-- Widget-List Link-->
+					<a routerLink="/user/{{uid}}/website/{{wid}}/page/{{page._id}}/widget"  class="text-primary sw-no-underline">{{page.name}}</a>
 					<!-- Page-Edit Link-->
-					<a class="float-right" routerLink="/user/:uid/website/:wid/page/:pid"><i class="fas fa-cog"></i></a>
-				</li>
-
-				<!-- Blogs Link Widget-List Link-->
-				<li class="list-group-item">
-					<a routerLink="/user/:uid/website/:wid/page/:pid/widget" class="text-primary sw-no-underline">Blogs</a>
-					<!-- Page-Edit Link-->
-					<a class="float-right" routerLink="/user/:uid/website/:wid/page/:pid"><i class="fas fa-cog"></i></a>
-				</li>
-
-				<!-- Home Link Widget-List Link-->
-				<li class="list-group-item">
-					<a routerLink="/user/:uid/website/:wid/page/:pid/widget" class="text-primary sw-no-underline">Home</a>
-					<!-- Page-Edit Link-->
-					<a class="float-right" routerLink="/user/:uid/website/:wid/page/:pid"><i class="fas fa-cog"></i></a>
-				</li>
-
-				<!-- About Link Widget-List Link-->
-				<li class="list-group-item">
-					<a routerLink="/user/:uid/website/:wid/page/:pid/widget" class="text-primary sw-no-underline">About</a>
-					<!-- Page-Edit Link -->
-					<a class="float-right" routerLink="/user/:uid/website/:wid/page/:pid"><i class="fas fa-cog"></i></a>
-				</li>
-
-				<!-- Contact Link Widget-List-->
-				<li class="list-group-item">
-					<a routerLink="/user/:uid/website/:wid/page/:pid/widget" class="text-primary sw-no-underline">Contact</a>
-					<a class="float-right" routerLink="/user/:uid/website/:wid/page/:pid"><i class="fas fa-cog"></i></a>
+					<a class="float-right" routerLink="/user/{{uid}}/website/{{wid}}/page/{{page._id}}"><i class="fas fa-cog"></i></a>
 				</li>
 			</ul>
 		</div>
@@ -55,6 +28,6 @@
 		<nav class="navbar navbar-dark sw-gray fixed-bottom">
 		<!-- Profile User (Button) -->
 		<div class="sw-width">
-			<a class="sw-font-white float-right" routerLink="/user/:userId"><i class="fas fa-user"></i></a>
+			<a class="sw-font-white float-right" routerLink="/user/{{uid}}"><i class="fas fa-user"></i></a>
 		</div>
 	</nav>
