@@ -2,6 +2,10 @@
 	<nav class="navbar navbar-dark bg-primary fixed-top">
 		<!-- Profile Link -->
 		<a class = "navbar-brand" routerLink="/user/{{uid}}"><strong>Profile</strong></a>
+<<<<<<< HEAD
+=======
+		
+>>>>>>> 0025ea76ffd5f5bb678c78b5e7d7ce94b9a0520b
 		<button class=" btn sw-font-white sw-button-to-a" type="submit" form="profileForm" [disabled]="f.invalid"><i class="fas fa-check"></i></button>
 	</nav>
 
@@ -17,23 +21,39 @@
 		<form (ngSubmit)="update()" id="profileForm" #f="ngForm">
 			<!-- Username -->
 			<div class="form-group">
+<<<<<<< HEAD
 				<div><label for="username"><strong>Username</strong></label></div>
 				<input class="form-control" name="username" type="text"  placeholder="Username"  required ngModel={{user.username}} #username="ngModel">
+=======
+				<input type="text" name="username" placeholder="Username" class="form-control" required ngModel={{user.username}} #username="ngModel">
+>>>>>>> 0025ea76ffd5f5bb678c78b5e7d7ce94b9a0520b
 			</div>
 			<!-- Email -->
 			<div class="form-group">
+<<<<<<< HEAD
 				<div><label for="email"><strong>Email</strong></label></div>
 				<input class="form-control" name="email" type="email"  placeholder="Email"  ngModel={{user.email}} #email="ngModel">
+=======
+				<input type="Email" name="email" placeholder="Email" class="form-control" ngModel={{user.email}} #email="ngModel">
+>>>>>>> 0025ea76ffd5f5bb678c78b5e7d7ce94b9a0520b
 			</div>
 			<!-- First Name -->
 			<div class="form-group">
+<<<<<<< HEAD
 				<div><label for="firstName"><strong>First Name</strong></label></div>
 				<input class="form-control" name="firstName" type="text" placeholder="First Name" required ngModel={{user.firstName}} #firstName="ngModel">
+=======
+				<input type="text" name="firstName" placeholder="First Name" class="form-control" required ngModel={{user.firstName}} #firstName="ngModel">
+>>>>>>> 0025ea76ffd5f5bb678c78b5e7d7ce94b9a0520b
 			</div>
 			<!-- Last Name -->
 			<div class="form-group">
+<<<<<<< HEAD
 				<div><label for="lastName"><strong>Last Name</strong></label></div>
 				<input class="form-control" name="LastName" type="text" placeholder="Last Name" ngModel={{user.lastName}} #lastName="ngModel">
+=======
+				<input type="text" name="lastName" placeholder="Last Name" class="form-control" ngModel={{user.lastName}} #lastName="ngModel">
+>>>>>>> 0025ea76ffd5f5bb678c78b5e7d7ce94b9a0520b
 			</div>
 
 			<div>

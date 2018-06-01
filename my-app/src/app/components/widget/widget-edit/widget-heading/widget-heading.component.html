@@ -1,41 +1,55 @@
 	<!-- Navigation Bar -->
 	<nav class="navbar navbar-dark sw-gray fixed-top">
 		<!-- Cancel (<) Widget-List Link-->
-		<a routerLink="user/:uid/website/:wid/page/:pid/widget" class="sw-black"><i class="fas fa-chevron-left"></i></a>
+		<a routerLink="user/{{uid}}/website/{{wid}}/page/{{pid}}/widget" class="sw-black"><i class="fas fa-chevron-left"></i></a>
+
+		<!-- New Page Title Widget-Heading/Edit Link-->
 		<div class="sw-80-width">
-			<!-- New Page Title Widget-Heading/Edit Link-->
-			<a class="sw-left-padding sw-no-underline" routerLink="/user/:uid/website/:wid/page/:pid/widget/:wgid"><b class="sw-black">Choose Widget</b></a>
+			<a class="sw-left-padding sw-no-underline" routerLink="/user/{{uid}}/website/{{wid}}/page/{{pid}}/widget/{{wgid}}"><b class="sw-black">Choose Widget</b></a>
 		</div>
+
 		<!-- OK (/) Widget-List Link-->
-		<a routerLink="/user/:uid/website/:wid/page/:pid/widget" class="sw-black float-right"><i class="fas fa-check"></i></a>
+		<button class="btn sw-button-to-a sw-black float-right" type="submit" form="widgetForm" [disabled]="f.invalid"><i class="fas fa-check"></i></button>
 	</nav>
 
 	<!-- Entry Fields -->
 	<div class="container">
-		<form>
+		<form id="widgetForm" (ngSubmit)="update()" #f="ngForm">
+
 			<!-- Page Name -->
 			<div><label>Name</label></div>
 			<div class="form-group">
-				<input type="text" name="Name" class="form-control" placeholder="Name">
+				<input class="form-control" type="text" name="name" placeholder="Name" ngModel="{{widget.name}}" #name="ngModel"  >
 			</div>
 
-			<!-- Page Title -->
+			<!-- Page Text -->
 			<div><label>Text</label></div>
 			<div class="form-group">
-				<input type="text" name="Title" class="form-control" placeholder="Title">
+				<input class="form-control" type="text" name="text"  placeholder="Text" required ngModel="{{widget.text}}" #text="ngModel">
 			</div>
+
+			<!-- Alert Empty Text -->
+			<div class="alert alert-danger" *ngIf="text.invalid && text.touched">Text cannot be empty.</div>
 
 			<!-- Size -->
 			<div class="form-group">
 				<div><label>Size</label></div>
-				<input type="number" name="Size" class="form-control" placeholder="3">
+				<input class="form-control" type="number" name="size"  placeholder="3" required ngModel="{{widget.size}}" #size="ngModel">
 			</div>
+
+			<!-- Alert Empty Size -->
+			<div class="alert alert-danger" *ngIf="size.invalid && size.touched">Size cannot be empty.</div>
 
 			<br>
 
+			<!-- Submit Widget-List Link-->
+			<div>
+				<button class="btn btn-primary btn-block" type="submit" [disabled]="f.invalid">Submit</button>
+			</div>
+
 			<!-- Delete Widget-List Link-->
 			<div>
-				<a class="btn btn-danger btn-block" routerLink="/user/:uid/website/:wid/page/:pid/widget">Delete</a>
+				<button class="btn btn-danger btn-block" type="button" (click)="remove">Delete</button>
 			</div>
 		</form>
 
@@ -43,6 +57,6 @@
 	<nav class="navbar navbar-dark sw-gray fixed-bottom">
 		<!-- Profile User (Button) -->
 		<div class="sw-width">
-			<a class="sw-font-white float-right" routerLink="/user/:userId"><i class="fas fa-user"></i></a>
+			<a class="sw-font-white float-right" routerLink="/user/{{uid}}"><i class="fas fa-user"></i></a>
 		</div>
 	</nav>
