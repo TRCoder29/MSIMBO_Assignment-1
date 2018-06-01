@@ -29,11 +29,14 @@ export class RegisterComponent implements OnInit {
   	this.password = this.registerForm.value.password;
   	this.verifyPassword = this.registerForm.value.verifyPassword;
 
-  	if(this.password != this.verifyPassword) {
+  	if(this.password !== this.verifyPassword) {
   		this.passwordError = true;
+      this.usernameError = false;
+
   	} else{
   		this.passwordError = false;
-  		const user: User = this.userService.findUserByUsername(this.username)
+
+  		const user: User = this.userService.findUserByUsername(this.username);
   		if(user){
   			this.usernameError = true;
   		} else {
@@ -41,15 +44,16 @@ export class RegisterComponent implements OnInit {
   			this.passwordError = false;
         
   			const newUser: User = {
-  				_id: " ",
+  				_id: "",
   				username: this.username,
   				password: this.password,
-  				firstName: " ",
-  				lastName: " ",
-  				email: " ",
+  				firstName: "",
+  				lastName: "",
+  				email: "",
   			};
+
   			this.userService.createUser(newUser);
-  			var id = this.userService.findUserByUsername(this.username)._id;
+  			var id: string  = this.userService.findUserByUsername(this.username)._id;
   			this.router.navigate(['user', user._id]);
   		}
   	}

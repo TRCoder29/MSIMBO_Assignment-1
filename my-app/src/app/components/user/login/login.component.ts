@@ -30,12 +30,11 @@ export class LoginComponent implements OnInit {
     this.password = this.loginForm.value.password;
  
     // User data is sourced from the '../../../services/user.service.client'
-    var user: User = this.userService.findUserByCredentials(this.username, this.password);
-    if (user){
+    const user: User = this.userService.findUserByCredentials(this.username, this.password);
+    if(user){
     	//if user is found, navigate to profile, no error flag needed
     	this.errorFlag = false;
     	this.router.navigate(['user', user._id]);
-
     } else {
       // if user is not found, error flag triggered
     	this.errorFlag = true;

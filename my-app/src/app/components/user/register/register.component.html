@@ -2,12 +2,11 @@
 		<!-- Register Header -->
 		<h1>Register</h1>
 
-
 		<!-- This is the register form. It has the username, password and verify password fields. -->
 		<form (ngSubmit)="register()" #f="ngForm">
 			<!-- Username -->
 			<div class="form-group">
-				<input class="form-control" type="text" name="Username" placeholder="Username" required ngModel #username="ngModel">
+				<input class="form-control" name="username" type="text" placeholder="Username" required ngModel #username="ngModel">
 			</div>
 
 			<!-- Missing/Invalid username alert -->
@@ -18,7 +17,7 @@
 
 			<!-- Password -->
 			<div class="form-group">
-				<input class="form-control" type="Password" name="Password" placeholder="Password" required ngModel #password="ngModel">
+				<input class="form-control" name="password" type="password" placeholder="Password" required ngModel #password="ngModel">
 			</div>
 
 			<!-- Missing/Invalid password alert -->
@@ -26,7 +25,7 @@
 
 			<!-- Verify Password -->
 			<div class="form-group">
-				<input class="form-control" type="Password" name="verifyPassword" required ngModel #verifyPassword="ngModel" placeholder="Verify Password">
+				<input class="form-control" name="verifyPassword" type="password" required ngModel #verifyPassword="ngModel" placeholder="Verify Password">
 			</div>
 
 			<!-- Missing/Invalid verify password alert -->

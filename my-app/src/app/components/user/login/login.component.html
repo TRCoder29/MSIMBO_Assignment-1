@@ -4,13 +4,13 @@
 		<h1>Login</h1>
 
 		<!-- Invalid Username/Password Alert -->
-		<div *ngIf="errorFlag" class="alert alert-danger">Invalid username or password!</div>
+		<div class="alert alert-danger" *ngIf="errorFlag" >Invalid username or password!</div>
 
 		<!-- This is the login form. It has the username and password fields. -->
 		<form (ngSubmit)="login()" #f="ngForm">
 			<!-- Username -->
 			<div class="form-group">
-				<input class="form-control" type="text" name="Username" placeholder="Username" required ngModel #username="ngModel">
+				<input class="form-control" name="username" type="text" placeholder="Username" required ngModel #username="ngModel">
 			</div>
 
 			<!-- Missing username alert -->
@@ -18,7 +18,7 @@
 
 			<!-- Password -->
 			<div class="form-group">
-				<input class="form-control" type="Password" name="Password" placeholder="Password" required ngModel #password="ngModel">
+				<input class="form-control" name="password" type="Password" placeholder="Password" required ngModel #password="ngModel">
 			</div>
 
 			<!-- Missing password alert -->
@@ -26,7 +26,7 @@
 
 			<div>
 				<!-- Login Button Profile Link-->
-				<button class="btn btn-primary btn-block" [disabled]="f.invalid" type="submit">Login</button>
+				<button class="btn btn-primary btn-block" type="submit" [disabled]="f.invalid">Login</button>
 				
 				<!-- Register Button Register Link-->
 				<button class="btn btn-success btn-block" routerLink="/register">Register</button>

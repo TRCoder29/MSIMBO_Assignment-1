@@ -4,10 +4,12 @@
 			<div class="container-fluid">
 				<!-- Back Button Website-List Link-->
 				<a class="sw-font-white" routerLink="/user/{{uid}}/website"><i class="fas fa-chevron-left"></i></a>
+
 				<!-- Websites Link Website-List Link-->
-				<a class="sw-left-padding sw-no-underline" routerLink="/user/{{uid}}/website"><b class="sw-font-white">Websites</b></a>
+				<a class="sw-font-white sw-left-padding sw-no-underline" routerLink="/user/{{uid}}/website"><b class="sw-font-white">Websites</b></a>
+
 				<!-- New Website Link Website-New Link-->
-				<a routerLink="/user/{{uid}}/website/new" class="sw-font-white float-right"><i class="fas fa-plus"></i></a>
+				<a class="sw-font-white float-right" routerLink="/user/{{uid}}/website/new" ><i class="fas fa-plus"></i></a>
 			</div>
 		</div>
 
@@ -15,9 +17,9 @@
 		<div class="col-sm-8">
 			<div class="container-fluid">
 				<!-- New Website Title Website-New Link-->
-				<a routerLink="/user/{{uid}}/website/new" class="sw-no-underline"><b class="sw-font-white">New Website</b></a>
+				<a class="sw-font-white sw-no-underline" routerLink="/user/{{uid}}/website/new" ><b class="sw-font-white">New Website</b></a>
 				<!-- Check (/) Website-List Link-->
-				<button class="sw-font-white float-right sw-button-to-a" type="submit" form="websiteForm" [disabled]="f.invalid"><i class="fas fa-check"></i></button>
+				<button class="btn sw-font-white float-right sw-button-to-a" type="submit" form="websiteForm" [disabled]="f.invalid"><i class="fas fa-check"></i></button>
 			</div>
 		</div>
 	</nav>
@@ -33,7 +35,7 @@
 							<!-- Page-List-->
 							<a class="text-primary sw-no-underline" routerLink="/user/{{uid}}/website/{{website.id}}/page">{{website.name}}</a>
 							<!-- Edit Website List (Cogs) Website-Edit Link-->
-							<a class="float-right" routerLink="/user/{{uid}}/website/{{website._id}}"><i class="fas fa-cog"></i></a>
+							<a class="float-right" routerLink="/user/{{uid}}/websitese/{{website._id}}"><i class="fas fa-cog"></i></a>
 						</li>
 						</ul>
 					</div>

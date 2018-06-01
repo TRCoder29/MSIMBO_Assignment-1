@@ -2,33 +2,35 @@
 	<nav class="navbar navbar-dark bg-primary fixed-top">
 		<!-- Back Button (<) Profile Link-->
 		<a class="sw-font-white" routerLink="/user/{{uid}}"><i class="fas fa-chevron-left"></i></a>
+
 		<!-- Website (Clickable) Website-List Link-->
 		<a class = "navbar-brand" routerLink="/user/{{uid}}/website"><strong>Websites</strong></a>
+
 		<!-- (+) Navigation -->
 		<a class="sw-font-white" routerLink="/user/{{uid}}/website/new"><i class="fas fa-plus"></i></a>
 	</nav>
 
-	<!-- List Cogs -->
+	<!-- Website List and Cogs -->
 	<nav>
 		<div>
-			<!-- Edit Website List (Cogs) website-edit.html-->
+			<!-- Edit Website List-->
 			<ul class="list-group">
 				<!-- Website List -->
 				<li class="list-group-item" *ngFor = "let website of websites">
-					<!-- Page-List Link -->
+					<!-- Website-List Link -->
 					<a class="text-primary sw-no-underline" routerLink="/user/{{uid}}/website/{{website.id}}/page">{{website.name}}</a>
-					<!-- Website-Edit Link -->
+					<!-- Website-Edit Cogs -->
 					<a class="float-right" routerLink="/user/{{uid}}/website/{{website._id}}"><i class="fas fa-cog"></i></a>
 				</li>
-		</ul>
+			</ul>
 		</div>
-	
 	</nav>
-		<!-- footer -->
-		<nav class="navbar navbar-dark bg-primary fixed-bottom">
-		<!-- Profile User (Button) -->
-		<div class="sw-width">
-			<a class="sw-font-white float-right" routerLink="/user/{{uid}}"><i class="fas fa-user"></i></a>
+
+	<!-- footer -->
+	<nav class="navbar navbar-dark bg-primary fixed-bottom">
+	<!-- Profile User (Button) -->
+	<div class="sw-width">
+		<a class="sw-font-white float-right" routerLink="/user/{{uid}}"><i class="fas fa-user"></i></a>
 		</div>
 	</nav>
 

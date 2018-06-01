@@ -26,16 +26,14 @@ export class ProfileComponent implements OnInit {
   constructor(private activatedRoute: ActivatedRoute, private userService: UserService) { }
 
   ngOnInit() {
-  	var profile = this;
-  	this.activatedRoute.params.subscribe(
-	function info(params){
-		profile.uid = params['uid']
-		profile.user = profile.userService.findUserById(profile.uid);
-		profile.username = profile.user.username;
-		profile.email = profile.user.email;
-		profile.firstName = profile.user.firstName;
-		profile.lastName = profile.user.lastName;
-		profile.oldUsername = profile.user.username;
+  	this.activatedRoute.params.subscribe(params =>{
+		this.uid = params['uid'];
+		this.user = this.userService.findUserById(this.uid);
+		this.username = this.user.username;
+		this.email = this.user.email;
+		this.firstName = this.user.firstName;
+		this.lastName = this.user.lastName;
+		this.oldUsername = this.user.username;
   });
 }
 

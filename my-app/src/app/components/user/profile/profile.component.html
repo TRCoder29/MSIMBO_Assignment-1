@@ -1,39 +1,39 @@
 	<!-- Navigation Bar -->
 	<nav class="navbar navbar-dark bg-primary fixed-top">
 		<!-- Profile Link -->
-		<a class = "navbar-brand" routerLink="/user/:userId"><strong>Profile</strong></a>
+		<a class = "navbar-brand" routerLink="/user/{{uid}}"><strong>Profile</strong></a>
 		<button class=" btn sw-font-white sw-button-to-a" type="submit" form="profileForm" [disabled]="f.invalid"><i class="fas fa-check"></i></button>
 	</nav>
 
+	<!-- Profile Form Container -->
 	<div class="container">
-		<h1>Profile</h1>
+		<!-- Username alert if username already exists -->
+		<div class="alert alert-danger" *ngIf="usernameTaken" >Username taken, please try another one.</div>
 
-		<!-- Alert if username already exists -->
-		<div *ngIf="usernameTaken" class="alert alert-danger">Username taken, please try another one.</div>
+		<!-- Profile alert if profile updated successfully -->
+		<div class="alert alert-success" *ngIf="submitSuccess" >Updated successfully!</div>
 
-		<!-- Alert if profile updated successfully -->
-		<div *ngIf="submitSuccess" class="alert alert-success">Updated successfully!</div>
-
+		<!-- Profile Form -->
 		<form (ngSubmit)="update()" id="profileForm" #f="ngForm">
 			<!-- Username -->
-			<div><label for="username"><strong>Username</strong></label></div>
 			<div class="form-group">
-				<input type="text" name="Username" placeholder="Username" class="form-control" required ngModel={{user.username}} #username="ngModel">
+				<div><label for="username"><strong>Username</strong></label></div>
+				<input class="form-control" name="username" type="text"  placeholder="Username"  required ngModel={{user.username}} #username="ngModel">
 			</div>
 			<!-- Email -->
-			<div><label for="email"><strong>Email</strong></label></div>
 			<div class="form-group">
-				<input type="Email" name="Email" placeholder="Email" class="form-control" ngModel={{user.email}} #email="ngModel">
+				<div><label for="email"><strong>Email</strong></label></div>
+				<input class="form-control" name="email" type="email"  placeholder="Email"  ngModel={{user.email}} #email="ngModel">
 			</div>
 			<!-- First Name -->
-			<div><label for="firstName"><strong>First Name</strong></label></div>
 			<div class="form-group">
-				<input type="text" name="FirstName" placeholder="First Name" class="form-control" required ngModel={{user.firstName}} #firstName="ngModel">
+				<div><label for="firstName"><strong>First Name</strong></label></div>
+				<input class="form-control" name="firstName" type="text" placeholder="First Name" required ngModel={{user.firstName}} #firstName="ngModel">
 			</div>
 			<!-- Last Name -->
-			<div><label for="lastName"><strong>Last Name</strong></label></div>
 			<div class="form-group">
-				<input type="text" name="LastName" placeholder="Last Name" class="form-control" ngModel={{user.lastName}} #lastName="ngModel">
+				<div><label for="lastName"><strong>Last Name</strong></label></div>
+				<input class="form-control" name="LastName" type="text" placeholder="Last Name" ngModel={{user.lastName}} #lastName="ngModel">
 			</div>
 
 			<div>
@@ -44,10 +44,11 @@
 			</div>
 		</form>
 	</div>
+
 	<!-- Footer -->
 	<nav class="navbar navbar-dark bg-primary fixed-bottom">
 		<div class="sw-width">
-			<a class="sw-font-white float-right" routerLink="/user/:userId"><i class="fas fa-user"></i></a>
+			<a class="sw-font-white float-right" routerLink="/user/{{uid}}"><i class="fas fa-user"></i></a>
 		</div>
 	</nav>
 
