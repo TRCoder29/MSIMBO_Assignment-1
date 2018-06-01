@@ -1,210 +1,81 @@
-	<nav class="row navbar navbar-dark bg-primary fixed-top">
+<!-- Navigation -->
+<nav class="row navbar navbar-dark bg-primary fixed-top">
 	<!-- Left Navbar -->
-		<div class="col-sm-4 d-none d-sm-block">
-			<div class="container-fluid">
-				<!-- Back Button Website-List Link-->
-				<a class="sw-font-white" routerLink="/user/{{uid}}/website"><i class="fas fa-chevron-left"></i></a>
+	<div class="col-sm-4 d-none d-sm-block">
+		<div class="container-fluid">
+			<!-- Back Button Website-List Link-->
+			<a class="sw-font-white" routerLink="/user/{{uid}}/website"><i class="fas fa-chevron-left"></i></a>
 
-				<!-- Websites Link Website-List Link-->
-				<a class="sw-font-white sw-left-padding sw-no-underline" routerLink="/user/{{uid}}/website"><b class="sw-font-white">Websites</b></a>
+			<!-- Websites Link Website-List Link-->
+			<a class="sw-font-white sw-left-padding sw-no-underline" routerLink="/user/{{uid}}/website"><b>Websites</b></a>
 
-				<!-- New Website Link Website-New Link-->
-				<a class="sw-font-white float-right" routerLink="/user/{{uid}}/website/new" ><i class="fas fa-plus"></i></a>
-			</div>
+			<!-- New Website Link Website-New Link-->
+			<a class="sw-font-white float-right" routerLink="/user/{{uid}}/website/new" ><i class="fas fa-plus"></i></a>
 		</div>
+	</div>
 
-		<!-- Right Navbar -->
-		<div class="col-sm-8">
-			<div class="container-fluid">
-				<!-- New Website Title Website-New Link-->
-				<a class="sw-font-white sw-no-underline" routerLink="/user/{{uid}}/website/new" ><b class="sw-font-white">New Website</b></a>
-				<!-- Check (/) Website-List Link-->
-				<button class="btn sw-font-white float-right sw-button-to-a" type="submit" form="websiteForm" [disabled]="f.invalid"><i class="fas fa-check"></i></button>
-			</div>
+	<!-- Right Navbar -->
+	<div class="col-sm-8">
+		<div class="container-fluid">
+			<!-- New Website Title Website-New Link-->
+			<a class="sw-font-white sw-no-underline" routerLink="/user/{{uid}}/website/new"><b class="sw-font-white">New Website</b></a>
+
+			<!-- Check (/) Website-List Link-->
+			<button class="btn sw-font-white float-right sw-button-to-a" type="submit" form="websiteForm" [disabled]="f.invalid"><i class="fas fa-check"></i></button>
 		</div>
-	</nav>
+	</div>
+</nav>
 
-	<!-- Left Website List Cogs -->
-		<div class="row">
-			<div class="col-sm-4 d-none d-sm-block">
-				<br>
-				<br>
-					<div class="container">
-						<ul class="list-group">
-						<li class="list-group-item" *ngFor = "let website of websites">
-							<!-- Page-List-->
-							<a class="text-primary sw-no-underline" routerLink="/user/{{uid}}/website/{{website.id}}/page">{{website.name}}</a>
-							<!-- Edit Website List (Cogs) Website-Edit Link-->
-							<a class="float-right" routerLink="/user/{{uid}}/websitese/{{website._id}}"><i class="fas fa-cog"></i></a>
-						</li>
-						</ul>
-					</div>
+<!-- Left Website List Cogs -->
+<div class="row">
+	<div class="col-sm-4 d-none d-sm-block">
+	<br>
+	<br>
+		<div class="container">
+			<ul class="list-group">
+				<li class="list-group-item" *ngFor="let website of websites">
+					<!-- Page-List-->
+					<a class="text-primary sw-no-underline" routerLink="/user/{{uid}}/website/{{website.id}}/page">{{website.name}}</a>
+			
+					<!-- Edit Website List (Cogs) Website-Edit Link-->
+					<a class="float-right" routerLink="/user/{{uid}}/website/{{website._id}}"><i class="fas fa-cog"></i></a>
+				</li>
+			</ul>
+		</div>
+	</div>
+</div>
+
+<!-- Right Form -->
+<div class="col-sm-8 float-right">
+	<div class="container">
+		<form id="websiteForm" (ngSubmit)="create()" #f="ngForm">
+			<!-- Website Name -->
+			<div class="form-group">
+				<label for="website-name"><b>Name</b></label>
+				<input class="form-control" type="text" name="name" placeholder="Name" required ngModel #name="ngModel">
 			</div>
 
+			<!-- Missing Name Alert -->
+			<div class="alert alert-warning" *ngIf="name.invalid && name.touched">Name cannot be empty.</div>
 
-	<!-- Right Fields -->
-		<div class="col-sm-8 float-right">
-			<div class="container">
-				<form id="websiteForm" (ngSubmit)="create()" #f=ngForm>
-					<!-- Website Name -->
-					<div class="form-group"></div>
-						<label for="website-name"><b>Name</b></label>
-						<input class="form-control" type="text" name="name" placeholder="Name" required ngModel #name="ngModel">
-
-					<!-- Missing Name Alert -->
-					<div class="alert alert-warning" *ngIf="name.invalid && name.touched">Name cannot be empty.</div>
-
-					<!-- Website Description -->
-					<div class="form-group"></div>
-						<label for="website-description"><b>Description</b></label>
-						<textarea class="form-control" rows="5" name="description" placeholder="Description" ngModel #description="ngModel"></textarea>
-				</form>
+			<!-- Website Description -->
+			<div class="form-group">
+				<label for="website-description"><b>Description</b></label>
+				<textarea class="form-control" name="description" rows="5" placeholder="Describe your website here." ngModel #description="ngModel"></textarea>
 			</div>
 
 			<!-- Cancel Button, Nav to Website List -->
 			<a routerLink="/user/{{uid}}/website" class="btn btn-danger">Cancel</a>
-			<button routerLink="/user/:uid/website" class="btn btn-success float-right" [disabled]="f.invalid">Submit</button>
-			
-		</div>
-				
-	<!-- footer -->
-	<nav class="navbar navbar-dark bg-primary fixed-bottom">
-		<!-- Profile User (Button) -->
-		<div class="sw-width">
-			<a class="sw-font-white float-right" routerLink="/user/:userId"><i class="fas fa-user"></i></a>
-		</div>
-	</nav>
+			<button routerLink="/user/{{uid}}/website" class="btn btn-success float-right" [disabled]="f.invalid">Submit</button>
+		</form>
+	</div>
+</div>
 
-<!-- Website-new allows users to create new websites. It's currenly showing the default websites list and other default route paths. We have to make this dynamic the way we did website-list.
+<!-- footer -->
+<nav class="navbar navbar-dark bg-primary fixed-bottom">
+	<!-- Profile User (Button) -->
+	<div class="sw-width">
+		<a class="sw-font-white float-right" routerLink="/user/{{uid}}"><i class="fas fa-user"></i></a>
+	</div>
+</nav>
 
-We will need the same variables, imports, components and ngOnInit function from the website-list component ts for the website-new component ts, so we can copy and paste them in their respective places.
-
-Then, we go to the html, delete all <li> items, except for the first one, which we will be editing.
-
-Change the "fas-fa-check" <a> tag to a <button> with class="sw-font-white float-right sw-button-to-a", type="submit", form="websiteForm" and [disabled]="f.invalid".
-
-Then we update the list of websites by adding *ngFor = "let website of websites" to <li>, which lets the component ts doc know what we're using this list for. It will be a list of websites.
-
-Then we change:
-		<a routerLink="/user/:uid/website/:wid/page" class="text-primary sw-no-underline">Address Book App</a>
-
-		to
-		
-		<a class="text-primary sw-no-underline" routerLink="/user/{{uid}}/website/{{website.id}}/page">{{website.name}}</a>
-
-We took this from what we did in the website-list html.
-
-Now, we look at the form on the right side of the page. In the <form> tag, we add id="websiteForm", to link it with the form="websiteForm" that we put into the check mark <button> that we just edited a little while ago. id="websiteForm" identifies the form to be submitted, and form="websiteForm tells the button which form it will be working for by using.
-
-To the <form> tag, we also add (ngSubmit)="create()" and #f="ngForm"
-
-(ngSubmit)="create()" will link the form on the html page to the create() function in the component ts doc. #f="ngForm" will link the form to the ViewChild function in the component ts doc, where it says @ViewChild('f') websiteForm: NgForm.
-
-Now, we want to update the inputs with their ngModel.
-
-required ngModel #name="ngModel"
-
-and 
-
-ngModel #description="ngModel"
-
-Notice that we didn't make the description required, because all we really need the user to enter is the name. The description will be optional.
-
-Update the Cancel button from
-
-<a routerLink="/user/:uid/website" class="btn btn-success float-right">Submit</a>
-
-to
-
-<button routerLink="/user/:uid/website" class="btn btn-success float-right" [disable]="f.invalid">Submit</button>
-
-It disables it if the form isn't filled in.
-
-Note, because this button is inside of the form, we don't have to tell it which form it's assigned to submit.
-
-Now, we link the form in the html to the component ts doc.
-
-We import forms: import { NgForm } from '@angular/forms'.
-
-Then we add the ViewChild: import { ... ViewChild } from '@angular/core', which makes the @ViewChild possible to run.
-
-Then, we add @ViewChild('f') websiteForm: NgForm;
-
-Now, let's add an alert so that it will fire if the Name field is left empty.
-
-	<div class="alert alert-warning" *ngIf="name.invalid & name.touched">Name cannot be empty.</div>
-
-	Question: What's the difference between <span> and <div> in this case? We used <span> initially, but it looked/behaved differently.
-
-	This means that this alert will be invisible until the field is touched AND left blank, at which point a yellow warning field will be triggered.
-
-So, now we have to link the service to the New Website form to be able to actually create a new website (and add it to our website array) when we use it.
-
-First, we set up a way to retrieve the data. To do this, we set up/connect the data variables in the component ts doc, some of which were referened in the html doc.
-
-name: string;
-description: string;
-
-Hint/Note: The #name has to match the variable in the component ts doc. So it needs name="name" and #name="ngModel" in the html form and has to also be called name: string; in the component ts doc.
-
-Now, we establish the create() function. In Website Service, there's a createWebsite function that we can use. This function takes the userId and website, and will create a website with the userId=developerId.
-
-When the user hits submit, the information retrieved is the name and the description, represented as such:
-
-	this.name = this.websiteForm.value.name;
-    this.description = this.websiteForm.value.description;
-
-We also create a const variable to represent the newWebsite that will be created.
-
-	const newWebsite: Website = {
-	      _id: "",
-	      name: this.name,
-	      developerId: "",
-	      description: this.description,
-	    };
-
-	Looking at the Websites array in Website Service, we need 4 pieces of data: _id, name, developerId and description.
-
-	The _id: and developerId can be empty (""), because a random number will be generated for it, according to the create() function via the lines:
-
-		website._id = Math.floor(Math.random() * 10000).toString();
-
-		and
-
-		website.developerId = userId;
-
-	The name and description will come from the name entered into (this) websiteForm.
-
-	Then, we incorporate the createWebsite function:
-
-	this.websiteService.createWebsite(this.uid, newWebsite);
-
-	A website will be created using the uid (showing in the url) and the details entered into newWebsite.
-
-	After the user creates a website, they should be rerouted back to their website list page.
-
-	Remember, ActivatedRoute only allows us to parse and find the url, it doesn't allow us to navigate to another page. The Router is the item that allows us to navigate to another page. So, we have to add Router to the ActivatedRoute import.
-
-	import { ActivatedRoute, Router } from '@angular/router'
-
-	Then, we create the code that will actually reroute to the website list page:
-
-	this.router.navigate(['user', this.uid, 'website']);
-
-	We look at that app.rouing.ts doc and find the WebsiteListComponent file path, which is
-
-		'user/:userId/website'.
-	
-	We add it into this.router.navigate([]) to become
-
-		this.router.navigate(['user', this.uid, 'website']);
-
-		We essentially separated the file path into items.
-
-		user = 'user'
-		:userId = this.uid
-		website = 'website'
-
-		This is how the page address it will show up in the url once the website is clicked on.
-
-	 -->

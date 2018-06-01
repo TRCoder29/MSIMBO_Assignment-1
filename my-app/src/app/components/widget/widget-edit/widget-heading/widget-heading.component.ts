@@ -12,6 +12,8 @@ import { NgForm } from '@angular/forms'
 })
 export class WidgetHeadingComponent implements OnInit {
 
+  @ViewChild('f') widgetForm: NgForm;
+
 	uid: string;
 	wid: string;
 	pid: string;
@@ -24,8 +26,6 @@ export class WidgetHeadingComponent implements OnInit {
 	url: string;
 
   constructor(private widgetService: WidgetService, private activatedRouter: ActivatedRoute, private router: Router) { }
-
-  @ViewChild('f') widgetForm: NgForm;
 
   ngOnInit() {
   	this.activatedRouter.params.subscribe(params =>{

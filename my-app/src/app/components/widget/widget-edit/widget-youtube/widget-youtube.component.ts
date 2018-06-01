@@ -10,7 +10,8 @@ import { NgForm } from '@angular/forms'
   styleUrls: ['./widget-youtube.component.css']
 })
 export class WidgetYoutubeComponent implements OnInit {
-	@ViewChild('f') widgetForm: NgForm;
+	
+  @ViewChild('f') widgetForm: NgForm;
 	
 	uid: string;
 	wid: string;
@@ -18,14 +19,14 @@ export class WidgetYoutubeComponent implements OnInit {
 	wgid: string;
 	widget: Widget;
 	name: string;
-  	text: string;
-  	url: string;
-  	width: string;
+  text: string;
+  url: string;
+  width: string;
 
-  constructor(private widgetService: WidgetService, private activatedRouter: ActivatedRoute, private router: Router) { }
+  constructor(private widgetService: WidgetService, private activatedRoute: ActivatedRoute, private router: Router) { }
 
   ngOnInit() {
-  	this.activatedRouter.params.subscribe(params =>{
+  	this.activatedRoute.params.subscribe(params =>{
   		this.uid = params['uid'];
   		this.wid = params['wid'];
   		this.pid = params['pid'];

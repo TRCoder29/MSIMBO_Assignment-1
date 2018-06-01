@@ -1,77 +1,85 @@
-	<nav class="row navbar navbar-dark bg-primary fixed-top">
+<!-- Navigation -->
+<nav class="row navbar navbar-dark bg-primary fixed-top">
 	<!-- Left Navbar -->
-		<div class="col-sm-4 d-none d-sm-block">
-			<div class="container-fluid">
-				<!-- Back Button Website-List Link-->
-				<a class="sw-font-white" routerLink="/user/{{uid}}/website"><i class="fas fa-chevron-left"></i></a>
-				<!-- Websites Link Website-List Link-->
-				<a class="sw-left-padding sw-no-underline" routerLink="/user/{{uid}}/website"><b class="sw-font-white">Websites</b></a>
-				<!-- New Website (+) Website-New Link-->
-				<a routerLink="/user/{{uid}}/website/new" class="sw-font-white float-right"><i class="fas fa-plus"></i></a>
-			</div>
+	<div class="col-sm-4 d-none d-sm-block">
+		<div class="container-fluid">
+			<!-- Back Button Website-List Link-->
+			<a class="sw-font-white" routerLink="/user/{{uid}}/website"><i class="fas fa-chevron-left"></i></a>
+
+			<!-- Websites Link Website-List Link-->
+			<a class="sw-font-white sw-left-padding sw-no-underline" routerLink="/user/{{uid}}/website"><b>Websites</b></a>
+
+			<!-- New Website (+) Website-New Link-->
+			<a class="sw-font-white float-right" routerLink="/user/{{uid}}/website/new"><i class="fas fa-plus"></i></a>
 		</div>
+	</div>
 
 	<!-- Right Navbar -->
-		<div class="col-sm-8">
-			<div class="container-fluid" >
-				<!-- Back Button Website-List Link-->
-				<a class="sw-font-white d-md-block d-lg-none" routerLink="/user/{{uid}}/website"><i class="fas fa-chevron-left"></i></a>
-				<!-- Edit Website Website-Edit Link-->
-				<a routerLink="/user/{{uid}}/website/{{wid}}" class="sw-no-underline"><b class="sw-font-white sw-left-padding">Edit Website</b></a>
-				<!-- Check (/) Website-List Link-->
-				<button class="btn sw-font-white sw-button-to-a float-right" type="submit" form="websiteForm"><i class="fas fa-check"></i></button>
-			</div>
+	<div class="col-sm-8">
+		<div class="container-fluid" >
+			<!-- Back Button Website-List Link-->
+			<a class="sw-font-white d-md-block d-lg-none" routerLink="/user/{{uid}}/website"><i class="fas fa-chevron-left"></i></a>
+
+			<!-- Edit Website Link-->
+			<a class="sw-font-white sw-left-padding sw-no-underline" routerLink="/user/{{uid}}/website/{{wid}}"><b>Edit Website</b></a>
+
+			<!-- Check (/) Website-List Link-->
+			<button class="btn sw-font-white sw-button-to-a float-right" type="submit" form="websiteForm"><i class="fas fa-check"></i></button>
 		</div>
-	</nav>
+	</div>
+</nav>
 
-	<!-- Left List Cogs -->
-		<div class="row">
-			<div class="col-sm-4 d-none d-sm-block">
-					<div class="container">
-						<!-- Edit Website List (Cogs) -->
-						<ul class="list-group">
-							<li class="list-group-item" *ngFor = "let website of websites">
-							<!-- Page-List-->
-							<a class="text-primary sw-no-underline" routerLink="/user/{{uid}}/website/{{website.id}}/page">{{website.name}}</a>
-							<!-- Edit Website List (Cogs) Website-Edit Link-->
-							<a class="float-right" routerLink="/user/{{uid}}/website/{{website._id}}"><i class="fas fa-cog"></i></a>
-						</li>
-						</ul>
-					</div>
-			</div>
-
-	<!-- Right Fields -->
-		<div class="col-sm-8 float-right">
-			<div class="container">
-				<form id="websiteForm" (ngSubmit)="update()" #f=ngForm>
-					<!-- Website Name -->
-					<div class="form-group"></div>
-						<label for="website-name"><b>Name</b></label>
-						<input class="form-control" type="text" name="name" placeholder="Name" required ngModel={{website.name}} #name="ngModel">
-
-					<!-- Missing Name Alert -->
-					<div class="alert alert-warning" *ngIf="name.invalid && name.touched">Name cannot be empty.</div>
-
-					<!-- Website Description -->
-					<div class="form-group">
-						<label for="website-description"><b>Description</b></label>
-						<textarea class="form-control" rows="5" name="description" placeholder="Description" ngModel={{website.description}} #description="ngModel"></textarea>
-					</div>
-
-					<!-- Delete Button Website-List-->
-					<button (click)="delete" type="button" class="btn btn-danger btn-block">Delete</button>
-					<!-- Update Button Website-List-->
-					<button class="btn btn-primary btn-block float-right" type="submit">Update</button>
-				</form>
-			</div>
-		</div>		
-	<!-- footer -->
-	<nav class="navbar navbar-dark bg-primary fixed-bottom">
-		<!-- Profile User (Button) -->
-		<div class="sw-width">
-			<a class="sw-font-white float-right" routerLink="user/:userId"><i class="fas fa-user"></i></a>
+<!-- Left List and Cogs -->
+<div class="row">
+	<div class="col-sm-4 d-none d-sm-block">
+		<div class="container">
+			<!-- Edit Website List (Cogs) -->
+			<ul class="list-group">
+				<li class="list-group-item" *ngFor = "let website of websites">
+					<!-- Page-List-->
+					<a class="text-primary sw-no-underline" routerLink="/user/{{uid}}/website/{{website.id}}/page">{{website.name}}</a>
+		
+					<!-- Edit Website List (Cogs) Website-Edit Link-->
+					<a class="float-right" routerLink="/user/{{uid}}/website/{{website._id}}"><i class="fas fa-cog"></i></a>
+				</li>
+			</ul>
 		</div>
-	</nav>
+	</div>
+</div>
+
+<!-- Right Fields -->
+<div class="col-sm-8 float-right">
+	<div class="container">
+		<form id="websiteForm" (ngSubmit)="update()" #f=ngForm>
+			<!-- Website Name -->
+			<div class="form-group"></div>
+				<label for="website-name"><b>Name</b></label>
+				<input class="form-control" name="name" type="text" placeholder="Website Name" required ngModel={{website.name}} #name="ngModel">
+
+			<!-- Missing Name Alert -->
+			<div class="alert alert-warning" *ngIf="name.invalid && name.touched">Name cannot be empty.</div>
+
+			<!-- Website Description -->
+			<div class="form-group">
+				<label for="website-description"><b>Description</b></label>
+				<textarea class="form-control" rows="5" name="description" placeholder="Website Description" ngModel={{website.description}} #description="ngModel"></textarea>
+			</div>
+
+			<!-- Delete Button Website-List-->
+			<button (click)="delete" type="button" class="btn btn-danger btn-block">Delete</button>
+			<!-- Update Button Website-List-->
+			<button class="btn btn-primary btn-block float-right" type="submit">Update</button>
+		</form>
+	</div>
+</div>
+
+<!-- footer -->
+<nav class="navbar navbar-dark bg-primary fixed-bottom">
+	<!-- Profile User (Button) -->
+	<div class="sw-width">
+		<a class="sw-font-white float-right" routerLink="user/:userId"><i class="fas fa-user"></i></a>
+	</div>
+</nav>
 
 
 <!-- For this page, we need to have the website list on the left and the edit website form on the right. Upon initializing the current name and description, the user will be able to either delete or update the information in the form if the user makes any changes. To get started, we can copy and paste the data for the website-new into the website-edit html and component ts docs.

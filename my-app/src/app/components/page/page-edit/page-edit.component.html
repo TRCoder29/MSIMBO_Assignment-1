@@ -1,46 +1,49 @@
-	<!-- Navigation Bar -->
-	<nav class="navbar navbar-dark sw-gray fixed-top">
-		<!-- Cancel (<) Page-List Link-->
-		<a routerLink="/user/{{uid}}/website/{{wid}}/page" class="sw-black"><i class="fas fa-chevron-left"></i></a>
-		<!-- New Page Title -->
-		<div class="sw-80-width">
-			<!-- Page-Edit Link -->
-			<a class="sw-left-padding sw-no-underline" routerLink="/user/{{uid}}/website/{{wid}}/page/{{pid}}"><b class="sw-black">Edit Page</b></a>
+<!-- Navigation Bar -->
+<nav class="navbar navbar-dark sw-gray fixed-top">
+	<!-- Cancel (<) Page-List Link-->
+	<a class="sw-black" routerLink="/user/{{uid}}/website/{{wid}}/page"><i class="fas fa-chevron-left"></i></a>
+
+	<!-- New Page Title -->
+	<div class="sw-80-width">
+		<!-- Page-Edit Link -->
+		<a class="sw-left-padding sw-no-underline" routerLink="/user/{{uid}}/website/{{wid}}/page/{{pid}}"><b class="sw-black">Edit Page</b></a>
+	</div>
+
+	<!-- OK (/) Page-List Link-->
+	<button class="btn sw-button-to-a sw-black float-right" type="submit" form="pageForm" [disabled]="f.invalid"><i class="fas fa-check"></i></button>
+</nav>
+
+<!-- Entry Fields -->
+<div class="container">
+	<form id="pageForm" (ngSubmit)="update()" #f="ngForm">
+		<!-- Page Name -->
+		<div><label>Name</label></div>
+		<div class="form-group">
+			<input class="form-control" name="name" type="text" placeholder="Enter your page name." value="Blog Post" required ngModel="{{page.name}}" #name="ngModel">
 		</div>
-		<!-- OK (/) Page-List Link-->
-		<button class=" btn sw-button-to-a sw-black float-right" type="submit" [disabled]="f.invalid" form="pageForm"><i class="fas fa-check"></i></button>
-	</nav>
 
-	<!-- Entry Fields -->
-	<div class="container">
-		<form id="pageForm" (ngSubmit)="update()" #f="ngForm">
-			<!-- Page Name -->
-			<div><label>Name</label></div>
-			<div class="form-group">
-				<input type="text" name="name" placeholder="Enter your page name." value="Blog Post" required ngModel="{{page.name}}" #name="ngModel" class="form-control">
-			</div>
-
-			<!-- Page Description -->
-			<div><label>Description</label></div>
-			<div class="form-group">
-				<input type="text" name="description" placeholder="Enter your page description." value="Blog" class="form-control" ngModel="{{page.description}}" #description="ngModel">
-			</div>
-
-			<br>
-			
-			<div>
-				<!-- Update Button -->
-				<button class="btn btn-primary btn-block" type="submit" [disabled]="f.invalid">Update</button>
-
-				<!-- Delete Button -->
-				<button class="btn btn-danger btn-block" (click)="remove()" type="button">Delete</button>
-			</div>
-		</form>
-
-	<!-- Footer -->
-	<nav class="navbar navbar-dark sw-gray fixed-bottom">
-		<!-- Profile User (Button) -->
-		<div class="sw-width">
-			<a class="sw-font-white float-right" routerLink="/user/{{uid}}"><i class="fas fa-user"></i></a>
+		<!-- Page Description -->
+		<div><label>Description</label></div>
+		<div class="form-group">
+			<input class="form-control" name="description" type="text" placeholder="Enter your page description." value="Blog" ngModel="{{page.description}}" #description="ngModel">
 		</div>
-	</nav>
+
+		<br>
+		
+		<div>
+			<!-- Update Button -->
+			<button class="btn btn-primary btn-block" type="submit" [disabled]="f.invalid">Update</button>
+
+			<!-- Delete Button -->
+			<button class="btn btn-danger btn-block" type="button" (click)="remove()">Delete</button>
+		</div>
+	</form>
+</div>
+
+<!-- Footer -->
+<nav class="navbar navbar-dark sw-gray fixed-bottom">
+	<!-- Profile User (Button) -->
+	<div class="sw-width">
+		<a class="sw-font-white float-right" routerLink="/user/{{uid}}"><i class="fas fa-user"></i></a>
+	</div>
+</nav>

@@ -1,65 +1,68 @@
-	<!-- Navigation Bar -->
-	<nav class="navbar navbar-dark fixed-top sw-gray">
-		<!-- Back (<) Widget-List Link-->
-		<a routerLink="/user/{{uid}}/website/{{wid}}/page/{{pid}}/widget" class="sw-black"><i class="fas fa-chevron-left"></i></a>
-		<div class="sw-80-width">
-			<!-- Choose Widget Link Widget-Chooser Link-->
-			<a class="sw-font-white sw-no-underline float-left" routerLink="/user/{{uid}}/website/{{wid}}/page/{{pid}}/widget/new">Choose Widget</a>
-		</div>
-	</nav>
+<!-- Navigation Bar -->
+<nav class="navbar navbar-dark fixed-top sw-gray">
+	<!-- Back (<) Widget-List Link-->
+	<a routerLink="/user/{{uid}}/website/{{wid}}/page/{{pid}}/widget" class="sw-black"><i class="fas fa-chevron-left"></i></a>
+	<div class="sw-80-width">
+		<!-- Choose Widget Link Widget-Chooser Link-->
+		<a class="sw-font-white sw-no-underline float-left" routerLink="/user/{{uid}}/website/{{wid}}/page/{{pid}}/widget/new">Choose Widget</a>
+	</div>
+</nav>
 
-	<!-- List Cogs -->
-	<nav>
-		<div>
-			<ul class="list-group">
-			<!-- List-->
-				<!-- Heading Link Widget-Heading/Edit Link-->
-				<li class="list-group-item">
-					<a  class="text-primary sw-no-underline" (click)="create('HEADER')">Header</a>
-				</li>
-				<!-- Label Link No Link-->
-				<li class="list-group-item">
-					<a class="text-primary sw-no-underline" routerLink="/user/:uid/website/:wid/page/:pid/widget/:wgid">Label</a>
-				</li>
-				<!-- HTML Link No Link-->
-				<li class="list-group-item">
-					<a class="text-primary sw-no-underline" routerLink="/user/:uid/website/:wid/page/:pid/widget/:wgid">HTML</a>
-				</li>
-				<!-- Text Input Link No Link-->
-				<li class="list-group-item">
-					<a class="text-primary sw-no-underline" routerLink="/user/:uid/website/:wid/page/:pid/widget/:wgid">Text Input</a>
-				</li>
-				<!-- "Link" Link No Link-->
-				<li class="list-group-item">
-					<a class="text-primary sw-no-underline" routerLink="/user/:uid/website/:wid/page/:pid/widget/:wgid">Link</a>
-				</li>
-				<!-- Button Link No Link-->
-				<li class="list-group-item">
-					<a class="text-primary sw-no-underline" routerLink="/user/:uid/website/:wid/page/:pid/widget/:wgid">Button</a>
-				</li>
-				<!-- Image Link Widget-Image/Edit Link-->
-				<li class="list-group-item">
-					<a class="text-primary sw-no-underline" (click)="create('IMAGE')">Image</a>
-				</li>
-				<!-- YouTube Link Widget-Youtube/Edit Link-->
-				<li class="list-group-item">
-					<a class="text-primary sw-no-underline" (click)="create('YOUTUBE')">YouTube</a>
-				</li>
-				<!-- Data Table Link No Link-->
-				<li class="list-group-item">
-					<a class="text-primary sw-no-underline" routerLink="/user/:uid/website/:wid/page/:pid/widget/:wgid">Data Table</a>
-				</li>
-				<!-- Repeater Link No Link-->
-				<li class="list-group-item">
-					<a class="text-primary sw-no-underline" routerLink="/user/:uid/website/:wid/page/:pid/widget/:wgid">Repeater</a>
-				</li>	
-		</ul>
-		</div>
+<!-- List Cogs -->
+<div>
+	<!-- List-->
+	<ul class="list-group">
+		<!-- Heading Link Widget-Heading/Edit Link-->
+		<li class="list-group-item">
+			<button  class=" btn sw-button-to-a text-primary sw-no-underline" (click)="create('HEADER')">Heading</button>
+		</li>
 
-		<!-- Footer -->
-		<nav class="navbar navbar-dark sw-gray fixed-bottom">
-			<!-- Profile User (Button) -->
-			<div class="sw-width">
-				<a class="sw-font-white float-right" routerLink="/user/{{uid}}"><i class="fas fa-user"></i></a>
-			</div>
-		</nav>
+		<!-- Label Link No Link-->
+		<li class="list-group-item">
+			<a class="text-primary sw-no-underline" routerLink="/user/:uid/website/:wid/page/:pid/widget/:wgid">Label</a>
+		</li>
+
+		<!-- HTML Link No Link-->
+		<li class="list-group-item">
+			<a class="text-primary sw-no-underline" routerLink="/user/:uid/website/:wid/page/:pid/widget/:wgid">HTML</a>
+		</li>
+
+		<!-- Text Input Link No Link-->
+		<li class="list-group-item">
+			<a class="text-primary sw-no-underline" routerLink="/user/:uid/website/:wid/page/:pid/widget/:wgid">Text Input</a>
+		</li>
+
+		<!-- "Link" Link No Link-->
+		<li class="list-group-item">
+			<a class="text-primary sw-no-underline" routerLink="/user/:uid/website/:wid/page/:pid/widget/:wgid">Link</a>
+		</li>
+
+		<!-- Button Link No Link-->
+		<li class="list-group-item">
+			<a class="text-primary sw-no-underline" routerLink="/user/:uid/website/:wid/page/:pid/widget/:wgid">Button</a>
+		</li>
+
+		<!-- Image Link Widget-Image/Edit Link-->
+		<li class="list-group-item">
+			<a class="btn sw-button-to-a text-primary sw-no-underline" (click)="create('IMAGE')">Image</a>
+		</li>
+
+		<!-- YouTube Link Widget-Youtube/Edit Link-->
+		<li class="list-group-item">
+			<a class="sw-no-underline text-primary sw-no-underline" (click)="create('YOUTUBE')">YouTube</a>
+		</li>
+
+		<!-- Data Table Link No Link-->
+		<li class="list-group-item">
+			<a class="text-primary sw-no-underline" routerLink="/user/:uid/website/:wid/page/:pid/widget/:wgid">Data Table</a>
+		</li>
+	</ul>
+</div>
+
+<!-- Footer -->
+<nav class="navbar navbar-dark sw-gray fixed-bottom">
+	<!-- Profile User (Button) -->
+	<div class="sw-width">
+		<a class="sw-font-white float-right" routerLink="/user/{{uid}}"><i class="fas fa-user"></i></a>
+	</div>
+</nav>

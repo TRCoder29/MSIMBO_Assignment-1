@@ -36,7 +36,7 @@ wid: string;
   update(){
     this.name = this.websiteForm.value.name;
     this.description = this.websiteForm.value.description;
-    const updatedWeb: WebSite = {
+    const updatedWeb: Website = {
       _id: this.wid,
       name: this.name,
       developerId: this.uid,
@@ -44,12 +44,12 @@ wid: string;
     }
 
     this.websiteService.updateWebsite(this.wid, updatedWeb);
-    this.router.navigate(['user', this.uid]);
+    this.router.navigate(['user', this.uid, 'website']);
   }
 
   delete(){
      this.websiteService.deleteWebsite(this.wid);
-     this.router.navigate(['user', this.uid]);
+     this.router.navigate(['user', this.uid, 'website']);
   }
 
 }

@@ -1,70 +1,83 @@
+<!-- Navigation Bar -->
+<nav class="navbar navbar-dark fixed-top sw-gray">
+	<!-- Back (<) Page-List Link-->
+	<a class="sw-black" routerLink="/user/{{uid}}/website/{{wid}}/page"><i class="fas fa-chevron-left"></i></a>
+	
+	<!-- Widgets Link Widget-List Link-->
+	<div class="sw-80-width">
+		<a class="sw-font-white sw-no-underline float-left" routerLink="/user/{{uid}}/website/{{wid}}/page/{{pid}}/widget">Widgets</a>
+	</div>
 
-	<!-- Navigation Bar -->
-	<nav class="navbar navbar-dark fixed-top sw-gray">
-		<!-- Back (<) Page-List Link-->
-		<a class="sw-black" routerLink="/user/{{uid}}/website/{{wid}}/page"><i class="fas fa-chevron-left"></i></a>
-		
-		<!-- Widgets Link Widget-List Link-->
-		<div class="sw-80-width">
-			<a class="sw-font-white sw-no-underline float-left" routerLink="/user/{{uid}}/website/{{wid}}/page/{{pid}}/widget">Widgets</a>
-		</div>
+	<!-- Widget Choose Widget-Chooser Link-->
+	<a class="sw-black float-right" routerLink="/user/{{uid}}/website/{{wid}}/page/{{pid}}/widget/new"><i class="fas fa-plus"></i></a>
+</nav>
 
-		<!-- Widget Choose Widget-Chooser Link-->
-		<a routerLink="/user/{{uid}}/website/{{wid}}/page/{{pid}}/widget/new" class="sw-black float-right"><i class="fas fa-plus"></i></a>
-	</nav>
+<br>
 
-	<br>
-
-	<!-- Widget Section -->
-	<div class="container-fluid">
-		<div *ngFor="let widget of widgets">
-			<!-- Edit Widget (Cogs)-->
-			<div class="sw-absolute-right widget-front" >
-				<a routerLink="/user/{{uid}}/website/{{wid}}/page/{{pid}}/widget/{{widget._id}}">
-				<i class="fas fa-cogs"></i></a>
-				<a class="sw-black" href="#">
-				<i class="fas fa-bars"></i></a>
-			</div>
-		</div>
-
-		<!-- Content of Each Widget -->
-		<div [ngSwitch]="widget.widgetType">
-			<!-- Heading -->
-			<div *ngSwitchCase="'HEADING'">
-				<div [ngSwitch]="widget.size">
-					<div *ngSwitchCase="1"><h1>{{widget.text}}</h1></div>
-					<div *ngSwitchCase="2"><h2>{{widget.text}}</h2></div>
-					<div *ngSwitchCase="3"><h3>{{widget.text}}</h3></div>
-					<div *ngSwitchCase="4"><h4>{{widget.text}}</h4></div>
-					<div *ngSwitchCase="5"><h5>{{widget.text}}</h5></div>
-					<div *ngSwitchCase="6"><h6>{{widget.text}}</h6></div>
-				</div>
-			</div>
-
-			<!-- Image -->
-			<div *ngSwitchCase="'IMAGE'">
-				<img [src]="widget.url" [style.width]="widget.width">
-			</div>
-
-			<!-- YouTube -->
-			<div *ngSwitchCase="'YOUTUBE'">
-				<div class="embed-responsive embed-responsive-16by9">
-					<iframe [src]="widget.url" [style.width]="widget.width" frameborder="0" allowfullscreen></iframe>
-				</div>
-			</div>
-
+<!-- Widget Section -->
+<div class="container-fluid">
+	<div *ngFor="let widget of widgets">
+		<!-- Edit Widget (Cogs)-->
+		<div class="sw-absolute-right widget-front" >
+			<a routerLink="/user/{{uid}}/website/{{wid}}/page/{{pid}}/widget/{{widget._id}}">
+			<i class="fas fa-cogs"></i></a>
+			<a class="sw-black" href="#">
+			<i class="fas fa-bars"></i></a>
 		</div>
 	</div>
 
-	<!-- Footer -->
-	<nav class="navbar navbar-dark sw-gray fixed-bottom sw-gray">
-		<!-- Preview and Eye Buttons -->
-		<div class="sw-width">
-			<a class="sw-black" href="#"><i class="fas fa-play"></i></a>
-			<a class="sw-black" href="#"><i class="fas fa-eye"></i></a>
-			<!-- Profile User (Button) -->
-			<a class="sw-font-white float-right" routerLink="/user/{{uid}}"><i class="fas fa-user"></i></a>
+	<!-- Content of Each Widget -->
+	<div [ngSwitch]="widget.widgetType">
+		<!-- Heading -->
+		<div *ngSwitchCase="'HEADING'">
+			<div [ngSwitch]="widget.size">
+				<div *ngSwitchCase="1">
+					<h1>{{widget.text}}</h1>
+				</div>
+				<div *ngSwitchCase="2">
+					<h2>{{widget.text}}</h2>
+				</div>
+				<div *ngSwitchCase="3">
+					<h3>{{widget.text}}</h3>
+				</div>
+				<div *ngSwitchCase="4">
+					<h4>{{widget.text}}</h4>
+				</div>
+				<div *ngSwitchCase="5">
+					<h5>{{widget.text}}</h5>
+				</div>
+				<div *ngSwitchCase="6">
+					<h6>{{widget.text}}</h6>
+				</div>
+			</div>
 		</div>
-	</nav>
+
+		<!-- Image -->
+		<div *ngSwitchCase="'IMAGE'">
+			<img [src]="widget.url" [style.width]="widget.width">
+		</div>
+
+		<!-- YouTube -->
+		<div *ngSwitchCase="'YOUTUBE'">
+			<div class="embed-responsive embed-responsive-16by9">
+				<iframe [src]="this.getYoutubeUrl(widget.url)" [style.width]="widget.width" frameborder="0" allowfullscreen></iframe>
+			</div>
+		</div>
+	</div>
+</div>
+
+<!-- Footer -->
+<nav class="navbar navbar-dark sw-gray fixed-bottom sw-gray">
+	<!-- Preview and Eye Buttons -->
+	<div class="sw-width">
+		<!-- <a class="sw-black" href="#"><i class="fas fa-play"></i></a>
+		<a class="sw-black" href="#"><i class="fas fa-eye"></i></a> -->
+		<a href="#" class="btn btn-primary">Publish</a>
+		<a href="#" class="btn btn-warning">Preview</a>
+
+		<!-- Profile User (Button) -->
+		<a class="sw-font-white float-right" routerLink="/user/{{uid}}"><i class="fas fa-user"></i></a>
+	</div>
+</nav>
 
 

@@ -1,8 +1,8 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { NgForm } from '@angular/forms'
-import {ActivatedRoute} from '@angular/router'
-import {UserService} from '../../../services/user.service.client'
-import {User} from '../../../models/user.model.client'
+import { ActivatedRoute } from '@angular/router'
+import { UserService } from '../../../services/user.service.client'
+import { User } from '../../../models/user.model.client'
 
 @Component({
   selector: 'app-profile',
@@ -26,25 +26,15 @@ export class ProfileComponent implements OnInit {
   constructor(private activatedRoute: ActivatedRoute, private userService: UserService) { }
 
   ngOnInit() {
-<<<<<<< HEAD
   	this.activatedRoute.params.subscribe(params =>{
 		this.uid = params['uid'];
-=======
-  	this.activatedRoute.params.subscribe(
-		function info(params){
-		this.uid = params['uid']
->>>>>>> 0025ea76ffd5f5bb678c78b5e7d7ce94b9a0520b
 		this.user = this.userService.findUserById(this.uid);
 		this.username = this.user.username;
 		this.email = this.user.email;
 		this.firstName = this.user.firstName;
 		this.lastName = this.user.lastName;
 		this.oldUsername = this.user.username;
-<<<<<<< HEAD
   });
-=======
-  }.bind(this));
->>>>>>> 0025ea76ffd5f5bb678c78b5e7d7ce94b9a0520b
 }
 
 	update(){

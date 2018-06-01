@@ -1,62 +1,62 @@
-	<!-- Navigation Bar -->
-	<nav class="navbar navbar-dark sw-gray fixed-top">
-		<!-- Cancel (<) Widget-List Link-->
-		<a routerLink="user/{{uid}}/website/{{wid}}/page/{{pid}}/widget" class="sw-black"><i class="fas fa-chevron-left"></i></a>
+<!-- Navigation Bar -->
+<nav class="navbar navbar-dark sw-gray fixed-top">
+	<!-- Cancel (<) Widget-List Link-->
+	<a class="sw-black" routerLink="user/{{uid}}/website/{{wid}}/page/{{pid}}/widget"><i class="fas fa-chevron-left"></i></a>
 
-		<!-- New Page Title Widget-Heading/Edit Link-->
-		<div class="sw-80-width">
-			<a class="sw-left-padding sw-no-underline" routerLink="/user/{{uid}}/website/{{wid}}/page/{{pid}}/widget/{{wgid}}"><b class="sw-black">Choose Widget</b></a>
+	<!-- New Page Title Widget-Heading/Edit Link-->
+	<div class="sw-80-width">
+		<a class="sw-left-padding sw-no-underline" routerLink="/user/{{uid}}/website/{{wid}}/page/{{pid}}/widget/{{wgid}}"><b class="sw-black">Choose Widget</b></a>
+	</div>
+
+	<!-- OK (/) Widget-List Link-->
+	<button class="btn sw-button-to-a sw-black float-right" type="submit" form="widgetForm" [disabled]="f.invalid"><i class="fas fa-check"></i></button>
+</nav>
+
+<!-- Form -->
+<div class="container">
+	<form id="widgetForm" (ngSubmit)="update()" #f="ngForm">
+
+		<!-- Page Name -->
+		<div><label>Name</label></div>
+		<div class="form-group">
+			<input class="form-control" name="name" type="text" placeholder="Name" required ngModel="{{widget.name}}" #name="ngModel"  >
 		</div>
 
-		<!-- OK (/) Widget-List Link-->
-		<button class="btn sw-button-to-a sw-black float-right" type="submit" form="widgetForm" [disabled]="f.invalid"><i class="fas fa-check"></i></button>
-	</nav>
-
-	<!-- Entry Fields -->
-	<div class="container">
-		<form id="widgetForm" (ngSubmit)="update()" #f="ngForm">
-
-			<!-- Page Name -->
-			<div><label>Name</label></div>
-			<div class="form-group">
-				<input class="form-control" type="text" name="name" placeholder="Name" ngModel="{{widget.name}}" #name="ngModel"  >
-			</div>
-
-			<!-- Page Text -->
-			<div><label>Text</label></div>
-			<div class="form-group">
-				<input class="form-control" type="text" name="text"  placeholder="Text" required ngModel="{{widget.text}}" #text="ngModel">
-			</div>
-
-			<!-- Alert Empty Text -->
-			<div class="alert alert-danger" *ngIf="text.invalid && text.touched">Text cannot be empty.</div>
-
-			<!-- Size -->
-			<div class="form-group">
-				<div><label>Size</label></div>
-				<input class="form-control" type="number" name="size"  placeholder="3" required ngModel="{{widget.size}}" #size="ngModel">
-			</div>
-
-			<!-- Alert Empty Size -->
-			<div class="alert alert-danger" *ngIf="size.invalid && size.touched">Size cannot be empty.</div>
-
-			<br>
-
-			<!-- Submit Widget-List Link-->
-			<div>
-				<button class="btn btn-primary btn-block" type="submit" [disabled]="f.invalid">Submit</button>
-			</div>
-
-			<!-- Delete Widget-List Link-->
-			<div>
-				<button class="btn btn-danger btn-block" type="button" (click)="remove">Delete</button>
-			</div>
-		</form>
-
-	<!-- Footer -->
-	<nav class="navbar navbar-dark sw-gray fixed-bottom">
-		<!-- Profile User (Button) -->
-		<div class="sw-width">
-			<a class="sw-font-white float-right" routerLink="/user/{{uid}}"><i class="fas fa-user"></i></a>
+		<!-- Page Text -->
+		<div><label>Text</label></div>
+		<div class="form-group">
+			<input class="form-control" name="text" type="text" placeholder="Text" required ngModel="{{widget.text}}" #text="ngModel">
 		</div>
-	</nav>
+
+		<!-- Alert Empty Text -->
+		<div class="alert alert-danger" *ngIf="text.invalid && text.touched">Text cannot be empty.</div>
+
+		<!-- Size -->
+		<div class="form-group">
+			<div><label>Size</label></div>
+			<input class="form-control" name="size" type="number" placeholder="3" required ngModel="{{widget.size}}" #size="ngModel">
+		</div>
+
+		<!-- Alert Empty Size -->
+		<div class="alert alert-danger" *ngIf="size.invalid && size.touched">Size cannot be empty.</div>
+
+		<br>
+
+		<!-- Submit Widget-List Link-->
+		<div>
+			<button class="btn btn-primary btn-block" type="submit" [disabled]="f.invalid">Submit</button>
+		</div>
+
+		<!-- Delete Widget-List Link-->
+		<div>
+			<button class="btn btn-danger btn-block" type="button" (click)="remove">Delete</button>
+		</div>
+	</form>
+
+<!-- Footer -->
+<nav class="navbar navbar-dark sw-gray fixed-bottom">
+	<!-- Profile User (Button) -->
+	<div class="sw-width">
+		<a class="sw-font-white float-right" routerLink="/user/{{uid}}"><i class="fas fa-user"></i></a>
+	</div>
+</nav>

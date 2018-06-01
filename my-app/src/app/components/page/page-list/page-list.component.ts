@@ -12,6 +12,7 @@ export class PageListComponent implements OnInit {
 
 	uid: string;
 	wid: string;
+  pages: Page[];
 
   constructor(private pageService: PageService, private activatedRoute: ActivatedRoute) { }
 
