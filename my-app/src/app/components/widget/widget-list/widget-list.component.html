@@ -24,43 +24,43 @@
 			<a class="sw-black" href="#">
 			<i class="fas fa-bars"></i></a>
 		</div>
-	</div>
 
-	<!-- Content of Each Widget -->
-	<div [ngSwitch]="widget.widgetType">
-		<!-- Heading -->
-		<div *ngSwitchCase="'HEADING'">
-			<div [ngSwitch]="widget.size">
-				<div *ngSwitchCase="1">
-					<h1>{{widget.text}}</h1>
-				</div>
-				<div *ngSwitchCase="2">
-					<h2>{{widget.text}}</h2>
-				</div>
-				<div *ngSwitchCase="3">
-					<h3>{{widget.text}}</h3>
-				</div>
-				<div *ngSwitchCase="4">
-					<h4>{{widget.text}}</h4>
-				</div>
-				<div *ngSwitchCase="5">
-					<h5>{{widget.text}}</h5>
-				</div>
-				<div *ngSwitchCase="6">
-					<h6>{{widget.text}}</h6>
+		<!-- Content of Each Widget -->
+		<div [ngSwitch]="widget.widgetType">
+			<!-- Heading -->
+			<div *ngSwitchCase="'HEADING'">
+				<div [ngSwitch]="widget.size">
+					<div *ngSwitchCase="1">
+						<h1>{{widget.text}}</h1>
+					</div>
+					<div *ngSwitchCase="2">
+						<h2>{{widget.text}}</h2>
+					</div>
+					<div *ngSwitchCase="3">
+						<h3>{{widget.text}}</h3>
+					</div>
+					<div *ngSwitchCase="4">
+						<h4>{{widget.text}}</h4>
+					</div>
+					<div *ngSwitchCase="5">
+						<h5>{{widget.text}}</h5>
+					</div>
+					<div *ngSwitchCase="6">
+						<h6>{{widget.text}}</h6>
+					</div>
 				</div>
 			</div>
-		</div>
 
-		<!-- Image -->
-		<div *ngSwitchCase="'IMAGE'">
-			<img [src]="widget.url" [style.width]="widget.width">
-		</div>
+			<!-- Image -->
+			<div *ngSwitchCase="'IMAGE'">
+				<img [src]="widget.url" [style.width]="widget.width">
+			</div>
 
-		<!-- YouTube -->
-		<div *ngSwitchCase="'YOUTUBE'">
-			<div class="embed-responsive embed-responsive-16by9">
-				<iframe [src]="this.getYoutubeUrl(widget.url)" [style.width]="widget.width" frameborder="0" allowfullscreen></iframe>
+			<!-- YouTube -->
+			<div *ngSwitchCase="'YOUTUBE'">
+				<div class="embed-responsive embed-responsive-16by9">
+					<iframe [src]="this.getYoutubeUrl(widget.url)" [style.width]="widget.width" frameborder="0" allowfullscreen></iframe>
+				</div>
 			</div>
 		</div>
 	</div>
