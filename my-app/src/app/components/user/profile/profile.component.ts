@@ -27,14 +27,24 @@ export class ProfileComponent implements OnInit {
 
   ngOnInit() {
   	this.activatedRoute.params.subscribe(params =>{
-		this.uid = params['uid'];
-		this.user = this.userService.findUserById(this.uid);
-		this.username = this.user.username;
-		this.email = this.user.email;
-		this.firstName = this.user.firstName;
-		this.lastName = this.user.lastName;
-		this.oldUsername = this.user.username;
-  });
+  		this.uid = params['uid'];
+  		this.userService.findUserById(this.uid).subscribe(
+  			(user: User) => {
+				this.username = this.user.username;
+				this.email = this.user.email;
+				this.firstName = this.user.firstName;
+				this.lastName = this.user.lastName;
+				this.oldUsername = this.user.username;
+  			}
+  		);
+		// this.uid = params['uid'];
+		// this.user = this.userService.findUserById(this.uid);
+		// this.username = this.user.username;
+		// this.email = this.user.email;
+		// this.firstName = this.user.firstName;
+		// this.lastName = this.user.lastName;
+		// this.oldUsername = this.user.username;
+  })
 }
 
 	update(){
@@ -43,7 +53,9 @@ export class ProfileComponent implements OnInit {
 		this.firstName = this.profileForm.value.firstName;
 		this.lastName = this.profileForm.value.lastName;
 
-		const aUser: User = this.userService.findUserByUsername(this.username);
+		this.userService.findUserByUsername(this.username).subscribe(
+
+			);
 		if(aUser && this.oldUsername != this.username){
 			this.usernameTaken = true;
 			this.submitSuccess = false;

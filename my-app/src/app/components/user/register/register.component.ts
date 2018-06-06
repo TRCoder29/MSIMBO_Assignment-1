@@ -29,33 +29,66 @@ export class RegisterComponent implements OnInit {
   	this.password = this.registerForm.value.password;
   	this.verifyPassword = this.registerForm.value.verifyPassword;
 
-  	if(this.password !== this.verifyPassword) {
-  		this.passwordError = true;
-      this.usernameError = false;
+    if(this.password !== this.verifyPassword) {
+      this.passwordError = true;
+    } else {
+      this.userService.findUserByUsername(this.username).subscribe(
+        (user: User) => {
+          this.usernameError = true;
+        },
+        (error: any) => {
+          const newUser: User = {
+            _id: "",
+            username: this.username,
+            password: this.password,
+            firstName: "",
+            lastName: "",
+            email: "",
+          };
+          this.userService.createUser(newUser).subscribe(
+             (user:User) => {
+                var id: string  = this.userService.findUserByUsername(this.username)._id;
+                this.router.navigate(['user', user._id]);
+             }
+          )   
+        }
+      )
+    }
 
-  	} else{
-  		this.passwordError = false;
+  	// if(this.password !== this.verifyPassword) {
+  	// 	this.passwordError = true;
+   //    this.usernameError = false;
 
-  		const user: User = this.userService.findUserByUsername(this.username);
-  		if(user){
-  			this.usernameError = true;
-  		} else {
-  			this.usernameError = false;
-  			this.passwordError = false;
+  	// } else{
+  	// 	this.passwordError = false;
+
+  	// 	const user: User = this.userService.findUserByUsername(this.username);
+  	// 	if(user){
+  	// 		this.usernameError = true;
+  	// 	} else {
+  	// 		this.usernameError = false;
+  	// 		this.passwordError = false;
         
-  			const newUser: User = {
-  				_id: "",
-  				username: this.username,
-  				password: this.password,
-  				firstName: "",
-  				lastName: "",
-  				email: "",
-  			};
+  	// 		const newUser: User = {
+  	// 			_id: "",
+  	// 			username: this.username,
+  	// 			password: this.password,
+  	// 			firstName: "",
+  	// 			lastName: "",
+  	// 			email: "",
+  	// 		};
 
-  			this.userService.createUser(newUser);
-  			var id: string  = this.userService.findUserByUsername(this.username)._id;
-  			this.router.navigate(['user', user._id]);
-  		}
-  	}
+  	// 		this.userService.createUser(newUser).subscribe(
+   //        (user: User) => {
+   //          var id: string  = this.userService.findUserByUsername(this.username)._id;
+   //          this.router.navigate(['user', user._id]);
+   //          },
+   //          (error: Error) => {
+   //            this.usernameError = true;
+   //          }
+   //        )
+
+  	// 	}
+  	// }
   }
 }
