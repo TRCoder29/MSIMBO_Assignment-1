@@ -12,6 +12,7 @@ export class Widget {
 		this._id = _id;
 		this.widgetType = widgetType;
 		this.pageId = pageId;
+		this.name = name;
 		this.size = size;
 		this.text = text;
 		this.width = width;
