@@ -38,7 +38,6 @@ export class LoginComponent implements OnInit {
 	      this.errorFlag = false;
 	      this.router.navigate(['user', user._id]);
       },
-
       (error: any) => {
     	  this.errorFlag = true;
       }

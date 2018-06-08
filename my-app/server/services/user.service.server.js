@@ -48,7 +48,7 @@ module.exports = function(app){
 		}
 		if(username) {
 			var user = users.find(function(user){
-				return.user.username === username;
+				return user.username === username;
 			})
 			res.json(user);
 			return;

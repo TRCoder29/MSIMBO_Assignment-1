@@ -14,7 +14,6 @@ export class ProfileComponent implements OnInit {
 	@ViewChild('f') profileForm: NgForm;
 
 	uid: string;
-	user: User;
 	username: string;
 	email: string;
 	firstName: string;
@@ -22,6 +21,15 @@ export class ProfileComponent implements OnInit {
 	oldUsername: string;
 	usernameTaken: boolean;
 	submitSuccess: boolean;
+	user: User = {
+		_id: '',
+		username: '',
+		password: '',
+		firstName: '',
+		lastName: '',
+		email: ''
+	};
+	aUser: User;
 
   constructor(private activatedRoute: ActivatedRoute, private userService: UserService) { }
 
@@ -56,7 +64,7 @@ export class ProfileComponent implements OnInit {
 		this.userService.findUserByUsername(this.username).subscribe(
 
 			);
-		if(aUser && this.oldUsername != this.username){
+		if(this.aUser && this.oldUsername != this.username){
 			this.usernameTaken = true;
 			this.submitSuccess = false;
 		} else {
