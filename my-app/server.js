@@ -1,17 +1,22 @@
 // require is a node js keyword like "import" in typescript
 
 // express library, create running server. can listen to incoming request
-const express = require('express'); 
+const express = require('express');
+
 // app is a instance of express library. We are going to use it to be able to create server and be able to respond http request coming from browser/client side.
 const app = express();
+
 // Library used to be able to parse incoming data. Client is going to send us JSON data. body-parse helps us to parse the data from the body. It knows how to parse images, file, etc.
 const bodyParser = require('body-parser');
+
 // http library allows us to create http servers
 const http = require('http');
 const path = require('path');
+
 // Initialize bodyparser. We are turn on the feature to parse json data.
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
+
 // Point static path to dist -- For building -- REMOVE
 app.use(express.static(path.join(__dirname, 'dist')));
 

@@ -22,6 +22,8 @@ export class RegisterComponent implements OnInit {
   constructor(private userService: UserService, private router: Router) { }
 
   ngOnInit() {
+    this.passwordError = false;
+    this.usernameError = false;
   }
 
   register() {
@@ -32,6 +34,7 @@ export class RegisterComponent implements OnInit {
     if(this.password !== this.verifyPassword) {
       this.passwordError = true;
     } else {
+      this.passwordError = false;
       this.userService.findUserByUsername(this.username).subscribe(
         (user: User) => {
           this.usernameError = true;
@@ -46,7 +49,7 @@ export class RegisterComponent implements OnInit {
             email: "",
           };
           this.userService.createUser(newUser).subscribe(
-             (user:User) => {
+             (user: User) => {
                 var id = user._id;
                 this.router.navigate(['user', user._id]);
              }

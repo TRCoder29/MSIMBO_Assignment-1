@@ -34,6 +34,8 @@ export class ProfileComponent implements OnInit {
   constructor(private activatedRoute: ActivatedRoute, private userService: UserService) { }
 
   ngOnInit() {
+  	this.usernameTaken = false;
+  	this.submitSuccess = false;
   	this.activatedRoute.params.subscribe(params =>{
   		this.uid = params['uid'];
   		this.userService.findUserById(this.uid).subscribe(
