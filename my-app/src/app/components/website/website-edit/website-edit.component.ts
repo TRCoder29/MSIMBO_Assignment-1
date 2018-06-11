@@ -17,7 +17,12 @@ uid: string;
 websites: Website[];
 name: string;
 description: string;
-website: Website;
+website: Website = {
+  _id: "",
+  name: "",
+  developerId: "",
+  description: ""
+};
 wid: string;
 
   constructor(private websiteService: WebsiteService, private activatedRoute: ActivatedRoute, private router: Router) { }
@@ -32,8 +37,8 @@ wid: string;
         }
        );
   		this.websiteService.findWebsiteById(this.uid).subscribe(
-        (websites: Website[]) => {
-          this.websites = websites;
+        (website: Website) => {
+          this.website = website;
           this.name = this.website.name;
           this.description = this.website.description;
         }

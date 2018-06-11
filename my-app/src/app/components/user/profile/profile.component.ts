@@ -40,6 +40,7 @@ export class ProfileComponent implements OnInit {
   		this.uid = params['uid'];
   		this.userService.findUserById(this.uid).subscribe(
   			(user: User) => {
+  				this.user = user;
 				this.username = this.user.username;
 				this.email = this.user.email;
 				this.firstName = this.user.firstName;
@@ -47,13 +48,6 @@ export class ProfileComponent implements OnInit {
 				this.oldUsername = this.user.username;
   			}
   		);
-		// this.uid = params['uid'];
-		// this.user = this.userService.findUserById(this.uid);
-		// this.username = this.user.username;
-		// this.email = this.user.email;
-		// this.firstName = this.user.firstName;
-		// this.lastName = this.user.lastName;
-		// this.oldUsername = this.user.username;
   })
 }
 
@@ -62,9 +56,7 @@ export class ProfileComponent implements OnInit {
 		this.email = this.profileForm.value.email;
 		this.firstName = this.profileForm.value.firstName;
 		this.lastName = this.profileForm.value.lastName;
-
 		this.userService.findUserByUsername(this.username).subscribe(
-
 			);
 		if(this.aUser && this.oldUsername != this.username){
 			this.usernameTaken = true;
@@ -84,17 +76,3 @@ export class ProfileComponent implements OnInit {
 		}
 	}
 }
-
-//   ngOnInit() {
-//   	var profile = this;
-//   	this.activatedRoute.params.subscribe(
-// 	function info(params){
-// 		profile.uid = params['uid']
-// 		profile.user = profile.userService.findUserById(profile.uid);
-// 		profile.username = profile.user.username;
-// 		profile.email = profile.user.email;
-// 		profile.firstName = profile.user.firstName;
-// 		profile.lastName = profile.user.lastName;
-// 		profile.oldUsername = profile.user.username;
-//   });
-// }

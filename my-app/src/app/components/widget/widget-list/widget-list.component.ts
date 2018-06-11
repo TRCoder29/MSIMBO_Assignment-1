@@ -23,14 +23,17 @@ export class WidgetListComponent implements OnInit {
   		this.uid = params['uid'];
   		this.uid = params['pid'];
   		this.wid = params['wid'];
-  		this.widgets = this.widgetService.findWidgetsByPageId(this.pid);
+  		this.widgetService.findWidgetsByPageId(this.pid).subscribe(
+        (widgets: Widget[]) => {
+        }
+      );
   	})
   }
 
   getYoutubeUrl(url){
   	let embedUrl = "https://www.youtube.com/embed";
   	const parsedUrl = url.split('/');
-  	embedUrl += parsedUrl[parsedUrl.length -1]
+  	embedUrl += parsedUrl[parsedUrl.length -1];
 
   	return this.sanitizer.bypassSecurityTrustResourceUrl(embedUrl);
   }

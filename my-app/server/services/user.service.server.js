@@ -6,12 +6,13 @@ module.exports = function(app){
 		{_id: "456", username: "shiyu", password: "shiyu", firstName: "Shiyu", lastName: "Wang", email: "swang@ulem.org"}
 	];
 
-	app.get('/api/user', findUser);
-	app.get('/api/user/:uid', findUserById);
+
 	app.post('api/user', createUser);
+	app.get('/api/user/:uid', findUserById);
+	app.get('/api/user', findUser);
 	app.put('api/user/:uid', updateUser);
 	app.delete('api/user/:uid', deleteUser);
-	// app.get('/api/user?username&password=password', findUserByCredentials)
+	
 
 	function selectUserById(uid){
 	for (let x = 0; x < users.length; x++) {
@@ -21,21 +22,24 @@ module.exports = function(app){
 		  }
 		}
 
+
+	function createUser(req, res) {
+    	user._id = req.body;
+    	users.push(user);
+    	res.json(user);
+  	}
+
+
 	function findUserById(req, res) {
 		var uid = req.params["uid"];
 		var user = selectUserById(uid);
 		res.json(user);
-	    // for (let x = 0; x < users.length; x++) {
-	    //   if (users[x]._id === uid) {
-	    //   	res.json(users[x]);
-	    //     return;
-		   //  }
 		}
+
 
 	function findUser(req, res) {
 		const username = req.query['username'];
 		const password = req.query['password'];
-
 		if(username && password) {
 			var user;
 			for (let x = 0; x < users.length; x++) {
@@ -56,11 +60,6 @@ module.exports = function(app){
 		res.json(users);
 	}
 
-	function createUser(req, res) {
-    	user._id = req.body;
-    	users.push(user);
-    	res.json(user);
-  }
 
     function updateUser(req, res) {
     	var uid = req.params['uid'];
@@ -74,6 +73,7 @@ module.exports = function(app){
 	    res.json(user);
   }
 
+
     function deleteUser(req, res) {
 	    var uid = req.params['uid'];
 	    var oldUser = selectUserById(uid);
@@ -83,14 +83,3 @@ module.exports = function(app){
   }
 
 }
-
-  	// function findUserbyCredentials (req, res) {
-	// 	const username = req.query['username'];
-	// 	const password = req.query['password'];
-	// 	for (let x=0; x < users.length; x++){
-	// 		if (users[x].username === username && users[x].password) {
-	// 			res.json(users[x]);
-	// 			return;		
-	// 		}
-	// 	}
-	// }

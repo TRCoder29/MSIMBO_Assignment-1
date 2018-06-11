@@ -3,7 +3,6 @@ import { UserService } from '../../../services/user.service.client'
 import { User } from '../../../models/user.model.client'
 import { NgForm } from '@angular/forms'
 import { Router } from '@angular/router'
-declare var jQuery: any;
 
 @Component({
   selector: 'app-login',
@@ -24,9 +23,6 @@ export class LoginComponent implements OnInit {
   constructor(private userService: UserService, private router: Router) { }
   
   ngOnInit() {
-    jQuery(function (){
-      jQuery('.my-popover').popover()
-    })
   }
 
   login(){
@@ -44,20 +40,3 @@ export class LoginComponent implements OnInit {
     )
   }
 }
-
-
-//   login(){
-//     this.username = this.loginForm.value.username;
-//     this.password = this.loginForm.value.password;
-//     // User data is sourced from the '../../../services/user.service.client'
-//     const user: User = this.userService.findUserByCredentials(this.username, this.password);
-//     if(user){
-//       //if user is found, navigate to profile, no error flag needed
-//       this.errorFlag = false;
-//       this.router.navigate(['user', user._id]);
-//     } else {
-//       // if user is not found, error flag triggered
-//       this.errorFlag = true;
-//     }
-//   }
-// }
