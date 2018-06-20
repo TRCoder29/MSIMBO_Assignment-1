@@ -1,0 +1,19 @@
+<div class="container">
+	<form (ngSubmit)="search()" #f="ngForm">
+		<!-- Movie Title Search -->
+		<div class="form-group">
+			<input class="form-control" name="title" type="text" placeholder="Enter Movie Title" required ngModel #title="ngModel">
+		</div>
+
+		<!-- Search Button-->
+		<button class="btn btn-primary btn-block" type="submit" [disabled]="f.invalid">Search</button>
+	</form>
+
+	<!-- Search Results (List) -->
+	<ul class="list-group-item">
+		<li *ngFor='let movie of movies'>
+			<h5>{{movie.Title}}</h5>
+			<img [src]="movie.poster">
+		</li>
+	</ul>
+</div>

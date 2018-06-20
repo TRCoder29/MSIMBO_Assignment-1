@@ -21,6 +21,8 @@ import { WidgetHeadingComponent } from './components/widget/widget-edit/widget-h
 import { WidgetImageComponent } from './components/widget/widget-edit/widget-image/widget-image.component';
 import { WidgetYoutubeComponent } from './components/widget/widget-edit/widget-youtube/widget-youtube.component';
 
+import { OmdbtestComponent } from './components/omdbtest/omdbtest.component';
+
 const APP_ROUTES : Routes = [
   { path : '', component: LoginComponent},
   { path : 'login' , component: LoginComponent},
@@ -38,6 +40,7 @@ const APP_ROUTES : Routes = [
   { path : 'user/:uid/website/:wid/page/:pid/widget', component : WidgetListComponent},
   { path : 'user/:uid/website/:wid/page/:pid/widget/new' , component: WidgetChooserComponent},
   { path : 'user/:uid/website/:wid/page/:pid/widget/:wgid' , component: WidgetEditComponent},
+  { path : 'omdb', component: OmdbtestComponent}
 ];
 
 // Export the routes as module providers

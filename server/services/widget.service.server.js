@@ -9,14 +9,26 @@ module.exports = function(app) {
 	  { _id: "789", widgetType: "HTML", pageId: "321", text: "<p>Lorem ipsum</p>"}
 	];
 
+	var multer = require('multer');
+    var upload = multer({ dest: './dist/assets/uploads' });
 
 	app.post('/api/page/:pid/widget', createWidget);
+	app.post('/api/user/:uid/website/:wid/page/:pid/widget/:wgid/upload', upload.single('myFile'), uploadImage);
 	app.get('/api/page/:pid/widget', findAllWidgetsForPage);
 	app.get('/api/widget/:wgid', findWidgetById);
 	app.put('/api/widget/:wgid', updateWidget);
 	app.delete('/api/widget/:wgid', deleteWidget);
 
-  
+
+  	function selctWidgetById(wgid) {
+		for (var i=0; i<widgets.length; i++){
+			if(widgets[i]._id === wgid){
+				return widgets[i];
+			}
+		}
+	}
+
+
 	function createWidget(req, res) {
 		const pid = req.params['pid'];
 		const widget = req.body;
@@ -26,6 +38,22 @@ module.exports = function(app) {
 		res.json(widget);
 	}
 
+
+	function uploadImage(req, res) {
+        const uid = req.params['uid'];
+        const wid = req.params['wid'];
+        const pid = req.params['pid'];
+        const wgid = req.params['wgid'];
+
+        var myFile = req.file;
+
+        widget = selectWidgetById(wgid);
+        widget.url = '/assets/uploads/'+ myFile.filename;
+        
+        var callbackUrl = req.headers.origin + "/user/" + uid + "/website/" + wid + "/page/" + pid + "/widget/" + wgid;
+        
+        res.redirect(callbackUrl);
+    }
 
 	function findAllWidgetsForPage(req, res) {
 		const pid = req.params['pid'];

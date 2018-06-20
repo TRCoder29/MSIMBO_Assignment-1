@@ -1,4 +1,4 @@
-<!-- Navigation Bar -->
+Navigation Bar -->
 <nav class="navbar navbar-dark fixed-top sw-gray">
 	<!-- Back (<) Widget-List Link-->
 	<a class="sw-black" routerLink="/user/{{uid}}/website/{{wid}}/page/{{pid}}/widget"><i class="fas fa-chevron-left"></i></a>
@@ -46,21 +46,18 @@
 		<div class="alert alert-danger" *ngIf="width.invalid && width.touched">Width can't be empty!</div>
 
 		<!-- Upload File -->
-		<div><label>Upload</label></div>
-		<div class="form-group">
-			<input class="form-control" name="upload" type="file" placeholder="100%">
-		</div>
-
 		<div>
-			<!-- Upload Button -->
-			<a class="btn btn-secondary btn-block" href="#">Upload Image</a>
-			
-			<br>
+			<form ngNoForm action="{{baseUrl}}/api/user/{{uid}}/website/{{wid}}/page/{{pid}}/widget/{{wgid}}/upload" method="post" enctype="multipart/form-data">
+                <div>
+                	<!-- Upload File -->
+                	<label class='form-group'>Upload</label>
+                	<input  name="myFile" type="file" class="form-control"/>
+                	<!-- Upload Button -->
+                	<button type="submit" class="btn btn-block btn-primary"><b>Upload Image<b/></button>
+                </div>
+            </form>
 
-			<!-- Submit Button -->
-			<button class="btn btn-primary btn-block" type="submit" [disabled]="f.invalid">Submit</button>
-
-			<!-- Delete Button Widget-List Link-->
+			<!-- Delete Button-->
 			<button class="btn btn-danger btn-block" type="button" (click)="remove()">Delete</button>
 		</div>
 	</form>
@@ -73,5 +70,3 @@
 		<a class="sw-font-white float-right" routerLink="/user/{{uid}}"><i class="fas fa-user"></i></a>
 	</div>
 </nav>
-
-			<!-- <button class="btn btn-secondary btn-block" type="submit" [disabled]="f.invalid">Upload Image</button> -->

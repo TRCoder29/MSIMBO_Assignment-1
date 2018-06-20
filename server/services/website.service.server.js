@@ -17,6 +17,15 @@ module.exports = function(app){
 	app.delete('/api/website/:wid', deleteWebsite);
 
 
+  function selectWebsiteById(wid) {
+    for (let i = 0; i < websites.length; i++) {
+      if (websites[i]._id === wid) {
+        return websites[i];
+      }
+    }
+  }
+
+
 	function createWebsite(req, res) {
 	var website = req.body;
   var uid = req.params['uid'];
@@ -36,15 +45,6 @@ module.exports = function(app){
       }
   	}
   	res.json(result);
-  }
-
-
-  function selectWebsiteById(wid) {
-    for (let i = 0; i < websites.length; i++) {
-      if (websites[i]._id === wid) {
-        return websites[i];
-      }
-    }
   }
 
 

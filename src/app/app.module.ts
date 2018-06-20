@@ -31,6 +31,9 @@ import { UserService } from './services/user.service.client';
 import { WebsiteService } from './services/website.service.client';
 import { PageService } from './services/page.service.client';
 import { WidgetService } from './services/widget.service.client';
+import { OmdbService } from './services/omdb.service.client'
+
+import { OmdbtestComponent } from './components/omdbtest/omdbtest.component';
 
 
 
@@ -51,7 +54,8 @@ import { WidgetService } from './services/widget.service.client';
     WidgetImageComponent,
     WidgetListComponent,
     WidgetYoutubeComponent,
-    WidgetEditComponent
+    WidgetEditComponent,
+    OmdbtestComponent
   ],
   imports: [
     BrowserModule,
@@ -59,7 +63,7 @@ import { WidgetService } from './services/widget.service.client';
     HttpModule,
     Routing
   ],
-  providers: [UserService, WebsiteService, PageService, WidgetService],
+  providers: [UserService, WebsiteService, PageService, WidgetService, OmdbService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

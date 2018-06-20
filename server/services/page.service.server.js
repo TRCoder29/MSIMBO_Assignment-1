@@ -13,6 +13,15 @@ module.exports = function(app){
 	app.delete('/api/page/:pid', deletePage);
 
 
+	function selectPageById(pid) {
+		for (let i = 0; i < pages.length; i++) {
+			if (pages[i]._id === pid) {
+				return pages[i];
+			}
+		}
+	}
+
+
 	function createPage(req, res) {
 		var page = req.body;
 		page._id = Math.floor(Math.random() * 10000).toString();
@@ -31,15 +40,6 @@ module.exports = function(app){
 			}
 		}
 		res.json(result);
-	}
-
-
-	function selectPageById(pid) {
-		for (let i = 0; i < pages.length; i++) {
-			if (pages[i]._id === pid) {
-				return pages[i];
-			}
-		}
 	}
 
 
