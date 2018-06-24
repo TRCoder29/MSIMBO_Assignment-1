@@ -47,7 +47,7 @@ module.exports = function(app) {
 
         var myFile = req.file;
 
-        widget = selectWidgetById(wgid);
+        widget = selectWi dgetById(wgid);
         widget.url = '/assets/uploads/'+ myFile.filename;
         
         var callbackUrl = req.headers.origin + "/user/" + uid + "/website/" + wid + "/page/" + pid + "/widget/" + wgid;
@@ -59,7 +59,7 @@ module.exports = function(app) {
 		const pid = req.params['pid'];
 		var result = [];
 			for (let i = 0; i < widgets.length; i++) {
-			if (wigets[i].pageId === pid) {
+			if (widgets[i].pageId === pid) {
 				result.push(widgets[i]);
     		}
   		}

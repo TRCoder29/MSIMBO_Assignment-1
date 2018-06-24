@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { OmdbtestComponent } from './omdbtest.component';
+import { FlickrImageSearchComponent } from './flickr-image-search.component';
 
-describe('OmdbtestComponent', () => {
-  let component: OmdbtestComponent;
-  let fixture: ComponentFixture<OmdbtestComponent>;
+describe('FlickrImageSearchComponent', () => {
+  let component: FlickrImageSearchComponent;
+  let fixture: ComponentFixture<FlickrImageSearchComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ OmdbtestComponent ]
+      declarations: [ FlickrImageSearchComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(OmdbtestComponent);
+    fixture = TestBed.createComponent(FlickrImageSearchComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
