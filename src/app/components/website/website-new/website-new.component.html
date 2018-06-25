@@ -35,7 +35,7 @@
 			<ul class="list-group">
 				<li class="list-group-item" *ngFor="let website of websites">
 					<!-- Page-List-->
-					<a class="text-primary sw-no-underline" routerLink="/user/{{uid}}/website/{{website.id}}/page">{{website.name}}</a>
+					<a class="text-primary sw-no-underline" routerLink="/user/{{uid}}/website/{{website._id}}/page">{{website.name}}</a>
 			
 					<!-- Edit Website List (Cogs) Website-Edit Link-->
 					<a class="float-right" routerLink="/user/{{uid}}/website/{{website._id}}"><i class="fas fa-cog"></i></a>
@@ -64,9 +64,11 @@
 				<textarea class="form-control" name="description" rows="5" placeholder="Describe your website here." ngModel #description="ngModel"></textarea>
 			</div>
 
+			<!-- Submit Button -->
+			<button class="btn btn-success float-right" type="submit" [disabled]="f.invalid">Submit</button>
 			<!-- Cancel Button, Nav to Website List -->
-			<a routerLink="/user/{{uid}}/website" class="btn btn-danger">Cancel</a>
-			<button routerLink="/user/{{uid}}/website" class="btn btn-success float-right" [disabled]="f.invalid">Submit</button>
+			<a class="btn btn-danger" routerLink="/user/{{uid}}/website" >Cancel</a>
+
 		</form>
 	</div>
 </div>

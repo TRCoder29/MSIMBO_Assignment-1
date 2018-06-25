@@ -1,4 +1,4 @@
-Navigation Bar -->
+<!-- Navigation Bar -->
 <nav class="navbar navbar-dark fixed-top sw-gray">
 	<!-- Back (<) Widget-List Link-->
 	<a class="sw-black" routerLink="/user/{{uid}}/website/{{wid}}/page/{{pid}}/widget"><i class="fas fa-chevron-left"></i></a>
@@ -53,9 +53,12 @@ Navigation Bar -->
                 	<label class='form-group'>Upload</label>
                 	<input  name="myFile" type="file" class="form-control"/>
                 	<!-- Upload Button -->
-                	<button type="submit" class="btn btn-block btn-primary"><b>Upload Image<b/></button>
+                	<button type="submit" class="btn btn-block btn-primary"><b>Upload Image</b></button>
                 </div>
             </form>
+
+            <!-- Flickr Button -->
+            <button class="btn btn-block btn-info" routerLink='user/{{uid}}/website/{{wid}}/page/{{pid}}/widget/{{wgid}}/flickr'><b>Choose from Flickr</b></button>
 
 			<!-- Delete Button-->
 			<button class="btn btn-danger btn-block" type="button" (click)="remove()">Delete</button>

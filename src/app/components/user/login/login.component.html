@@ -1,38 +1,36 @@
+<div class="container">
+	<!-- Login Header -->
+	<h1>Login</h1>
 
-	<div class="container">
-		<!-- Login Header -->
-		<h1>Login</h1>
+	<!-- This is the login form. It has the username and password fields. -->
+	<form (ngSubmit)="login()" #f="ngForm">
 
 		<!-- Invalid Username/Password Alert -->
-		<div class="alert alert-danger" *ngIf="errorFlag" >Invalid username or password!</div>
+		<div class="alert alert-danger" *ngIf="errorFlag">Invalid username or password!</div>
 
-		<!-- This is the login form. It has the username and password fields. -->
-		<form (ngSubmit)="login()" #f="ngForm">
-			<!-- Username -->
-			<div class="form-group">
-				<input class="form-control" name="username" type="text" placeholder="Username" required ngModel #username="ngModel">
-			</div>
+		<!-- Username -->
+		<div class="form-group">
+			<input class="form-control" name="username" type="text" placeholder="Username" required ngModel #username="ngModel">
+		</div>
 
-			<!-- Missing username alert -->
-			<span class="alert alert-danger" *ngIf="username.invalid && username.touched">Please enter username!</span>
+		<!-- Missing username alert -->
+		<div class="alert alert-danger" *ngIf="username.invalid && username.touched">Please enter username!</div>
 
-			<!-- Password -->
-			<div class="form-group">
-				<input class="form-control" name="password" type="password" placeholder="Password" required ngModel #password="ngModel">
-			</div>
+		<!-- Password -->
+		<div class="form-group">
+			<input class="form-control" name="password" type="password" placeholder="Password" required ngModel #password="ngModel">
+		</div>
 
-			<!-- Missing password alert -->
-			<span class="alert alert-danger" *ngIf="password.invalid && password.touched">Please enter password!</span>
+		<!-- Missing password alert -->
+		<div class="alert alert-danger" *ngIf="password.invalid && password.touched">Please enter password!</div>
 
-			<div>
-				<!-- Login Button Profile Link-->
-				<button class="btn btn-primary btn-block" type="submit" [disabled]="f.invalid">Login</button>
-				
-				<!-- Register Button Register Link-->
-				<button class="btn btn-success btn-block" routerLink="/register">Register</button>
-			</div>
-		</form>
-	</div>
+		<!-- Login Button Profile Link-->
+		<button class="btn btn-primary btn-block" type="submit" [disabled]="f.invalid">Login</button>
+		
+		<!-- Register Button Register Link-->
+		<button class="btn btn-success btn-block" routerLink="/register">Register</button>
+	</form>
+</div>
 
 <!-- For the Login feature, in order to check the username and password, we have to first catch the information that is entered. Then after we catch them, we have to compare them to the username/password combinations in our existing array. This is what we're doing in Assignment 4 "Use Template Driven...".
 

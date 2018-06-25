@@ -18,7 +18,7 @@
 	<div class="col-sm-8">
 		<div class="container-fluid" >
 			<!-- Back Button Website-List Link-->
-			<a class="sw-font-white d-md-block d-lg-none" routerLink="/user/{{uid}}/website"><i class="fas fa-chevron-left"></i></a>
+<!-- 			<a class="sw-font-white d-md-block d-lg-none" routerLink="/user/{{uid}}/website"><i class="fas fa-chevron-left"></i></a> -->
 
 			<!-- Edit Website Link-->
 			<a class="sw-font-white sw-left-padding sw-no-underline" routerLink="/user/{{uid}}/website/{{wid}}"><b>Edit Website</b></a>
@@ -37,10 +37,10 @@
 			<ul class="list-group">
 				<li class="list-group-item" *ngFor = "let website of websites">
 					<!-- Page-List-->
-					<a class="text-primary sw-no-underline" routerLink="/user/{{uid}}/website/{{website.id}}/page">{{website.name}}</a>
+					<a class="text-primary sw-no-underline" routerLink="/user/{{uid}}/website/{{website._id}}/page">{{website.name}}</a>
 		
 					<!-- Edit Website List (Cogs) Website-Edit Link-->
-					<a class="float-right" routerLink="/user/{{uid}}/website/{{website._id}}"><i class="fas fa-cog"></i></a>
+					<a class="float-right" routerLink="/user/{{uid}}/website/{{website._id}}/page"><i class="fas fa-cog"></i></a>
 				</li>
 			</ul>
 		</div>
@@ -65,10 +65,14 @@
 				<textarea class="form-control" rows="5" name="description" placeholder="Website Description" ngModel={{website.description}} #description="ngModel"></textarea>
 			</div>
 
-			<!-- Delete Button Website-List-->
-			<button (click)="delete" type="button" class="btn btn-danger btn-block">Delete</button>
 			<!-- Update Button Website-List-->
 			<button class="btn btn-primary btn-block float-right" type="submit">Update</button>
+
+			<br>
+			<br>
+
+			<!-- Delete Button Website-List-->
+			<button (click)="delete()" type="button" class="btn btn-danger btn-block">Delete</button>
 		</form>
 	</div>
 </div>

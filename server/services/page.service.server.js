@@ -31,7 +31,7 @@ module.exports = function(app){
 	}
 
 
-	function findAllPagesForWebsite(res, req) {
+	function findAllPagesForWebsite(req, res) {
 		var wid = req.params['wid'];
 		let result = [];
 		for (let i = 0; i < pages.length; i++) {
@@ -43,14 +43,14 @@ module.exports = function(app){
 	}
 
 
-	function findPageById(res, req) {
+	function findPageById(req, res) {
 		var pid = req.params['pid'];
 		var page = selectPageById(pid);
 		res.json(page);
 	}
 
 
-	function updatePage(res, req) {
+	function updatePage(req, res) {
 		var pid = req.params['pid']
 		var page = req.body;
 		var oldPage = selectPageById(pid);
@@ -61,7 +61,7 @@ module.exports = function(app){
 	}
 
 
-	function deletePage(res, req) {
+	function deletePage(req, res) {
 		var pid = req.params['pid'];
 		let oldPage = selectPageById(pid);
 		const index = this.pages.indexOf(oldPage);

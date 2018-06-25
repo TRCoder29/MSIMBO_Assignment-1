@@ -7,10 +7,10 @@ module.exports = function(app){
 	];
 
 
-	app.post('api/user', createUser);
+	app.post('/api/user', createUser);
 	app.get('/api/user/:uid', findUserById);
 	app.get('/api/user', findUser);
-	app.put('api/user/:uid', updateUser);
+	app.put('/api/user/:uid', updateUser);
 	app.delete('api/user/:uid', deleteUser);
 	
 
@@ -24,7 +24,8 @@ module.exports = function(app){
 
 
 	function createUser(req, res) {
-    	user._id = req.body;
+		let user = req.body;
+    	user._id = Math.floor(Math.random() * 10000).toString();
     	users.push(user);
     	res.json(user);
   	}

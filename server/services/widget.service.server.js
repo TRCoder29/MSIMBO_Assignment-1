@@ -59,7 +59,7 @@ module.exports = function(app) {
 		const pid = req.params['pid'];
 		var result = [];
 			for (let i = 0; i < widgets.length; i++) {
-			if (wigets[i].pageId === pid) {
+			if (widgets[i].pageId === pid) {
 				result.push(widgets[i]);
     		}
   		}
@@ -93,6 +93,6 @@ module.exports = function(app) {
 		const oldWidget = selectWidgetById(wgid);
 		const index = widgets.indexOf(oldWidget);
 		widgets.splice(index, 1);
-		res.json(widget);
+		res.json(widgets);
   	}
 }
