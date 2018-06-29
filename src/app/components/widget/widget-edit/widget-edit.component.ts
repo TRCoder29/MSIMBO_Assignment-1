@@ -10,11 +10,12 @@ import { Widget } from '../../../models/widget.model.client'
 })
 export class WidgetEditComponent implements OnInit {
   
-  wgid: string;
-  widget: Widget;
-	name: string;
-	text: string;
-	size: number;
+    widget: Widget = {
+    _id: '',
+    widgetType: '',
+    pageId: '',
+  }
+	wgid: string;
 
   constructor(private widgetService: WidgetService, private activatedRoute: ActivatedRoute) { }
 
@@ -28,5 +29,4 @@ export class WidgetEditComponent implements OnInit {
       );
   	})
   }
-
 }

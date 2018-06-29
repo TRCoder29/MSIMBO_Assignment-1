@@ -37,36 +37,3 @@ export class WidgetChooserComponent implements OnInit {
     );	
   }
 }
-
-  // createHeader(){
-  // 	const newWidget: Widget = {
-  // 		_id: '',
-  // 		widgetType: "HEADING",
-  // 		pageId: this.pid
-  // 	}
-  // 	this.widgetService.createWidget(this.pid, newWidget);
-  // 	const wgid = this.widgetService.widgets[this.widgetService.widgets.length -1]._id;
-  // 	this.router.navigate(['user', this.uid, 'website', this.wid, 'page', this.pid, 'widget', wgid]);
-  // }
-
-  // createImage(){
-  // 	  	const newWidget: Widget = {
-  // 		_id: '',
-  // 		widgetType: "IMAGE",
-  // 		pageId: this.pid
-  // 	}
-  // 	this.widgetService.createWidget(this.pid, newWidget);
-  // 	const wgid = this.widgetService.widgets[this.widgetService.widgets.length -1]._id;
-  // 	this.router.navigate(['user', this.uid, 'website', this.wid, 'page', this.pid, 'widget', wgid]);
-  // }
-
-  // createYoutube(){
-  // 	  	const newWidget: Widget = {
-  // 		_id: '',
-  // 		widgetType: "YOUTUBE",
-  // 		pageId: this.pid
-  // 	}
-  // 	this.widgetService.createWidget(this.pid, newWidget);
-  // 	const wgid = this.widgetService.widgets[this.widgetService.widgets.length -1]._id;
-  // 	this.router.navigate(['user', this.uid, 'website', this.wid, 'page', this.pid, 'widget', wgid]);
-  // }

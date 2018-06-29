@@ -1,4 +1,8 @@
 module.exports = function(app) {
+
+	var multer = require('multer');
+    var upload = multer({ dest: './dist/assets/uploads' });
+
 	var widgets = [
 	  { _id: "123", widgetType: "HEADING", pageId: "321", size: 2, text: "GIZMODO"},
 	  { _id: "234", widgetType: "HEADING", pageId: "321", size: 4, text: "Lorem ipsum"},
@@ -9,9 +13,6 @@ module.exports = function(app) {
 	  { _id: "789", widgetType: "HTML", pageId: "321", text: "<p>Lorem ipsum</p>"}
 	];
 
-	var multer = require('multer');
-    var upload = multer({ dest: './dist/assets/uploads' });
-
 	app.post('/api/page/:pid/widget', createWidget);
 	app.post('/api/user/:uid/website/:wid/page/:pid/widget/:wgid/upload', upload.single('myFile'), uploadImage);
 	app.get('/api/page/:pid/widget', findAllWidgetsForPage);
@@ -21,7 +22,7 @@ module.exports = function(app) {
 
 
   	function selctWidgetById(wgid) {
-		for (var i=0; i<widgets.length; i++){
+		for(var i=0; i<widgets.length; i++){
 			if(widgets[i]._id === wgid){
 				return widgets[i];
 			}
@@ -32,15 +33,13 @@ module.exports = function(app) {
 	function createWidget(req, res) {
 		const pid = req.params['pid'];
 		const widget = req.body;
-		widget._id = Math.floor(Math.random() * 10000).toString();
-		widget.pageId = pageId;
+		widget._id = Math.floor(Math.random() * Math.floor(10000)).toString();
+		widget.pageId = pid;
 		widgets.push(widget);
 		res.json(widget);
 	}
 
-
 	function uploadImage(req, res) {
-        const uid = req.params['uid'];
         const wid = req.params['wid'];
         const pid = req.params['pid'];
         const wgid = req.params['wgid'];
@@ -58,7 +57,7 @@ module.exports = function(app) {
 	function findAllWidgetsForPage(req, res) {
 		const pid = req.params['pid'];
 		var result = [];
-			for (let i = 0; i < widgets.length; i++) {
+			for (var i = 0; i < widgets.length; i++) {
 			if (widgets[i].pageId === pid) {
 				result.push(widgets[i]);
     		}

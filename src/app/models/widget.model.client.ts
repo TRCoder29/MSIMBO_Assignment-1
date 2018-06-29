@@ -8,14 +8,9 @@ export class Widget {
 	width?: string;
 	url?: string;
 
-	constructor (_id, widgetType, pageId, size?, text?, width?, url?){
+	constructor (_id, widgetType, pageId){
 		this._id = _id;
 		this.widgetType = widgetType;
 		this.pageId = pageId;
-		this.name = name;
-		this.size = size;
-		this.text = text;
-		this.width = width;
-		this.url = url;
 	}
 }
