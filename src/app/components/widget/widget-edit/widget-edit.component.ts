@@ -11,7 +11,6 @@ import { Widget } from '../../../models/widget.model.client'
 export class WidgetEditComponent implements OnInit {
   
     widget: Widget = {
-    _id: '',
     widgetType: '',
     pageId: '',
   }

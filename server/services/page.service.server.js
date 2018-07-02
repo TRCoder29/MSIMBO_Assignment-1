@@ -1,9 +1,11 @@
 module.exports = function(app){
-	var pages = [
-	  {_id: "321", name: "Post 1", websiteId: "456", description: "Lorem"},
-	  {_id: "432", name: "Post 2", websiteId: "456", description: "Lorem"},
-	  {_id: "543", name: "Post 3", websiteId: "456", description: "Lorem"}
-	]
+	
+	var pageModel = require('../model/page/page.model.server.js')
+	// var pages = [
+	//   {_id: "321", name: "Post 1", websiteId: "456", description: "Lorem"},
+	//   {_id: "432", name: "Post 2", websiteId: "456", description: "Lorem"},
+	//   {_id: "543", name: "Post 3", websiteId: "456", description: "Lorem"}
+	// ]
 
 
 	app.post('/api/website/:wid/page', createPage);
@@ -13,60 +15,54 @@ module.exports = function(app){
 	app.delete('/api/page/:pid', deletePage);
 
 
-	function selectPageById(pid) {
-		for (let i = 0; i < pages.length; i++) {
-			if (pages[i]._id === pid) {
-				return pages[i];
-			}
-		}
-	}
-
-
 	function createPage(req, res) {
 		var page = req.body;
-		page._id = Math.floor(Math.random() * 10000).toString();
-		page.websiteId = req.params['wid'];
-		pages.push(page);
-		res.json(page);
+		pageModel.createPage(page).then(
+			(date) => {
+				res.json(data);
+			}
+		)
 	}
 
 
 	function findAllPagesForWebsite(req, res) {
 		var wid = req.params['wid'];
-		let result = [];
-		for (let i = 0; i < pages.length; i++) {
-			if (pages[i].websiteId === wid) {
-					result.push(pages[i]);
+		pageModel.findAllPagesForWebsite(wid).then(
+			(data) => {
+				res.json(data);
 			}
-		}
-		res.json(result);
+		)
 	}
 
 
 	function findPageById(req, res) {
 		var pid = req.params['pid'];
-		var page = selectPageById(pid);
-		res.json(page);
+		pageModel.findPageById(pid).then(
+			(data) => {
+				res.json(data);
+			}
+		)
 	}
 
 
 	function updatePage(req, res) {
 		var pid = req.params['pid']
 		var page = req.body;
-		var oldPage = selectPageById(pid);
-		const index = pages.indexOf(oldPage);
-		pages[index].name = page.name;
-		pages[index].description = page.description;
-		res.json(page);
+		pageModel.updatePage(pid, page).then(
+			(data) => {
+				res.json(data);
+			}
+		)
 	}
 
 
 	function deletePage(req, res) {
 		var pid = req.params['pid'];
-		let oldPage = selectPageById(pid);
-		const index = this.pages.indexOf(oldPage);
-		pages.splice(index, 1);
-		res.json(pages);
+		pageModel.deletePage(pid).then(
+			(data) => {
+				res.json(data);
+			}
+		)
 	}
 
 }

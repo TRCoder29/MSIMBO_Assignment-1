@@ -18,7 +18,6 @@ websites: Website[];
 name: string;
 description: string;
 website: Website = {
-  _id: "",
   name: "",
   developerId: "",
   description: ""
