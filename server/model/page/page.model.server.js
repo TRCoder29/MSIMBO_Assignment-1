@@ -1,6 +1,6 @@
 var mongoose = require('mongoose');
 var PageSchema = require ('./page.schema.server.js')
-var PageModel = mongoose.model('PageModel', PageSchema)
+var PageModel = mongoose.model('PageModel', PageSchema);
 
 PageModel.createPage = createPage;
 PageModel.findPageById = findPageById;
@@ -13,11 +13,11 @@ function createPage(page){
 }
 
 function findPageById(pid){
-	return PageModel.findPageById(pid);
+	return PageModel.findById(pid);
 }
 
 function findAllPagesForWebsite(wid){
-	return PageModel.findAllPagesForWebsite({websiteId: wid});
+	return PageModel.find({websiteId: wid});
 }
 
 function updatePage(pid, page){

@@ -21,7 +21,7 @@ function findAllWidgetsForPage(pid){
 }
 
 function updateWidget(wgid, widget){
-	return WidgetModel.update({_id: wid, Widget});
+	return WidgetModel.update({_id: wid}, Widget);
 }
 
 function deleteWidget(wgid){

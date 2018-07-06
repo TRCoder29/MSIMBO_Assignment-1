@@ -24,7 +24,6 @@ module.exports = function(app) {
 
 
 	function createWidget(req, res) {
-		const pid = req.params['pid'];
 		const widget = req.body;
 		widgetModel.createWidget(widget).then(
 			widget => {

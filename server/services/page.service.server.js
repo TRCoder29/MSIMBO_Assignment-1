@@ -18,10 +18,10 @@ module.exports = function(app){
 	function createPage(req, res) {
 		var page = req.body;
 		pageModel.createPage(page).then(
-			(date) => {
+			(data) => {
 				res.json(data);
 			}
-		)
+		);
 	}
 
 
@@ -31,7 +31,7 @@ module.exports = function(app){
 			(data) => {
 				res.json(data);
 			}
-		)
+		);
 	}
 
 
@@ -41,7 +41,7 @@ module.exports = function(app){
 			(data) => {
 				res.json(data);
 			}
-		)
+		);
 	}
 
 
@@ -52,7 +52,7 @@ module.exports = function(app){
 			(data) => {
 				res.json(data);
 			}
-		)
+		);
 	}
 
 
@@ -62,7 +62,7 @@ module.exports = function(app){
 			(data) => {
 				res.json(data);
 			}
-		)
+		);
 	}
 
 }

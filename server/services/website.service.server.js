@@ -11,18 +11,18 @@ module.exports = function(app){
 
  var websiteModel = require ('../model/website/website.model.server.js');
 
-	app.post('/api/user/:uid/website', createWebsiteForUser);
+	app.post('/api/user/:uid/website', createWebsite);
  	app.get('/api/user/:uid/website', findAllWebsitesForUser);
 	app.get('/api/website/:wid', findWebsiteById);
 	app.put('/api/website/:wid', updateWebsite);
 	app.delete('/api/website/:wid', deleteWebsite);
 
 
-	function createWebsiteForUser(website) {
+	function createWebsite(req, res) {
   	var website = req.body;
     websiteModel.createWebsiteForUser(website).then(
-      (website) => {
-        res.json(website);
+      (data) => {
+        res.json(data);
       }
     )
   }
@@ -41,7 +41,7 @@ module.exports = function(app){
   function findWebsiteById(req, res) {
   	var wid = req.params['wid'];
     websiteModel.findWebsiteById(wid).then(
-      (websites) => {
+      (website) => {
         res.json(website);
       }
     )

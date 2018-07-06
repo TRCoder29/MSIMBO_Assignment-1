@@ -23,7 +23,6 @@ var userModel = require('../model/user/user.model.server.js');
 				res.json(data);
 			}
 		)
-    	res.json(user);
   	}
 
 
@@ -34,7 +33,6 @@ var userModel = require('../model/user/user.model.server.js');
 				res.json(data);
 			}
 		)
-		res.json(user);
 	}
 
 

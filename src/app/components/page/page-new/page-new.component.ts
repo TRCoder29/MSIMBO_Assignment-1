@@ -32,7 +32,6 @@ export class PageNewComponent implements OnInit {
 		this.description = this.pageForm.value.description;
 	
 		const newPage: Page = {
-			_id: "",
 			name: this.name,
 			websiteId: this.wid,
 			description: this.description
