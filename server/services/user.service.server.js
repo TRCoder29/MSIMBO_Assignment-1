@@ -1,6 +1,12 @@
 module.exports = function(app){
 
-var userModel = require('../model/user/user.model.server.js');
+	var userModel = require('../model/user/user.model.server.js');
+	var passport = require('passport');
+	var LocalStrategy = require('passport-local').Strategy;
+
+	passport.serializeUser(serializeUser);
+	passport.deserializeUser(deserializeUser);
+	passport.use(new LocalStrategy(localStrategy));
 
 	// var users = [
 	// 	{_id: "123", username: "alice", password: "alice", firstName: "Alice", lastName: "Wonder", email: "alice@gmail.com"},
@@ -11,10 +17,44 @@ var userModel = require('../model/user/user.model.server.js');
 
 
 	app.post('/api/user', createUser);
+	app.post('/api/register', register);
+	app.post  ('/api/login', passport.authenticate('local'), login);
+	app.post ('/api/loggedIn', loggedIn);
+	app.post('/api/logout', logout);
 	app.get('/api/user/:uid', findUserById);
 	app.get('/api/user', findUser);
 	app.put('/api/user/:uid', updateUser);
 	app.delete('api/user/:uid', deleteUser);
+
+
+	function serializeUser(user, done) {
+	    done(null, user);
+	}
+
+	function deserializeUser(user, done) {
+		userModel
+			.findUserById(user._id)
+			.then(
+				function(user){
+	                done(null, user);
+	            },
+	            function(err){
+	                done(err, null);
+	            }
+	        );
+	}
+
+	function localStrategy(username, password, done) {
+		userModel.findUserByCredentials(username, password).then(
+			(user) => {
+				if(user) {
+					return done(null, user);
+                } else {
+                    return done(null, false);
+                }
+            }
+        )
+   }
 
 	function createUser(req, res) {
 		var user = req.body;
@@ -25,6 +65,34 @@ var userModel = require('../model/user/user.model.server.js');
 		)
   	}
 
+  	function register (req, res) {
+  		var user = req.body;
+  		userModel.createUser(user).then(
+  			function(user){
+  				req.login(user, function(err) {
+  					res.json(user);
+  				});
+            }
+        );    	
+	}
+
+	function login(req, res) {
+	   var user = req.user;
+	   res.json(user);
+	}
+
+	function loggedIn(req, res) {
+	    if(req.isAuthenticated()){
+	    	res.send(req.user);
+	    }else{
+	    	res.send("0");
+	    }
+	}
+
+	function logout(req, res) {
+	   req.logOut();
+	   res.send(200);
+	}
 
 	function findUserById(req, res) {
 		var uid = req.params["uid"];
@@ -34,7 +102,6 @@ var userModel = require('../model/user/user.model.server.js');
 			}
 		)
 	}
-
 
 	function findUser(req, res) {
 		const username = req.query['username'];
