@@ -3,6 +3,7 @@ module.exports = function(app){
 	var userModel = require('../model/user/user.model.server.js');
 	var passport = require('passport');
 	var LocalStrategy = require('passport-local').Strategy;
+	var bcrypt = require("bcrypt-nodejs");
 
 	passport.serializeUser(serializeUser);
 	passport.deserializeUser(deserializeUser);
@@ -14,7 +15,6 @@ module.exports = function(app){
 	// 	{_id: "345", username: "charly", password: "charly", firstName: "Charly", lastName: "Garcia", email: "charly@ulem.com"},
 	// 	{_id: "456", username: "shiyu", password: "shiyu", firstName: "Shiyu", lastName: "Wang", email: "swang@ulem.org"}
 	// ];
-
 
 	app.post('/api/user', createUser);
 	app.post('/api/register', register);

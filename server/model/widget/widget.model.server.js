@@ -1,5 +1,5 @@
 var mongoose = require('mongoose');
-var WidgetSchema = require ('./widget.model.server.js');
+var WidgetSchema = require ('./widget.schema.server.js');
 var WidgetModel = mongoose.model('WidgetModel', WidgetSchema);
 
 WidgetModel.createWidget = createWidget;
@@ -21,11 +21,11 @@ function findAllWidgetsForPage(pid){
 }
 
 function updateWidget(wgid, widget){
-	return WidgetModel.update({_id: wid}, Widget);
+	return WidgetModel.update({_id: wgid}, widget);
 }
 
 function deleteWidget(wgid){
-	return WidgetModel.remove({_id: wid});
+	return WidgetModel.remove({_id: wgid});
 }
 
 module.exports = WidgetModel;

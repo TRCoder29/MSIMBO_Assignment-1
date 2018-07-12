@@ -12,7 +12,7 @@ export class WidgetEditComponent implements OnInit {
   
     widget: Widget = {
     widgetType: '',
-    pageId: '',
+    pageId: ''
   }
 	wgid: string;
 

@@ -19,7 +19,7 @@ export class WidgetYoutubeComponent implements OnInit {
 	wgid: string;
 	widget: Widget = {
     widgetType: '',
-    pageId: '',
+    pageId: ''
   };
 	name: string;
   text: string;
@@ -57,8 +57,11 @@ export class WidgetYoutubeComponent implements OnInit {
       pageId: this.pid,
       widgetType: this.widget.widgetType
     }
-    this.widgetService.updateWidget(this.wgid, updatedWidget);
-    this.router.navigate(['user', this.uid, 'website', this.wid, 'page', this.pid, 'widget']);
+    this.widgetService.updateWidget(this.wgid, updatedWidget).subscribe(
+      (widget: Widget) => {
+        this.router.navigate(['user', this.uid, 'website', this.wid, 'page', this.pid, 'widget']);
+      }
+    );
   }
 
   remove(){

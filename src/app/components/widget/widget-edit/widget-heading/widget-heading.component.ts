@@ -20,13 +20,11 @@ export class WidgetHeadingComponent implements OnInit {
 	wgid: string;
 	widget: Widget = {
     widgetType: '',
-    pageId: '',
+    pageId: ''
   };
 	name: string;
 	text: string;
 	size: number;
-	width: string;
-	url: string;
 
   constructor(private widgetService: WidgetService, private activatedRouter: ActivatedRoute, private router: Router) { }
 
@@ -41,7 +39,7 @@ export class WidgetHeadingComponent implements OnInit {
            this.widget = widget;
         }
       );
-  	})
+  	});
   }
 
   update(){

@@ -16,7 +16,7 @@ module.exports = function(app) {
 	// ];
 
 	app.post('/api/page/:pid/widget', createWidget);
-	app.post('/api/user/:uid/website/:wid/page/:pid/widget/:wgid/upload', upload.single('myFile'), uploadImage);
+	app.post("/api/user/:uid/website/:wid/page/:pid/widget/:wgid/upload", upload.single('myFile'), uploadImage);
 	app.get('/api/page/:pid/widget', findAllWidgetsForPage);
 	app.get('/api/widget/:wgid', findWidgetById);
 	app.put('/api/widget/:wgid', updateWidget);
@@ -56,7 +56,7 @@ module.exports = function(app) {
 	function updateWidget(req, res) {
 		const wgid = req.params['wgid'];
 		const widget = req.body;
-		widget.updateWidget(wgid, widget).then(
+		widgetModel.updateWidget(wgid, widget).then(
 			data => {
 				res.json(data);
 			}
@@ -75,6 +75,7 @@ module.exports = function(app) {
 
 
 	function uploadImage(req, res) {
+        const uid = req.params['uid'];
         const wid = req.params['wid'];
         const pid = req.params['pid'];
         const wgid = req.params['wgid'];

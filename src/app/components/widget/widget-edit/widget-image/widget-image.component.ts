@@ -3,6 +3,7 @@ import { ActivatedRoute, Router } from '@angular/router'
 import { WidgetService } from '../../../../services/widget.service.client'
 import { Widget } from '../../../../models/widget.model.client'
 import { NgForm } from '@angular/forms'
+import { environment } from '../../../../../environments/environment'
 
 @Component({
   selector: 'app-widget-image',
@@ -19,12 +20,13 @@ export class WidgetImageComponent implements OnInit {
 	wgid: string;
 	widget: Widget = {
     widgetType: '',
-    pageId: '',
+    pageId: ''
   };
   name: string;
   text: string;
   url: string;
   width: string;
+  baseUrl: string;
 
   constructor(private widgetService: WidgetService, private activatedRouter: ActivatedRoute, private router: Router) { }
 
@@ -34,6 +36,7 @@ export class WidgetImageComponent implements OnInit {
   		this.wid = params['wid'];
   		this.pid = params['pid'];
   		this.wgid = params['wgid'];
+      this.baseUrl = environment.baseUrl;
   		this.widgetService.findWidgetById(this.wgid).subscribe(
         (widget: Widget) => {
           this.widget = widget;

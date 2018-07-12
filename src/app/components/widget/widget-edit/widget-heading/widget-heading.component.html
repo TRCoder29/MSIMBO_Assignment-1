@@ -1,11 +1,11 @@
 <!-- Navigation Bar -->
 <nav class="navbar navbar-dark sw-gray fixed-top">
 	<!-- Cancel (<) Widget-List Link-->
-	<a class="sw-black" routerLink="user/{{uid}}/website/{{wid}}/page/{{pid}}/widget"><i class="fas fa-chevron-left"></i></a>
+	<a class="sw-black" routerLink="/user/{{uid}}/website/{{wid}}/page/{{pid}}/widget"><i class="fas fa-chevron-left"></i></a>
 
 	<!-- New Page Title Widget-Heading/Edit Link-->
 	<div class="sw-80-width">
-		<a class="sw-left-padding sw-no-underline" routerLink="/user/{{uid}}/website/{{wid}}/page/{{pid}}/widget/{{wgid}}"><b class="sw-black">Choose Widget</b></a>
+		<a class="sw-left-padding sw-no-underline" routerLink="/user/{{uid}}/website/{{wid}}/page/{{pid}}/widget/new"><b class="sw-black">Choose Widget</b></a>
 	</div>
 
 	<!-- OK (/) Widget-List Link-->
@@ -15,7 +15,6 @@
 <!-- Form -->
 <div class="container">
 	<form id="widgetForm" (ngSubmit)="update()" #f="ngForm">
-
 		<!-- Page Name -->
 		<div><label>Name</label></div>
 		<div class="form-group">
@@ -49,7 +48,7 @@
 
 		<!-- Delete Widget-List Link-->
 		<div>
-			<button class="btn btn-danger btn-block" type="button" (click)="remove">Delete</button>
+			<button class="btn btn-danger btn-block" type="button" (click)="remove()">Delete</button>
 		</div>
 	</form>
 

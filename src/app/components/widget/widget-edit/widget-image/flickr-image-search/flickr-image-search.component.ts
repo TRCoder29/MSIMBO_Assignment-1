@@ -38,14 +38,14 @@ export class FlickrImageSearchComponent implements OnInit {
   				(widget: Widget) => {
   					this.widget = widget;
   				}
-  				)
+  			)
   		}
   	)
   }
 
   searchPhotos() {
   	this.flickrService.searchPhotos(this.searchText).subscribe(
- 	(data: any) => {
+ 	    (data: any) => {
        let val = data._body;
        val = val.replace('jsonFlickrApi(', '');
        val = val.substring(0, val.length - 1);
@@ -63,9 +63,8 @@ export class FlickrImageSearchComponent implements OnInit {
   		(widget: Widget) => {
   			this.router.navigate(['user', this.uid, 'website', this.wid, 'page', this.pid, 'widget', this.wgid]);
   		}
-
-  		);
- }
+  	)
+  }
 }
 
 

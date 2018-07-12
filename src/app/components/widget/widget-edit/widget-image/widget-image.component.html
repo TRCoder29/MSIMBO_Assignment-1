@@ -5,7 +5,7 @@
 	
 	<!-- Edit Widget Link Widget-Image/Edit Link-->
 	<div class="sw-80-width">
-		<a class="sw-font-white sw-no-underline float-left" routerLink="/user/{{uid}}/website/{{wid}}/page/{{pid}}/widget/{{wgid}}">Edit Widget</a>
+		<a class="sw-font-white sw-no-underline float-left" routerLink="/user/{{uid}}/website/{{wid}}/page/{{pid}}/widget/new">Edit Widget</a>
 	</div>
 
 	<!-- Check (/) Widget-List Link-->
@@ -57,8 +57,12 @@
                 </div>
             </form>
 
+            <br>
+
             <!-- Flickr Button -->
-            <button class="btn btn-block btn-info" routerLink='user/{{uid}}/website/{{wid}}/page/{{pid}}/widget/{{wgid}}/flickr'><b>Choose from Flickr</b></button>
+            <button class="btn btn-block btn-info" type="button" routerLink='/user/{{uid}}/website/{{wid}}/page/{{pid}}/widget/{{wgid}}/flickr'><b>Choose from Flickr</b></button>
+
+            <br>
 
 			<!-- Delete Button-->
 			<button class="btn btn-danger btn-block" type="button" (click)="remove()">Delete</button>
