@@ -1,12 +1,13 @@
 module.exports = function(app){
 
-	var userModel = require('../model/user/user.model.server.js');
-	var passport = require('passport');
-	var LocalStrategy = require('passport-local').Strategy;
 	var bcrypt = require("bcrypt-nodejs");
+	var userModel = require('../model/user/user.model.server.js');
 
+	var passport = require('passport');
 	passport.serializeUser(serializeUser);
 	passport.deserializeUser(deserializeUser);
+
+	var LocalStrategy = require('passport-local').Strategy;
 	passport.use(new LocalStrategy(localStrategy));
 
 	// var users = [
@@ -15,6 +16,7 @@ module.exports = function(app){
 	// 	{_id: "345", username: "charly", password: "charly", firstName: "Charly", lastName: "Garcia", email: "charly@ulem.com"},
 	// 	{_id: "456", username: "shiyu", password: "shiyu", firstName: "Shiyu", lastName: "Wang", email: "swang@ulem.org"}
 	// ];
+
 
 	app.post('/api/user', createUser);
 	app.post('/api/register', register);
@@ -45,16 +47,17 @@ module.exports = function(app){
 	}
 
 	function localStrategy(username, password, done) {
-		userModel.findUserByCredentials(username, password).then(
+		userModel.findUserByUsername(username).then(
 			(user) => {
-				if(user) {
+				if(user && bcrypt.compareSync(password, user.password)) {
 					return done(null, user);
                 } else {
                     return done(null, false);
                 }
-            }
-        )
+			}
+		)
    }
+
 
 	function createUser(req, res) {
 		var user = req.body;
@@ -67,6 +70,7 @@ module.exports = function(app){
 
   	function register (req, res) {
   		var user = req.body;
+  		user.password = bcrypt.hashSync(user.password);
   		userModel.createUser(user).then(
   			function(user){
   				req.login(user, function(err) {
@@ -130,6 +134,8 @@ module.exports = function(app){
     function updateUser(req, res) {
     	var uid = req.params['uid'];
     	var user = req.body;
+    	console.log(uid);
+    	console.log(user);
     	userModel.updateUser(uid, user).then(
     		data => {
     			res.json(data);

@@ -26,7 +26,7 @@ function findUserByCredentials(username, password){
 }
 
 function updateUser (uid, user){
-	return UserModel.update({_id: uid, user});
+	return UserModel.update({_id: uid}, user);
 }
 
 function deleteUser (uid){

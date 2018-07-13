@@ -53,24 +53,28 @@ export class ProfileComponent implements OnInit {
 		this.userService.findUserByUsername(this.username).subscribe(
 			(user: User) => {
 				this.aUser = user;
+				if(this.aUser && this.oldUsername != this.username){
+					this.usernameTaken = true;
+					this.submitSuccess = false;
+				} else {
+					const updatedUser: User = {
+						_id: this.user._id,
+						username: this.username,
+						password: this.user.password,
+						firstName: this.firstName,
+						lastName: this.lastName,
+						email: this.email
+					};
+					this.userService.updateUser(this.user._id, updatedUser).subscribe(
+						(res: any) => {
+							this.usernameTaken = false;
+							this.submitSuccess = true;
+						}
+					);
+				}
 			}
 		);
-		if(this.aUser && this.oldUsername != this.username){
-			this.usernameTaken = true;
-			this.submitSuccess = false;
-		} else {
-			const updatedUser: User = {
-				_id: this.user._id,
-				username: this.username,
-				password: this.user.password,
-				firstName: this.firstName,
-				lastName: this.lastName,
-				email: this.email
-			};
-			this.userService.updateUser(this.user._id, updatedUser);
-			this.usernameTaken = false;
-			this.submitSuccess = true;
-		}
+		
 	}
 
 	logout() {
