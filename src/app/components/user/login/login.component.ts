@@ -24,6 +24,8 @@ export class LoginComponent implements OnInit {
   constructor(private userService: UserService, private router: Router, private sharedService: SharedService) { }
   
   ngOnInit() {
+    var delay = document.querySelector(".sw-delay");
+    
   }
 
   login() {
@@ -66,3 +68,13 @@ export class LoginComponent implements OnInit {
   //     }
   //   )
   // }
+
+    // var myVar;
+    // function myFunction() {
+    //   myVar = setTimeout(showPage, 3000);
+    // }
+
+    // function showPage() {
+    //   document.getElementById("loader").style.display = "none";
+    //   document.getElementById("myDiv").style.display = "block";
+    // }

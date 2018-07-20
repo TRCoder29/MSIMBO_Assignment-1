@@ -16,10 +16,7 @@
 
 	<!-- Right Navbar -->
 	<div class="col-sm-8">
-		<div class="container-fluid" >
-			<!-- Back Button Website-List Link-->
-<!-- 			<a class="sw-font-white d-md-block d-lg-none" routerLink="/user/{{uid}}/website"><i class="fas fa-chevron-left"></i></a> -->
-
+		<div class="container-fluid">
 			<!-- Edit Website Link-->
 			<a class="sw-font-white sw-left-padding sw-no-underline" routerLink="/user/{{uid}}/website/{{wid}}"><b>Edit Website</b></a>
 
@@ -52,9 +49,10 @@
 	<div class="container">
 		<form id="websiteForm" (ngSubmit)="update()" #f=ngForm>
 			<!-- Website Name -->
-			<div class="form-group"></div>
+			<div class="form-group">
 				<label for="website-name"><b>Name</b></label>
-				<input class="form-control" name="name" type="text" placeholder="Website Name" required ngModel={{website.name}} #name="ngModel">
+				<input class="form-control" type="text" name="name" placeholder="Enter your website name." required ngModel="{{website.name}}" #name="ngModel">
+			</div>
 
 			<!-- Missing Name Alert -->
 			<div class="alert alert-warning" *ngIf="name.invalid && name.touched">Name cannot be empty.</div>
@@ -62,8 +60,11 @@
 			<!-- Website Description -->
 			<div class="form-group">
 				<label for="website-description"><b>Description</b></label>
-				<textarea class="form-control" rows="5" name="description" placeholder="Website Description" ngModel={{website.description}} #description="ngModel"></textarea>
+				<textarea class="form-control" rows="5" name="description" placeholder="Website Description" ngModel={{website.description}} required #description="ngModel"></textarea>
 			</div>
+
+			<!-- Missing Description Alert -->
+			<div class="alert alert-danger" *ngIf="description.invalid && description.touched">Description cannot be empty.</div>
 
 			<!-- Update Button Website-List-->
 			<button class="btn btn-primary btn-block float-right" type="submit">Update</button>

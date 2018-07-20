@@ -21,11 +21,17 @@
 			<input class="form-control" name="username" type="text"  placeholder="Username" required ngModel={{user.username}} #username="ngModel">
 		</div>
 
+		<!-- Alert Empty Username -->
+		<div class="alert alert-danger" *ngIf="username.invalid && username.touched">Username can't be empty!</div>
+
 		<!-- Email -->
 		<div class="form-group">
 			<div><label for="email"><b>Email</b></label></div>
-			<input class="form-control" type="email" name="email" placeholder="Email"  ngModel={{user.email}} #email="ngModel">
+			<input class="form-control" type="email" name="email" placeholder="E-mail"  ngModel={{user.email}} required #email="ngModel">
 		</div>
+
+		<!-- Alert Empty E-Mail -->
+		<div class="alert alert-danger" *ngIf="email.invalid && email.touched">E-Mail can't be empty!</div>
 
 		<!-- First Name -->
 		<div class="form-group">
@@ -33,11 +39,17 @@
 			<input class="form-control" name="firstName" type="text" placeholder="First Name" required ngModel={{user.firstName}} #firstName="ngModel">
 		</div>
 
+		<!-- Alert Empty First Name -->
+		<div class="alert alert-danger" *ngIf="email.invalid && email.touched">First name can't be empty!</div>
+
 		<!-- Last Name -->
 		<div class="form-group">
 			<div><label for="lastName"><b>Last Name</b></label></div>
 			<input class="form-control" name="lastName" type="text" placeholder="Last Name" required ngModel={{user.lastName}} #lastName="ngModel">
 		</div>
+
+		<!-- Alert Empty First Name -->
+		<div class="alert alert-danger" *ngIf="lastName.invalid && lastName.touched">Last name can't be empty!</div>
 
 		<div>
 			<!-- Website Button Website-List Link-->

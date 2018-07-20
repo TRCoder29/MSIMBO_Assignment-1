@@ -51,15 +51,40 @@
 				</div>
 			</div>
 
+			<br>
+
 			<!-- Image -->
 			<div *ngSwitchCase="'IMAGE'">
-				<img [src]="widget.url" [style.width]="widget.width">
+				<img class="loading-iframe" [src]="widget.url" [style.width]="widget.width">
 			</div>
 
 			<!-- YouTube -->
 			<div *ngSwitchCase="'YOUTUBE'">
-				<div class="embed-responsive embed-responsive-16by9">
-					<iframe [src]="this.getYoutubeUrl(widget.url)" [style.width]="widget.width" frameborder="0" allowfullscreen></iframe>
+				<div class="embed-responsive embed-responsive-16by9" [style.width]="widget.width">
+					<iframe class="loading-iframe" [src]="this.getYoutubeUrl(widget.url)" frameborder="0" allowfullscreen></iframe>
+				</div>
+			</div>
+
+
+			<br>
+
+			<!-- HTML -->
+			<div *ngSwitchCase="'HTML'">
+				<div [innerHTML]="parseHTML(widget.text)"></div>
+			</div>
+
+			<br>
+
+			<!-- Text -->
+			<div *ngSwitchCase="'TEXT'">
+				<div *ngIf='widget.formatted'>
+					<quill-editor [(ngModel)]="widget.text"></quill-editor>
+				</div>
+				<div *ngIf="!widget.formatted && widget.rows===1">
+					<input class="form-control" type="text" name="text" placeholder="{{widget.placeholder}}" value={{widget.text}}>
+				</div>
+				<div *ngIf="!widget.formatted && widget.rows>1">
+					<textarea rows="{{widget.rows}}" placeholder="{{widget.placeholder}}">{{widget.text}}</textarea>
 				</div>
 			</div>
 		</div>

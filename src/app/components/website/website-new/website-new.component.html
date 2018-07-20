@@ -56,7 +56,7 @@
 			</div>
 
 			<!-- Missing Name Alert -->
-			<div class="alert alert-warning" *ngIf="name.invalid && name.touched">Name cannot be empty.</div>
+			<div class="alert alert-danger" *ngIf="name.invalid && name.touched">Name cannot be empty.</div>
 
 			<!-- Website Description -->
 			<div class="form-group">
@@ -81,3 +81,5 @@
 	</div>
 </nav>
 
+<!-- Missing Description Alert -->
+<!-- <div class="alert alert-danger" *ngIf="description.invalid && description.touched">Description cannot be empty.</div> -->

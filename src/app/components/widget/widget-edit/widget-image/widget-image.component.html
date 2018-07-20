@@ -18,8 +18,11 @@
 		<!-- Name -->
 		<div><label>Name</label></div>
 		<div class="form-group">
-			<input class="form-control" name="name" type="text" placeholder="Name" ngModel="{{widget.name}}" #name="ngModel">
+			<input class="form-control" name="name" type="text" placeholder="Name" ngModel="{{widget.name}}" required #name="ngModel">
 		</div>
+
+		<!-- Alert Empty Name -->
+		<div class="alert alert-danger" *ngIf="name.invalid && name.touched">Name can't be empty!</div>
 
 		<!-- Text -->
 		<div><label>Text</label></div>
@@ -30,11 +33,8 @@
 		<!-- URL -->
 		<div><label>URL</label></div>
 		<div class="form-group">
-			<input class="form-control" name="url" type="URL" placeholder="https://www.google.com" required ngModel="{{widget.url}}" #url="ngModel">
+			<input class="form-control" name="url" type="URL" placeholder="https://www.google.com" ngModel="{{widget.url}}" #url="ngModel">
 		</div>
-
-		<!-- Alert Empty URL -->
-		<div class="alert alert-danger" *ngIf="url.invalid && url.touched">URL can't be empty!</div>
 
 		<!-- Width -->
 		<div><label>Width</label></div>

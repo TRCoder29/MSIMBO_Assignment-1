@@ -23,11 +23,13 @@ import { WidgetEditComponent } from './components/widget/widget-edit/widget-edit
 
 import { WidgetHeadingComponent } from './components/widget/widget-edit/widget-heading/widget-heading.component';
 import { WidgetImageComponent } from './components/widget/widget-edit/widget-image/widget-image.component';
-import { WidgetYoutubeComponent } from './components/widget/widget-edit/widget-youtube/widget-youtube.component';
 import { FlickrImageSearchComponent } from './components/widget/widget-edit/widget-image/flickr-image-search/flickr-image-search.component';
+import { WidgetYoutubeComponent } from './components/widget/widget-edit/widget-youtube/widget-youtube.component';
+import { WidgetHtmlComponent } from './components/widget/widget-edit/widget-html/widget-html.component';
+import { WidgetTextComponent } from './components/widget/widget-edit/widget-text/widget-text.component';
 
 import { Routing } from './app.routing';
-
+import { QuillEditorModule } from 'ngx-quill-editor';
 
 import { UserService } from './services/user.service.client';
 import { WebsiteService } from './services/website.service.client';
@@ -36,6 +38,7 @@ import { WidgetService } from './services/widget.service.client';
 import { FlickrService } from './services/flickr.service.client';
 import { SharedService } from './services/shared.service.client'
 import { AuthGuard } from './services/auth-guard.service';
+
 
 @NgModule({
   declarations: [
@@ -56,12 +59,15 @@ import { AuthGuard } from './services/auth-guard.service';
     WidgetYoutubeComponent,
     WidgetEditComponent,
     FlickrImageSearchComponent,
+    WidgetHtmlComponent,
+    WidgetTextComponent,
   ],
   imports: [
     BrowserModule,
     FormsModule,
     HttpModule,
-    Routing
+    Routing,
+    QuillEditorModule
   ],
   providers: [UserService, WebsiteService, PageService, WidgetService,FlickrService, SharedService, AuthGuard],
   bootstrap: [AppComponent]

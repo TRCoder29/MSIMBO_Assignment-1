@@ -1,4 +1,4 @@
-<!-- Navigation Bar -->
+ <!-- Navigation Bar -->
 <nav class="navbar navbar-dark sw-gray fixed-top">
 	<!-- Cancel (<) Widget-List Link-->
 	<a class="sw-black" routerLink="/user/{{uid}}/website/{{wid}}/page/{{pid}}/widget"><i class="fas fa-chevron-left"></i></a>
@@ -21,35 +21,15 @@
 			<input class="form-control" name="name" type="text" placeholder="Name" required ngModel="{{widget.name}}" #name="ngModel"  >
 		</div>
 
-		<!-- Alert Empty Text -->
+		<!-- Alert Empty Name -->
 		<div class="alert alert-danger" *ngIf="name.invalid && name.touched">Name cannot be empty.</div>
 
 		<!-- Page Text -->
 		<div><label>Text</label></div>
 		<div class="form-group">
-			<input class="form-control" name="text" type="text" placeholder="Text" required ngModel="{{widget.text}}" #text="ngModel">
+			<quill-editor name="text" ngModel="{{widget.text}}" required #text="ngModel"></quill-editor>
 		</div>
 
-		<!-- Alert Empty Text -->
-		<div class="alert alert-danger" *ngIf="text.invalid && text.touched">Text cannot be empty.</div>
-
-		<!-- Size -->
-		<div class="form-group">
-			<div><label>Size</label></div>
-			<select class="form-control" name="size" type="number" placeholder="3" required ngModel="{{widget.size}}" #size="ngModel">
-				<option value="1">1</option>
-				<option value="2">2</option>
-				<option value="3">3</option>
-				<option value="4">4</option>
-				<option value="5">5</option>
-				<option value="6">6</option>
-			</select>
-		</div>
-
-		<!-- Alert Empty Size -->
-		<div class="alert alert-danger" *ngIf="size.invalid && size.touched">Size cannot be empty.</div>
-
-		<br>
 
 		<!-- Submit Widget-List Link-->
 		<div>
@@ -62,7 +42,8 @@
 		</div>
 	</form>
 
-<!-- Footer -->
+
+ <!-- Footer -->
 <nav class="navbar navbar-dark sw-gray fixed-bottom">
 	<!-- Profile User (Button) -->
 	<div class="sw-width">

@@ -1,4 +1,4 @@
-<!-- Navigation Bar -->
+ <!-- Navigation Bar -->
 <nav class="navbar navbar-dark sw-gray fixed-top">
 	<!-- Cancel (<) Widget-List Link-->
 	<a class="sw-black" routerLink="/user/{{uid}}/website/{{wid}}/page/{{pid}}/widget"><i class="fas fa-chevron-left"></i></a>
@@ -12,6 +12,7 @@
 	<button class="btn sw-button-to-a sw-black float-right" type="submit" form="widgetForm" [disabled]="f.invalid"><i class="fas fa-check"></i></button>
 </nav>
 
+
 <!-- Form -->
 <div class="container">
 	<form id="widgetForm" (ngSubmit)="update()" #f="ngForm">
@@ -24,45 +25,42 @@
 		<!-- Alert Empty Text -->
 		<div class="alert alert-danger" *ngIf="name.invalid && name.touched">Name cannot be empty.</div>
 
-		<!-- Page Text -->
-		<div><label>Text</label></div>
+		<!-- Rows -->
 		<div class="form-group">
-			<input class="form-control" name="text" type="text" placeholder="Text" required ngModel="{{widget.text}}" #text="ngModel">
+			<div><label>Rows</label></div>
+			<input class="form-control" name="rows" type="number" placeholder="Number of Rows" required ngModel="{{widget.rows}}" #rows="ngModel">
 		</div>
 
-		<!-- Alert Empty Text -->
-		<div class="alert alert-danger" *ngIf="text.invalid && text.touched">Text cannot be empty.</div>
+		<!-- Alert Empty Rows -->
+		<div class="alert alert-danger" *ngIf="rows.invalid && rows.touched">Rows cannot be empty.</div>
 
-		<!-- Size -->
+
+		<!-- Placeholder -->
+		<div><label>Placeholder</label></div>
 		<div class="form-group">
-			<div><label>Size</label></div>
-			<select class="form-control" name="size" type="number" placeholder="3" required ngModel="{{widget.size}}" #size="ngModel">
-				<option value="1">1</option>
-				<option value="2">2</option>
-				<option value="3">3</option>
-				<option value="4">4</option>
-				<option value="5">5</option>
-				<option value="6">6</option>
-			</select>
+			<input class="form-control" name="placeholder" type="text" placeholder="Placeholder of the Widget" ngModel="{{widget.placeholder}}" #placeholder="ngModel"  >
 		</div>
 
-		<!-- Alert Empty Size -->
-		<div class="alert alert-danger" *ngIf="size.invalid && size.touched">Size cannot be empty.</div>
+		<!-- Formatted Check Box -->
+		<div><label>Formatted</label></div>
+		<div class="form-group">
+			<input name="formatted" type="checkbox" ngModel="{{widget.formatted}}" #formatted="ngModel"  >
+		</div>
 
 		<br>
-
-		<!-- Submit Widget-List Link-->
-		<div>
-			<button class="btn btn-primary btn-block" type="submit" [disabled]="f.invalid">Submit</button>
-		</div>
 
 		<!-- Delete Widget-List Link-->
 		<div>
 			<button class="btn btn-danger btn-block" type="button" (click)="remove()">Delete</button>
 		</div>
+
+		<!-- Cancel -->
+		<div>
+			<button class="btn btn-warning btn-block" routerLink="/user/{{uid}}/website/{{wid}}/page/{{pid}}/widget">Cancel</button>
+		</div>
 	</form>
 
-<!-- Footer -->
+ <!-- Footer -->
 <nav class="navbar navbar-dark sw-gray fixed-bottom">
 	<!-- Profile User (Button) -->
 	<div class="sw-width">

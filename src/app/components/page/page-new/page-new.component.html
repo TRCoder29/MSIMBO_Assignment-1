@@ -21,13 +21,16 @@
 		</div>
 		
 		<!-- Alert for Empty Name Field -->
-		<div class="alert alert-warning" *ngIf="name.invalid && name.touched">Name cannot be empty.</div>
+		<div class="alert alert-danger" *ngIf="name.invalid && name.touched">Name cannot be empty.</div>
 
-		<!-- Title -->
+		<!-- Page Description -->
 		<div class="form-group">
 			<label>Page Description</label>
-			<input class="form-control" name="description" type="text" placeholder="Enter your page description." ngModel #description="ngModel">
+			<input class="form-control" name="description" type="text" placeholder="Enter your page description..." required ngModel #description="ngModel" >
 		</div>
+
+		<!-- Alert for Empty Page Description Field -->
+		<div class="alert alert-danger" *ngIf="description.invalid && description.touched">Description cannot be empty.</div>
 
 		<!-- Submit Button -->
 		<button class="btn btn-primary btn-block" type="submit" [disabled]="f.invalid">Submit</button>
