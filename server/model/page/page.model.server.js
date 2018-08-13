@@ -21,7 +21,7 @@ function findAllPagesForWebsite(wid){
 }
 
 function updatePage(pid, page){
-	return PageModel.update({_id: pid, page});
+	return PageModel.update({_id: pid}, page);
 }
 
 function deletePage(pid){

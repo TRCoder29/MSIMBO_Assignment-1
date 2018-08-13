@@ -1,8 +1,8 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router'
-import { Page } from '../../../models/page.model.clients'
-import { PageService } from '../../../services/page.service.client'
-import { NgForm } from '@angular/forms'
+import { ActivatedRoute, Router } from '@angular/router';
+import { Page } from '../../../models/page.model.clients';
+import { PageService } from '../../../services/page.service.client';
+import { NgForm } from '@angular/forms';
 
 @Component({
   selector: 'app-page-edit',

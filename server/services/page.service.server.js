@@ -46,7 +46,7 @@ module.exports = function(app){
 
 
 	function updatePage(req, res) {
-		var pid = req.params['pid']
+		var pid = req.params['pid'];
 		var page = req.body;
 		pageModel.updatePage(pid, page).then(
 			(data) => {

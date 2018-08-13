@@ -1,8 +1,8 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { WebsiteService } from '../../../services/website.service.client'
-import { Website } from '../../../models/website.model.client'
-import { NgForm } from '@angular/forms'
-import { ActivatedRoute, Router } from '@angular/router'
+import { WebsiteService } from '../../../services/website.service.client';
+import { Website } from '../../../models/website.model.client';
+import { NgForm } from '@angular/forms';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-website-edit',
@@ -35,7 +35,7 @@ wid: string;
           this.websites = websites;
         }
        );
-  		this.websiteService.findWebsiteById(this.uid).subscribe(
+  		this.websiteService.findWebsiteById(this.wid).subscribe(
         (website: Website) => {
           this.website = website;
           this.name = this.website.name;

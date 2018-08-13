@@ -12,12 +12,12 @@ function createWebsiteForUser(website){
 	return WebsiteModel.create(website);
 }
 
-function findWebsiteById(wid){
-	return WebsiteModel.findById(wid);
+function findAllWebsitesForUser(uid){
+	return WebsiteModel.find({developerId: uid}).sort({name: 1});
 }
 
-function findAllWebsitesForUser(uid){
-	return WebsiteModel.find({developerId: uid});
+function findWebsiteById(wid){
+	return WebsiteModel.findById(wid);
 }
 
 function updateWebsite(wid, website){

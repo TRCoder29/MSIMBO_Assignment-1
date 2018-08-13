@@ -15,7 +15,7 @@ module.exports = function(app){
  	app.get('/api/user/:uid/website', findAllWebsitesForUser);
 	app.get('/api/website/:wid', findWebsiteById);
 	app.put('/api/website/:wid', updateWebsite);
-	app.delete('/api/website/:wid', deleteWebsite);
+	app.delete('/api/website/:wid', deleteWebsite)
 
 
 	function createWebsite(req, res) {
@@ -24,7 +24,7 @@ module.exports = function(app){
       (data) => {
         res.json(data);
       }
-    )
+    );
   }
 
 
@@ -55,13 +55,12 @@ module.exports = function(app){
       data => {
         res.json(data);
       }
-    )
+    );
   }
 
 
   function deleteWebsite(req, res) {
   	var wid = req.params['wid'];
-    var web = selectWebsiteById(wid);
     websiteModel.deleteWebsite(wid).then(
       data => {
         res.json(data);
